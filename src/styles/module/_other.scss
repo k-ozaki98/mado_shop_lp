@@ -1,0 +1,225 @@
+@charset "utf-8";
+@use '../lib/global' as g;
+
+.related-title {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin-bottom: 2.2rem;
+}
+
+.related-items {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.related-item {
+	display: block;
+	margin-bottom: 2.1rem;
+	margin-right: 1.8rem;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+	width: calc(25% - 1.8rem * 3 / 4);
+	@include g.max-screen(g.$bp-sp) {
+		margin-right: 30px;
+		width: calc(50% - 30px * 1 / 2);
+
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+	}
+}
+
+.related-item:hover {
+	opacity: 0.6;
+}
+
+.related-item:nth-child(4n) {
+	margin-right: 0;
+}
+
+.related-item-img {
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.related-item-title {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 1.57143;
+}
+
+
+#wp-calendar caption {
+	margin-bottom: 4px;
+}
+
+#wp-calendar th,
+#wp-calendar td {
+	text-align: center;
+}
+
+#wp-calendar #prev {
+	text-align: left;
+}
+
+#wp-calendar #next {
+	text-align: right;
+}
+
+#wp-calendar a {
+	color: #0095d0;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+#wp-calendar a:hover {
+	opacity: 0.6;
+}
+
+.pagination {
+	margin-top: 1.2rem;
+	text-align: center;
+}
+
+.pagination a {
+	transition: all 0.3s ease 0s;
+}
+
+.pagination a:hover {
+	opacity: 0.6;
+}
+
+.pagination a.next,
+.pagination a.prev {
+	font-size: 3rem;
+}
+
+.pagination a.next:hover,
+.pagination a.prev:hover {
+	opacity: 0.6;
+}
+
+.page-numbers {
+	background: #fff;
+	border: 1px solid #e2e2e2;
+	color: #808080;
+	display: inline-block;
+	font-family: "Lato", sans-serif;
+	font-size: 2rem;
+	height: 4rem;
+	line-height: 3.8rem;
+	margin-right: 1.4rem;
+	min-width: 4rem;
+	text-align: center;
+	text-decoration: none;
+}
+
+.page-numbers:last-child {
+	margin-right: 0;
+}
+
+.page-numbers.current {
+	background: #0095d0;
+	border: 1px solid #0095d0;
+	color: #fff;
+	font-weight: 700;
+}
+
+.page-numbers.dots,
+.page-numbers.next,
+.page-numbers.prev {
+	border: none;
+	line-height: 4rem;
+	min-width: initial;
+	width: auto;
+}
+
+
+#pickup {
+	background: #f4f4f4;
+}
+
+#pickup > .inner {
+	padding-bottom: 2rem;
+	padding-top: 4rem;
+
+	@include g.max-screen(g.$bp-sp) {
+		padding-bottom: 4rem;
+		padding-top: 4rem;
+	}
+}
+
+.pickup-items {
+	display: flex;
+	@include g.max-screen(g.$bp-sp) {
+		display: block;
+	}
+}
+
+.pickup-item {
+	display: block;
+	margin-right: 4rem;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+	width: calc(33.33333333% - 4rem * 2 / 3);
+	@include g.max-screen(g.$bp-sp) {
+		display: flex;
+		margin-bottom: 2rem;
+		margin-right: 0;
+		width: 100%;
+	}
+}
+
+.pickup-item:hover {
+	opacity: 0.6;
+}
+
+.pickup-item:last-child {
+	margin-right: 0;
+
+	@include g.max-screen(g.$bp-sp) {
+		margin-bottom: 0;
+	}
+}
+
+.pickup-item-img {
+	position: relative;
+	text-align: center;
+	@include g.max-screen(g.$bp-sp) {
+		width: 42.40688%;
+	}
+}
+
+.pickup-item-body {
+	padding: 2rem 0;
+	@include g.max-screen(g.$bp-sp) {
+		padding-bottom: 0;
+		padding-top: 0;
+		width: 57.59312%;
+	}
+}
+
+.pickup-item-title {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 1.4;
+	@include g.max-screen(g.$bp-sp) {
+		font-size: 1.6rem;
+		padding-left: 1.5rem;
+	}
+}
+
+.pickup-item-tag {
+	background: #0095d0;
+	color: #fff;
+	font-size: 1.2rem;
+	line-height: 1.1;
+	padding: 6px 1.4rem;
+	position: absolute;
+	right: 0;
+	text-decoration: none;
+	top: 0;
+}

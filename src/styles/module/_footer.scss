@@ -1,0 +1,260 @@
+@charset "utf-8";
+@use '../lib/global' as g;
+
+// footer
+// .footer {
+// }
+
+#footer-menu {
+	background: #868686;
+}
+
+#footer-menu > .inner {
+	padding-bottom: 4.2rem;
+	padding-top: 5.4rem;
+	@include g.max-screen(g.$bp-sp) {
+		padding-bottom: 5.6rem;
+		padding-top: 5.4rem;
+	}
+}
+
+.footer-logo {
+	margin-bottom: 4px;
+	text-align: center;
+	@include g.max-screen(g.$bp-sp) {
+		margin-bottom: 1.2rem;
+	}
+}
+
+.footer-logo a {
+	color: #fff;
+	font-family: "Lato", sans-serif;
+	font-size: 3.6rem;
+	font-weight: 700;
+	margin-bottom: 1.4rem;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+	@include g.max-screen(g.$bp-sp) {
+		font-size: 2.6rem;
+	}
+}
+
+.footer-logo a:hover {
+	opacity: 0.6;
+}
+
+.footer-sub {
+	color: #fff;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 1.71429;
+	margin-bottom: 3rem;
+	text-align: center;
+	@include g.max-screen(g.$bp-sp) {
+		font-size: 1.2rem;
+		margin-bottom: 2.8rem;
+	}
+}
+
+.footer-nav {
+	text-align: center;
+}
+
+.footer-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	@include g.max-screen(g.$bp-sp) {
+		display: block;
+		text-align: center;
+	}
+}
+
+.footer-nav li {
+	margin-bottom: 1rem;
+	margin-right: 3.2rem;
+	padding: 0 4px;
+	text-decoration: none;
+	@include g.max-screen(g.$bp-sp) {
+		margin-bottom: 1.2rem;
+		margin-right: 0;
+	}
+}
+
+.footer-nav li:last-child {
+	margin-right: 0;
+	@include g.max-screen(g.$bp-sp) {
+		margin-bottom: 0;
+	}
+}
+
+.footer-nav li a {
+	color: #fff;
+	font-size: 1.4rem;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.footer-nav li a:hover {
+	opacity: 0.6;
+}
+
+.footer-sns {
+	background: #fff;
+	border-top: 1px solid #e2e2e2;
+	bottom: -7.5rem;
+	left: 0;
+	position: fixed;
+	transition: all 0.3s ease 0s;
+	width: 100%;
+	z-index: 25;
+
+	@include g.max-screen(g.$bp-sp) {
+		bottom: -6.7rem;
+	}
+}
+
+.footer-sns.m_fixed_sns {
+	bottom: 0;
+	@include g.max-screen(g.$bp-sp) {
+		padding-bottom: 6.7rem;
+	}
+}
+
+.footer-sns > .inner {
+	align-items: center;
+	display: flex;
+	height: 7.5rem;
+	padding-bottom: 0;
+	padding-top: 0;
+	@include g.max-screen(g.$bp-sp) {
+		height: 6.7rem;
+		padding-left: 3.2rem;
+		padding-right: 3.2rem;
+	}
+}
+
+.footer-sns-head {
+	font-size: 1.4rem;
+	margin-right: auto;
+	@include g.max-screen(g.$bp-sp) {
+		display: none;
+	}
+}
+
+.footer-sns-buttons {
+	@include g.max-screen(g.$bp-sp) {
+		width: 100%;
+	}
+}
+
+.footer-sns-buttons ul {
+	align-items: center;
+	display: flex;
+	@include g.max-screen(g.$bp-sp) {
+		justify-content: space-between;
+	}
+}
+
+.footer-sns-buttons li {
+	margin-right: 5rem;
+	@include g.max-screen(g.$bp-sp) {
+		margin-right: auto;
+	}
+}
+
+.footer-sns-buttons li:last-child {
+	margin-right: 0;
+}
+
+.footer-sns-buttons li a {
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.footer-sns-buttons li a:hover {
+	opacity: 0.6;
+}
+
+.footer-sns-buttons li a.m_twitter img {
+	width: 2.6rem;
+}
+
+.footer-sns-buttons li a.m_facebook img {
+	width: 1.1rem;
+}
+
+.footer-sns-buttons li a.m_hatena img {
+	width: 2.2rem;
+}
+
+.footer-sns-buttons li a.m_line img {
+	width: 3rem;
+}
+
+.footer-sns-buttons li a.m_pocket img {
+	width: 2.7rem;
+}
+
+#footer {
+	background: #464646;
+}
+
+#footer > .inner {
+	padding-bottom: 2rem;
+	padding-top: 1.8rem;
+}
+
+.copy {
+	color: #fff;
+	font-family: "Lato", sans-serif;
+	font-size: 1.2rem;
+	margin-bottom: 2px;
+	text-align: center;
+}
+
+.by {
+	color: #fff;
+	font-family: "Lato", sans-serif;
+	font-size: 1.1rem;
+	text-align: center;
+}
+
+.by a {
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.by a:hover {
+	opacity: 0.6;
+}
+
+.floating {
+	bottom: 10rem;
+	display: none;
+	position: fixed;
+	right: 2.8rem;
+	z-index: 30;
+	@include g.max-screen(g.$bp-sp) {
+		bottom: 9.2rem;
+		right: 1.6rem;
+	}
+}
+
+.floating a {
+	background: #6a6a6a;
+	border-radius: 50%;
+	color: #fff;
+	display: block;
+	font-size: 2rem;
+	height: 6.0rem;
+	line-height: 6rem;
+	text-align: center;
+	text-decoration: none;
+	width: 6rem;
+}
+
+.floating a:hover {
+	opacity: 0.6;
+}

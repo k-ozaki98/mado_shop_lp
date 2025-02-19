@@ -1,0 +1,925 @@
+@charset "utf-8";
+@use '../lib/global' as g;
+
+
+#primary {
+	width: 65.45455%;
+    @include g.max-screen(g.$bp-sp) {
+        width: 100%;
+        margin-bottom: 7rem;
+    }
+}
+
+.m_one #primary {
+	margin-bottom: 0;
+	width: 100%;
+    @include g.max-screen(g.$bp-sp) {
+        margin-bottom: 7rem;
+    }
+}
+
+#secondary {
+	margin-left: auto;
+	width: 30.90909%;
+    @include g.max-screen(g.$bp-sp) {
+        width: 100%;
+    }
+}
+
+.m_one #secondary {
+	display: none;
+	width: 100%;
+    @include g.max-screen(g.$bp-sp) {
+        display: block;
+    }
+}
+
+.breadcrumb {
+	color: #8d8d8d;
+	font-size: 1.2rem;
+	margin-bottom: 1.4rem;
+}
+
+.breadcrumb .home::before {
+	content: "\f015";
+	font-family: "Font Awesome 5 Free", sans-serif;
+	font-weight: 900;
+	margin-right: 1rem;
+}
+
+.breadcrumb a {
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.breadcrumb a:hover {
+	opacity: 0.6;
+}
+
+.breadcrumb i {
+	margin-left: 1.5rem;
+	margin-right: 1.5rem;
+}
+
+.work-breadcrumb {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+
+.work-breadcrumb .inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.work-breadcrumb .breadcrumb {
+  margin-bottom: 0;
+}
+
+.genre-nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2.2rem;
+  @include g.max-screen(g.$bp-sp) {
+    margin-bottom: 5px;
+  }
+}
+
+.genre-nav-link {
+  margin-right: 1.6rem;
+  @include g.max-screen(g.$bp-sp) {
+    margin-right: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+}
+.genre-nav-link a {
+  display: block;
+  padding: 6px 1.4rem;
+  background: #fff;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: HiraKakuPro-W6, "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W6", Meiryo, "Noto Sans Japanese", sans-serif;
+    @include g.max-screen(g.$bp-sp) {
+        padding: 3px 8px;
+        font-size: 1.6rem;
+    }
+}
+
+.genre-nav-link a.is-active, .genre-nav-link a:hover {
+  background: #0095d0;
+  color: #fff;
+}
+
+.entry-work {
+  box-shadow: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  @include g.max-screen(g.$bp-sp) {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.entry-work-body {
+  margin-top: 4rem;
+  display: flex;
+  @include g.max-screen(g.$bp-sp) {
+    display: block;
+    margin-top: 4rem;
+  }
+}
+.entry-work-content {
+  width: 62%;
+  padding-right: 4rem;
+  line-height: 2.25;
+  @media screen and (max-width: 1099px) {
+        width: 58%;
+        padding-right: 2rem;
+    }
+  @include g.max-screen(g.$bp-sp) {
+    width: 100%;
+    padding-right: 0;
+    line-height: 1.875;
+  }
+}
+.entry-work-table {
+  width: 38%;
+  /* 384 / 1020 * 100%; */
+  margin-left: auto;
+  @media screen and (max-width: 1099px) {
+    width: 42%;
+  }
+  @include g.max-screen(g.$bp-sp) {
+    width: 100%;
+    margin-top: 2rem;
+    margin-left: 0;
+  }
+}
+.entry-work-table table {
+  border-color: #707070;
+}
+
+.entry-work-table th, .entry-work-table td {
+  padding: .8rem 1.6rem;
+  border-color: #707070;
+  font-size: 1.4rem;
+  word-break: break-all;
+}
+
+.entry-work-table th {
+  width: 43%;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  background: #999;
+  @include g.max-screen(g.$bp-sp) {
+    width: 12rem;
+  }
+}
+.entry-work-btn {
+  text-align: center;
+  margin-top: 7rem;
+  @include g.max-screen(g.$bp-sp) {
+    margin-top: 4rem;
+  }
+}
+.entry-work-related {
+  margin-top: 7.4rem;
+  @include g.max-screen(g.$bp-sp) {
+    margin-top: 5.4rem;
+  }
+}
+.entry-work-related-entries {
+  margin-bottom: 0;
+}
+
+.entry-work-related-entries .entry-item {
+  margin-bottom: 0;
+  @include g.max-screen(g.$bp-sp) {
+    margin-bottom: 2.7rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+  }
+}
+
+.entry-work-related-head {
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 4.4rem;
+  position: relative;
+  text-align: left;
+  background: #ebebeb;
+  border-radius: 3px;
+  border-top: 6px solid #0095d0;
+  padding: 2.4rem 2rem;
+  @include g.max-screen(g.$bp-sp) {
+    font-size: 2rem;
+    padding: 2.7rem 1.7rem;
+    margin-bottom: 2.4rem;
+  }
+}
+.entry-work-related-head::after {
+  border: 5px solid transparent;
+  border-top: 15px solid #ebebeb;
+  content: "";
+  height: 0;
+  left: 2.4rem;
+  position: absolute;
+  top: 100%;
+  width: 0;
+}
+.entries {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 1.2rem;
+    @include g.max-screen(g.$bp-sp) {
+        display: block;
+    }
+}
+
+.entry-item {
+	background: #fff;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.16);
+	display: block;
+	margin-bottom: 5rem;
+	margin-right: 4rem;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+	width: calc(50% - 4rem / 2);
+
+    @include g.max-screen(g.$bp-sp) {
+        margin-bottom: 2.7rem;
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+.entry-item:hover {
+	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.16);
+}
+
+.entry-item:nth-child(2n),
+.entry-item:last-child {
+	margin-right: 0;
+}
+
+.entry-item:last-child {
+    @include g.max-screen(g.$bp-sp) {
+        margin-bottom: 0;
+        
+    }
+}
+
+.entry-item-img {
+	text-align: center;
+}
+
+.entry-item-body {
+	padding: 2rem;
+}
+
+.entry-item-meta {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+
+.entry-item-published {
+	color: #808080;
+	font-size: 1.2rem;
+	margin-top: 4px;
+}
+
+.entry-item-published::before {
+	content: "\f073";
+	font-family: "Font Awesome 5 Free", sans-serif;
+	font-weight: 400;
+	margin-right: 8px;
+}
+
+.entry-item-tag {
+	background: #0095d0;
+	color: #fff;
+	display: block;
+	font-size: 1.2rem;
+	margin-right: 1.5rem;
+	padding: 3px 1.4rem 2px;
+}
+
+.entry-item-title {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 1.42;
+	margin-bottom: 1.4rem;
+}
+
+.entry-item-excerpt {
+	color: #454545;
+	font-size: 1.4rem;
+	line-height: 1.71429;
+}
+
+.entries.m_horizontal {
+	margin-bottom: 6.2rem;
+    @include g.max-screen(g.$bp-sp) {
+        margin-bottom: 4rem;
+    }
+}
+
+.entries.m_horizontal .entry-item {
+	display: flex;
+	margin-bottom: 3rem;
+	margin-right: 0;
+	padding: 2rem;
+	width: 100%;
+    @include g.max-screen(g.$bp-sp) {
+        margin-bottom: 2rem;
+        padding: 1rem;
+    }
+}
+
+.entries.m_horizontal .entry-item:last-child {
+	margin-bottom: 0;
+}
+
+.entries.m_horizontal .entry-item .entry-item-img {
+	width: 36.02941%;
+
+    @include g.max-screen(g.$bp-sp) {
+        width: 45.0617%;
+    }
+}
+
+.entries.m_horizontal .entry-item .entry-item-body {
+	padding: 0 0 0 2rem;
+	width: 63.97059%;
+
+    @include g.max-screen(g.$bp-sp) {
+        padding-left: 1.2rem;
+	    width: 54.93827%;
+    }
+}
+
+.entries.m_block .entry-item {
+	width: 100%;
+	margin-right: 0;
+}
+
+.entries.m_block .entry-item .entry-item-body {
+		padding: 2rem;
+    width: 100%;
+}
+
+.entries.m_block .entry-item .entry-item-published {
+	font-size: 1.4rem;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 1rem;
+    }
+}
+
+.entries.m_block .entry-item .entry-item-tag {
+	font-size: 1.4rem;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+}
+
+.entries.m_block .entry-item .entry-item-title {
+	font-size: 2rem;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+}
+
+.entries.m_block .entry-item .entry-item-excerpt {
+	font-size: 1.6rem;
+    @include g.max-screen(g.$bp-sp) {
+        display: none;
+    }
+}
+
+.entry {
+	background: #fff;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.16);
+	padding: 4rem 4rem 1.2rem;
+    @include g.max-screen(g.$bp-sp) {
+        padding: 1rem;
+    }
+}
+
+.entry-label {
+	display: inline-block;
+	margin-bottom: 1.8rem;
+    
+}
+
+.entry-label a {
+	background: #0095d0;
+	color: #fff;
+	display: block;
+	font-size: 1.2rem;
+	padding: 4px 1.6rem;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 1.1rem;
+        padding: 4px 1.4rem;
+    }
+}
+
+.entry-label a:hover {
+	opacity: 0.6;
+}
+
+.entry-title {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 3rem;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-bottom: 1.8rem;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 2.4rem;
+        line-height: 1.4167;
+    }
+}
+
+.m_page .entry-title {
+	margin-bottom: 3.4rem;
+
+}
+
+.entry-meta {
+	align-items: center;
+	display: flex;
+	margin-bottom: 1.8rem;
+}
+
+.entry-published,
+.entry-updated {
+	color: #808080;
+	font-size: 1.2rem;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 1.1rem;
+    }
+}
+
+.entry-published::before,
+.entry-updated::before {
+	content: "\f073";
+	font-family: "Font Awesome 5 Free", sans-serif;
+	font-weight: 400;
+	margin-right: 8px;
+}
+
+.entry-updated {
+	margin-left: 2.7rem;
+    @include g.max-screen(g.$bp-sp) {
+        margin-left: 1.8rem;
+    }
+}
+
+.entry-updated::before {
+	content: "\f1da";
+	font-weight: 900;
+}
+
+.entry-img {
+	text-align: center;
+}
+
+.entry-tag-items {
+	border-top: 1px solid #e2e2e2;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 2rem 0;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 2.4rem;
+    }
+}
+
+.entry-tag-head {
+	background: #808080;
+	border-radius: 3px;
+	color: #fff;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.6rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+	margin-right: 1.5rem;
+	padding: 6px 1.5rem 0;
+    @include g.max-screen(g.$bp-sp) {
+        padding: 6px 15px 0;
+    }
+}
+
+.entry-tag-head::before {
+	content: "\f02b";
+	font-family: "Font Awesome 5 Free", sans-serif;
+	font-weight: 900;
+	margin-right: 5px;
+}
+
+.entry-tag-item {
+	margin-bottom: 1rem;
+	margin-right: 1.5rem;
+}
+
+.entry-tag-item:last-child {
+	margin-right: 0;
+}
+
+.entry-tag-item a {
+	border: 1px solid #e2e2e2;
+	border-radius: 3px;
+	color: #808080;
+	display: block;
+	font-size: 1.4rem;
+	padding: 6px 1.8rem 5px;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+    @include g.max-screen(g.$bp-sp) {
+        padding: 4px 16px 3px;
+    }
+}
+
+.entry-tag-item a:hover {
+	background: #808080;
+	border-color: #808080;
+	color: #fff;
+}
+
+.entry-body {
+	margin-top: 3.2rem;
+	padding-bottom: 4.4rem;
+    @include g.max-screen(g.$bp-sp) {
+        padding-bottom: 2.4rem;
+    }
+}
+
+.m_page .entry-body {
+	padding-bottom: 1.2rem;
+}
+
+.entry-body h2 + p,
+.entry-body h3 + p,
+.entry-body h4 + p,
+.entry-body h5 + p,
+.entry-body h6 + p {
+	margin-top: 0;
+}
+
+.entry-body h2 {
+	background: #ebebeb;
+	border-radius: 3px;
+	border-top: 6px solid #0095d0;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 2.6rem;
+	font-weight: 600;
+	line-height: 1.2;
+	margin-bottom: 3.8rem;
+	margin-top: 7.9rem;
+	padding: 2.4rem 2rem;
+	position: relative;
+	text-align: left;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 2rem;
+        margin-top: 8rem;
+        padding: 2.7rem 1.7rem;
+    }
+}
+
+.entry-body h2::after {
+	border: 5px solid transparent;
+	border-top: 1.5rem solid #ebebeb;
+	content: "";
+	height: 0;
+	left: 2.4rem;
+	position: absolute;
+	top: 100%;
+	width: 0;
+}
+
+.entry-body h3 {
+	border-bottom: 3px solid #0095d0;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 2.2rem;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-bottom: 2.4rem;
+	margin-top: 8.4rem;
+	padding-bottom: 1.4rem;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 2rem;
+    }
+}
+
+.entry-body h4 {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 1.6;
+	margin-bottom: 1.6rem;
+	margin-top: 8.2rem;
+	padding-left: 4.2rem;
+	position: relative;
+}
+
+.entry-body h4::before {
+	color: #0095d0;
+	content: "\f00c";
+	font-family: "Font Awesome 5 Free", sans-serif;
+	font-size: 2.6rem;
+	font-weight: 900;
+	left: 0;
+	position: absolute;
+	top: -8px;
+}
+
+.entry-body h5 {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 1.6;
+	margin-bottom: 2.7rem;
+	margin-top: 6rem;
+}
+
+.entry-body h6 {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.6rem;
+	font-weight: 600;
+	line-height: 1.6;
+	margin-bottom: 1em;
+	margin-top: 2em;
+}
+
+.entry-body p {
+	line-height: 1.875;
+	margin-top: 3rem;
+}
+
+.entry-body ul {
+	list-style-type: disc;
+	margin-bottom: 1em;
+	padding-left: 2rem;
+}
+
+.entry-body ol {
+	list-style-type: decimal;
+	margin-bottom: 1em;
+	padding-left: 2rem;
+}
+
+.entry-body li {
+	line-height: 1.6;
+	margin-bottom: 0.4em;
+	margin-top: 0.4em;
+}
+
+.entry-body blockquote {
+	background: #eee;
+	line-height: 1.6;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding: 1em;
+}
+
+.entry-body blockquote > :first-child {
+	margin-top: 0;
+}
+
+.entry-body blockquote > :last-child {
+	margin-bottom: 0;
+}
+
+.entry-body q {
+	background: #eee;
+	display: inline-block;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+	vertical-align: middle;
+}
+
+.entry-body strong,
+.entry-body b {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-weight: 600;
+}
+
+.entry-body a {
+	color: #1592e6;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-weight: 600;
+	transition: all 0.3s ease 0s;
+}
+
+.entry-body a:hover {
+	opacity: 0.6;
+}
+
+.entry-body img {
+	vertical-align: middle;
+}
+
+.entry-body .entry-btn {
+	margin: 1em 0;
+	text-align: center;
+}
+
+.entry-body .entry-btn .btn {
+	color: #fff;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.6rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.entry-body .entry-btn .btn:hover {
+	opacity: 1;
+}
+
+.entry-links {
+	margin-top: 3.2rem;
+	text-align: center;
+}
+
+.entry-links .post-page-numbers {
+	background: #fff;
+	border: 1px solid #666;
+	display: inline-block;
+	height: 3rem;
+	line-height: 3rem;
+	margin-left: 8px;
+	margin-right: 8px;
+	min-width: 3rem;
+	text-align: center;
+}
+
+.entry-links .post-page-numbers.current {
+	background: #666;
+	color: #fff;
+}
+
+.entry-links .post-page-numbers:first-child {
+	margin-left: 0;
+}
+
+.entry-links .post-page-numbers:last-child {
+	margin-right: 0;
+}
+
+.entry-links a {
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.entry-links a:hover {
+	background: #666;
+	color: #fff;
+}
+
+
+.wpost-item {
+	display: flex;
+	margin-bottom: 2rem;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.wpost-item:hover {
+	opacity: 0.6;
+}
+
+.wpost-item:last-child {
+	margin-bottom: 0;
+}
+
+.m_ranking .wpost-item {
+	counter-increment: ranking;
+	position: relative;
+}
+
+.m_ranking .wpost-item::after {
+	background: #01b3a7;
+	color: #fff;
+	content: counter(ranking);
+	font-family: "Lato", sans-serif;
+	font-size: 1.2rem;
+	height: 2rem;
+	left: 0;
+	line-height: 2rem;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 2rem;
+}
+
+.wpost-item-img {
+	width: 12rem;
+}
+
+.wpost-item-img img {
+  margin-right: 0;
+  float: none;
+}
+
+.wpost-item-body {
+	padding: 0 0 0 1rem;
+	width: calc(100% - 12rem);
+}
+
+.wpost-item-title {
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 1.57143;
+}
+
+.wpost-item-title a {
+  text-decoration: none;
+}
+
+.entry-404 {
+	padding-bottom: 8.5rem;
+	text-align: center;
+    @include g.max-screen(g.$bp-sp) {
+        padding-bottom: 0;
+        padding-top: 1.8rem;
+    }
+}
+
+.entry-404-head {
+	color: #f0cdd0;
+	font-family: "Lato", sans-serif;
+	font-size: 8rem;
+	font-weight: 700;
+	line-height: 1.2;
+	margin-bottom: 3.6rem;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 4rem;
+        margin-bottom: 3.6rem;
+    }
+}
+
+.entry-404-head span::after {
+	content: " ";
+    @include g.max-screen(g.$bp-sp) {
+        display: none;
+    }
+}
+
+.entry-404-lead {
+	color: #808080;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 3rem;
+	font-weight: 600;
+	margin-bottom: 2.4rem;
+
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 2rem;
+        margin-bottom: 3.4rem;
+    }
+}
+
+.entry-404-lead .m_sp {
+	display: none;
+    @include g.max-screen(g.$bp-sp) {
+        display: block;
+    }
+}
+
+.entry-404-content {
+	color: #808080;
+    @include g.max-screen(g.$bp-sp) {
+        font-size: 1.2rem;
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+    }
+}
+
+.entry-404-btn {
+	margin-top: 5.8rem;
+    @include g.max-screen(g.$bp-sp) {
+        margin-top: 6.2rem;
+    }
+}
+
+.entry-404-btn .btn {
+	background: #ebebeb;
+	color: #8d8d8d;
+}
+
+.entry-404-btn .btn:hover {
+	background: #ccc;
+	opacity: 1;
+}

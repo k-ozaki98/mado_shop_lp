@@ -1,0 +1,129 @@
+@charset "utf-8";
+@use '../lib/global' as g;
+
+
+
+.hmb-btn {
+  position: relative;
+  cursor: pointer;
+  height: 6rem;
+  width: 6rem;
+
+  &__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__hmb {
+    position: relative;
+    height: 2rem;
+    width: 2.5rem;
+
+    span {
+      display: inline-block;
+      transition: all g.$delay-in; /* アニメーションの設定 */
+      position: absolute;
+      left: 0;
+      height: 2px;
+      background: #fff;
+      width: 100%;
+
+      &:nth-of-type(1) {
+        top: 0;
+      }
+  
+      &:nth-of-type(2) {
+        top: 50%;
+        transform: translate(0, -1px);
+      }
+  
+      &:nth-of-type(3) {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.hmb-btn.active {
+  $this: &;
+
+  .hmb-btn__hmb {
+    span {
+      &:nth-of-type(1) {
+        top: 50%;
+        left: 10%;
+        transform: rotate(-45deg);
+        width: 80%;
+      }
+  
+      &:nth-of-type(2) {
+        width: 50%;
+        opacity: 0; /* 真ん中の線は透過 */
+      }
+  
+      &:nth-of-type(3) {
+        top: 50%;
+        left: 10%;
+        transform: rotate(45deg);
+        width: 80%;
+      }
+    }
+  }
+}
+
+.pagetop {
+  background: rgb(0 0 0 / 40%);
+  color: #fff;
+  font-size: 2.4rem;
+  line-height: 1;
+  padding: 0.5rem 2rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  cursor: pointer;
+  transition: g.$delay-in;
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.btn {
+	-webkit-appearance: none;
+	background-color: #01b3a7;
+	background-image: none;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6", "Meiryo", "Meiryo", "Noto Sans Japanese", sans-serif;
+	font-size: 1.6rem;
+	font-weight: 600;
+	margin: 0;
+	min-width: 28.2rem;
+	padding: 1.7rem 2rem 1.4rem;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.btn:hover,
+.btn:focus {
+	outline: none;
+}
+
+.btn::-moz-foucus-inner {
+	border: none;
+	padding: 0;
+}
+
+.btn:hover {
+	background: #00aca0;
+}

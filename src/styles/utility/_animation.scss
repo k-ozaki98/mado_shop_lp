@@ -1,0 +1,294 @@
+@charset "utf-8";
+@use '../lib/global' as g;
+
+/* ----------------------------------------------------
+  リサイズ時のtransition停止
+---------------------------------------------------- */
+body.transition-stop * {
+  transition: none !important;
+}
+
+$speed: 0.65;
+
+/* ----------------------------------------------------
+  見出し アニメーション
+---------------------------------------------------- */
+.a-heading-01 {
+  $speed: $speed;
+
+  opacity: 0;
+  transition: #{$speed}s;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------------
+  anim-txts
+*/
+
+/* ----------------------------------------------------
+  使用方法：
+
+<h1 class="as a-anim-txts">
+  <span class="anim-txt anim-txt-0">テ</span>
+  <span class="anim-txt anim-txt-1">キ</span>
+  <span class="anim-txt anim-txt-2">ス</span>
+  <span class="anim-txt anim-txt-3">ト</span>
+</h1>
+---------------------------------------------------- */
+.a-anim-txts {
+  $speed: $speed;
+  $delay: 0.0625;
+  $max: 100;
+
+  > span {
+    display: inline-block;
+    opacity: 0;
+    transform: translate(60px, 0) skewX(-30deg) scale(1, 1);
+  }
+
+  @for $i from 1 through $max {
+    > span:nth-child(#{$i}) {
+      transition: #{$speed}s #{$delay * $i}s;
+    }
+  }
+
+  // アニメーション後
+  &.active {
+    span {
+      opacity: 1;
+      transform: translate(0, 0) skewX(0deg) scale(1, 1);
+    }
+  }
+}
+
+/* ----------------------------------------------------
+  slide-box-01
+*/
+
+/* ----------------------------------------------------
+  使用方法：
+
+  <div class="as a-slide-box-01">
+    <img src="./img/sample.jpg" alt="" />
+  </div>
+---------------------------------------------------- */
+.a-slide-box-01 {
+  $speed: $speed;
+  $box-color: #bbb;
+  $img-scale: 1.5;
+
+  overflow: hidden;
+  opacity: 1;
+  position: relative;
+  transform: scale(1, 0);
+  transform-origin: top center;
+  transition: #{$speed}s;
+
+  &::after {
+    background: $box-color; /* Old browsers */
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: #{$speed}s #{$speed}s;
+  }
+
+  img {
+    transition: #{$speed}s #{$speed}s;
+    transform: scale($img-scale, $img-scale);
+    transform-origin: center center;
+  }
+
+  &.a-slide-box-01--t {
+    transform: scale(1, 0);
+    transform-origin: top center;
+  }
+
+  &.a-slide-box-01--b {
+    transform: scale(1, 0);
+    transform-origin: bottom center;
+  }
+
+  &.a-slide-box-01--l {
+    transform: scale(0, 1);
+    transform-origin: left center;
+  }
+
+  &.a-slide-box-01--r {
+    transform: scale(0, 1);
+    transform-origin: right center;
+  }
+
+  // アニメーション後
+  &.active {
+    transform: scale(1, 1);
+
+    &::after {
+      opacity: 0;
+    }
+
+    img {
+      transform: scale(1, 1);
+    }
+  }
+}
+
+/* ----------------------------------------------------
+  slide-box-02
+*/
+
+/* ----------------------------------------------------
+  使用方法：
+
+  <div class="as a-slide-box-02">
+    <div class="slide-box-02__bg">
+      <img src="" alt="">
+    </div>
+  </div>
+---------------------------------------------------- */
+.a-slide-box-02 {
+  $speed: $speed;
+
+  display: block;
+
+  .slide-box-02__bg {
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    transform-origin: right center;
+    overflow: hidden;
+    vertical-align: middle;
+
+    img {
+      opacity: 0;
+      transform: scale(1.1, 1.1);
+      transform-origin: right center;
+      transition: all #{$speed}s;
+    }
+
+    &::after {
+      background: #fff;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 99;
+      margin-left: 100%;
+      transform: translate(-100%, 0);
+      transition: all #{$speed}s;
+    }
+  }
+
+  &.a-slide-box-02--t {
+    .slide-box-02__bg {
+      transform-origin: bottom center;
+
+      img {
+        transform-origin: bottom center;
+      }
+
+      &::after {
+        margin: 100% 0 0;
+        transform: translate(0, -100%);
+      }
+    }
+  }
+
+  &.a-slide-box-02--b {
+    .slide-box-02__bg {
+      transform-origin: top center;
+
+      img {
+        transform-origin: top center;
+      }
+
+      &::after {
+        margin: -100% 0 0;
+        transform: translate(0, 100%);
+      }
+    }
+  }
+
+  &.a-slide-box-02--l {
+    .slide-box-02__bg {
+      transform-origin: right center;
+
+      img {
+        transform-origin: right center;
+      }
+
+      &::after {
+        margin: 0 0 0 100%;
+        transform: translate(-100%, 0);
+      }
+    }
+  }
+
+  &.a-slide-box-02--r {
+    .slide-box-02__bg {
+      transform-origin: left center;
+
+      img {
+        transform-origin: left center;
+      }
+
+      &::after {
+        margin: 0 0 0 -100%;
+        transform: translate(100%, 0);
+      }
+    }
+  }
+
+  // アニメーション後
+  &.active {
+    .slide-box-02__bg {
+      img {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+
+      &::after {
+        transform: translate(0, 0);
+      }
+    }
+  }
+}
+
+/* ----------------------------------------------------
+  スライダー
+---------------------------------------------------- */
+.slide-gallery {
+  $speed: 60;
+  $h: 220;
+  $w: 1920;
+
+  overflow: hidden;
+  
+  .slide-gallery__inner {
+    // background: url() repeat-x;
+
+    height: #{$h}px;
+    width: #{$w * 2}px;
+    animation: slide #{$speed}s linear infinite;
+    position: relative;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(#{-1 * $w}px, 0, 0);
+    }
+  }
+}

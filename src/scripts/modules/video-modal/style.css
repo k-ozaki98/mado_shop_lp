@@ -1,0 +1,67 @@
+.v-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: .5s;
+}
+
+.v-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.v-modal__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1000px;
+  width: 90%;
+  z-index: 1;
+}
+
+.v-modal__player-wrap {
+  position: relative;
+  padding-top: 56.25%;
+  width: 100%;
+}
+
+.v-modal__player {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.v-modal__layer {
+  background: rgb(255 255 255 / 50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.v-modal__close {
+  cursor: pointer;
+  font-size: 60px;
+  line-height: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(0, -100%);
+}
+
+@media screen and (width <=767px) {
+  .v-modal__close {
+    font-size: 48px;
+  }
+}

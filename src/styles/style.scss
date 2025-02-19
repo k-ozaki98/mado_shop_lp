@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+/* ----------------------------------------------------
+
+	読み込み専用のマスターファイルです。
+	このファイルに直接スタイルを書き込まないでください。
+
+---------------------------------------------------- */
+
+/* --------------------------
+	Base
+-------------------------- */
+@use './base/html5doctor.scss';
+@use './base/reset.scss';
+@use './base/base.scss';
+
+/* --------------------------
+	utility
+-------------------------- */
+@use './utility/utility.scss';
+
+/* --------------------------
+	Layout
+-------------------------- */
+@use './utility/grid.scss';
+@use './utility/layout.scss';
+
+/* --------------------------
+	module
+-------------------------- */
+@use './module/header.scss';
+@use './module/footer.scss';
+@use './module/mv.scss';
+@use './module/menu.scss';
+@use './module/form.scss';
+@use './module/table.scss';
+@use './module/link.scss';
+@use './module/post.scss';
+@use './module/heading.scss';
+@use './module/txt.scss';
+@use './module/label.scss';
+@use './module/btn.scss';
+@use './module/sidebar.scss';
+@use './module/wp.scss';
+@use './module/other.scss';
+
+/* --------------------------
+	page
+-------------------------- */
+@use './page/common.scss';
+@use './page/top.scss';
+
+/* --------------------------
+	animation
+-------------------------- */
+@use './utility/animation.scss';
+
+/* --------------------------
+	state
+-------------------------- */
+@use './utility/state.scss';

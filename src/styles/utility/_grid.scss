@@ -1,0 +1,390 @@
+@charset "utf-8";
+@use 'sass:math';
+@use '../lib/global' as g;
+
+/* ----------------------------------------------------
+
+	レイアウト設定のファイルです。
+	グリッドレイアウトのスタイルをまとめています。
+	基本的には編集することはありません。
+
+	命名規則として、クラス名の頭に 
+	l-* (Layoutのl)という接頭辞をつけることを推奨します。
+
+---------------------------------------------------- */
+
+/* --------------------------
+	グリッドシステム
+-------------------------- */
+.l-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    box-sizing: border-box;
+    width: 16.667%;
+    
+    &-1 {
+      width: 8.33%;
+    }
+    
+    &-2 {
+      width: 16.667%;
+    }
+    
+    &-3 {
+      width: 25%;
+    }
+
+    &-4 {
+      width: 33.333%;
+    }
+    
+    &-5 {
+      width: 41.666%;
+    }
+
+    &-6 {
+      width: 50%;
+    }
+
+    &-7 {
+      width: 58.333%;
+    }
+
+    &-8 {
+      width: 66.666%;
+    }
+
+    &-9 {
+      width: 75%;
+    }
+
+    &-10 {
+      width: 83.33%;
+    }
+
+    &-11 {
+      width: 91.666%;
+    }
+
+    &-12 {
+      width: 100%;
+    }
+
+    &-1-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 8.33%;
+      }
+    }
+
+    &-2-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 16.667%;
+      }
+    }
+
+    &-3-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 25%;
+      }
+    }
+
+    &-4-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 33.333%;
+      }
+    }
+
+    &-5-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 41.666%;
+      }
+    }
+
+    &-6-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 50%;
+      }
+    }
+
+    &-7-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 58.333%;
+      }
+    }
+
+    &-8-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 66.666%;
+      }
+    }
+
+    &-9-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 75%;
+      }
+    }
+
+    &-10-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 83.33%;
+      }
+    }
+
+    &-11-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 91.666%;
+      }
+    }
+
+    &-12-tab {
+      @include g.max-screen(g.$bp-tab) {
+        width: 100%;
+      }
+    }
+
+    &-1-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 8.33%;
+      }
+    }
+
+    &-2-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 16.667%;
+      }
+    }
+
+    &-3-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 25%;
+      }
+    }
+
+    &-4-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 33.333%;
+      }
+    }
+
+    &-5-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 41.666%;
+      }
+    }
+
+    &-6-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 50%;
+      }
+    }
+
+    &-7-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 58.333%;
+      }
+    }
+
+    &-8-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 66.666%;
+      }
+    }
+
+    &-9-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 75%;
+      }
+    }
+
+    &-10-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 83.33%;
+      }
+    }
+
+    &-11-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 91.666%;
+      }
+    }
+
+    &-12-sp {
+      @include g.max-screen(g.$bp-sp) {
+        width: 100%;
+      }
+    }
+  }
+
+  &--ai-center {
+    align-items: center;
+  }
+
+  &.l-gutter-s {
+    margin-left: -#{math.div(g.$grid-gutter-s, 2)}rem;
+    margin-right: -#{math.div(g.$grid-gutter-s, 2)}rem;
+    margin-bottom: -#{g.$grid-gutter-s}rem;
+
+    > .l-grid__item {
+      margin-bottom: #{g.$grid-gutter-s}rem;
+      padding-left: #{math.div(g.$grid-gutter-s, 2)}rem;
+      padding-right: #{math.div(g.$grid-gutter-s, 2)}rem;
+    }
+  }
+
+  &.l-gutter-m {
+    margin-left: -#{math.div(g.$grid-gutter-m, 2)}rem;
+    margin-right: -#{math.div(g.$grid-gutter-m, 2)}rem;
+    margin-bottom: -#{g.$grid-gutter-m}rem;
+
+    > .l-grid__item {
+      margin-bottom: #{g.$grid-gutter-m}rem;
+      padding-left: #{math.div(g.$grid-gutter-m, 2)}rem;
+      padding-right: #{math.div(g.$grid-gutter-m, 2)}rem;
+    }
+  }
+
+  &.l-gutter-l {
+    margin-left: -#{math.div(g.$grid-gutter-l, 2)}rem;
+    margin-right: -#{math.div(g.$grid-gutter-l, 2)}rem;
+    margin-bottom: -#{g.$grid-gutter-l}rem;
+
+    > .l-grid__item {
+      margin-bottom: #{g.$grid-gutter-l}rem;
+      padding-left: #{math.div(g.$grid-gutter-l, 2)}rem;
+      padding-right: #{math.div(g.$grid-gutter-l, 2)}rem;
+    }
+  }
+
+  // xl, 2l 一旦pcのみ
+  &.l-gutter-xl {
+    margin-left: -3rem;
+    margin-right: -3rem;
+    margin-bottom: -6rem;
+
+    > .l-grid__item {
+      margin-bottom: 6rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  &.l-gutter-2l {
+    margin-left: -4rem;
+    margin-right: -4rem;
+    margin-bottom: -8rem;
+
+    > .l-grid__item {
+      margin-bottom: 8rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  &.l-gutter-s-tab {
+    @include g.max-screen(g.$bp-tab) {
+      margin-left: -#{math.div(g.$grid-gutter-s, 2)}rem;
+      margin-right: -#{math.div(g.$grid-gutter-s, 2)}rem;
+      margin-bottom: -#{g.$grid-gutter-s}rem;
+
+      > .l-grid__item {
+        margin-bottom: #{g.$grid-gutter-s}rem;
+        padding-left: #{math.div(g.$grid-gutter-s, 2)}rem;
+        padding-right: #{math.div(g.$grid-gutter-s, 2)}rem;
+      }
+    }
+  }
+
+  &.l-gutter-m-tab {
+    @include g.max-screen(g.$bp-tab) {
+      margin-left: -#{math.div(g.$grid-gutter-m, 2)}rem;
+      margin-right: -#{math.div(g.$grid-gutter-m, 2)}rem;
+      margin-bottom: -#{g.$grid-gutter-m}rem;
+
+      > .l-grid__item {
+        margin-bottom: #{g.$grid-gutter-m}rem;
+        padding-left: #{math.div(g.$grid-gutter-m, 2)}rem;
+        padding-right: #{math.div(g.$grid-gutter-m, 2)}rem;
+      }
+    }
+  }
+
+  &.l-gutter-l-tab {
+    @include g.max-screen(g.$bp-tab) {
+      margin-left: -#{math.div(g.$grid-gutter-l, 2)}rem;
+      margin-right: -#{math.div(g.$grid-gutter-l, 2)}rem;
+      margin-bottom: -#{g.$grid-gutter-l}rem;
+
+      > .l-grid__item {
+        margin-bottom: #{g.$grid-gutter-l}rem;
+        padding-left: #{math.div(g.$grid-gutter-l, 2)}rem;
+        padding-right: #{math.div(g.$grid-gutter-l, 2)}rem;
+      }
+    }
+  }
+
+  &.l-gutter-s-sp {
+    @include g.max-screen(g.$bp-sp) {
+      margin-left: -#{math.div(g.$grid-gutter-s, 2)}rem;
+      margin-right: -#{math.div(g.$grid-gutter-s, 2)}rem;
+      margin-bottom: -#{g.$grid-gutter-s}rem;
+
+      > .l-grid__item {
+        margin-bottom: #{g.$grid-gutter-s}rem;
+        padding-left: #{math.div(g.$grid-gutter-s, 2)}rem;
+        padding-right: #{math.div(g.$grid-gutter-s, 2)}rem;
+      }
+    }
+  }
+
+  &.l-gutter-m-sp {
+    @include g.max-screen(g.$bp-sp) {
+      margin-left: -#{math.div(g.$grid-gutter-m, 2)}rem;
+      margin-right: -#{math.div(g.$grid-gutter-m, 2)}rem;
+      margin-bottom: -#{g.$grid-gutter-m}rem;
+
+      > .l-grid__item {
+        margin-bottom: #{g.$grid-gutter-m}rem;
+        padding-left: #{math.div(g.$grid-gutter-m, 2)}rem;
+        padding-right: #{math.div(g.$grid-gutter-m, 2)}rem;
+      }
+    }
+  }
+
+  &.l-gutter-l-sp {
+    @include g.max-screen(g.$bp-sp) {
+      margin-left: -#{math.div(g.$grid-gutter-l, 2)}rem;
+      margin-right: -#{math.div(g.$grid-gutter-l, 2)}rem;
+      margin-bottom: -#{g.$grid-gutter-l}rem;
+
+      > .l-grid__item {
+        margin-bottom: #{g.$grid-gutter-l}rem;
+        padding-left: #{math.div(g.$grid-gutter-l, 2)}rem;
+        padding-right: #{math.div(g.$grid-gutter-l, 2)}rem;
+      }
+    }
+  }
+
+  &.l-grid-mb0 {
+    > .l-grid__item {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &.l-grid-mb0-tab {
+    @include g.max-screen(g.$bp-tab) {
+      > .l-grid__item {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+
+  &.l-grid-mb0-sp {
+    @include g.max-screen(g.$bp-sp) {
+      > .l-grid__item {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
