@@ -1,0 +1,169 @@
+@charset "UTF-8";
+/* ----------------------------------------------------
+
+	サイトの基本設定のファイルです。
+	最初の設定以外、基本変更することはありません。
+
+---------------------------------------------------- */
+/* --------------------------
+	フォントの設定
+-------------------------- */
+/* --------------------------
+	カラーの設定
+-------------------------- */
+/* --------------------------
+	レイアウトの設定
+-------------------------- */
+/* --------------------------
+	グリッドのガター
+-------------------------- */
+/* --------------------------
+	レスポンシブの設定
+-------------------------- */
+/* --------------------------
+  アニメーションの設定
+-------------------------- */
+/* ----------------------------------------------------
+
+	Mixinをまとめたファイルです。
+	基本的に変更することはありません。
+	Mixinを追加したい場合、_mixin_●●.scssという
+	別ファイルを生成し、追加してください。
+
+---------------------------------------------------- */
+/* --------------------------
+	レスポンシブ関連
+-------------------------- */
+/* ----------------------------------------------------
+
+	自作関数をまとめたファイルです。
+	基本的に変更することはありません。
+	自作関数を追加したい場合、_functions_●●.scssという
+	別ファイルを生成し、追加してください。
+
+---------------------------------------------------- */
+/* ----------------------------------------------------
+
+	各ページの独自モジュールスタイルのCSS。
+
+	【記述ルール】
+	{ ページ名(top, about等) }○○○○
+
+	階層はルートクラスより、三階層までが基本
+	【例】
+	.top-sec .top-sec__ttl span {		
+	}
+	※CSSに展開した場合
+
+---------------------------------------------------- */
+.works {
+  padding: 80px 0;
+}
+.works__inner {
+  width: 800px;
+  margin: 0 auto;
+}
+.works__heading {
+  font-size: 4rem;
+  background: #F8F8F8;
+  text-align: center;
+  padding: 3.5rem;
+  line-height: 1.5;
+  color: #03003F;
+  margin-bottom: 3rem;
+  border-radius: 43px;
+}
+.works__intro {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #03003F;
+  margin-bottom: 3rem;
+}
+
+.works-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #E4E4E5;
+  padding: 4rem 6rem;
+}
+.works-card__title {
+  font-size: 2.5rem;
+  background: #000;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.works-card__body {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.works-card__img {
+  width: 28.5rem;
+}
+.works-card__data {
+  width: 38rem;
+}
+.works-card__data-item {
+  display: flex;
+  border-bottom: 1px solid #D9D8E2;
+  color: #03003F;
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+.works-card__data-item:first-of-type {
+  border-top: 1px solid #D9D8E2;
+}
+.works-card__data-item dt {
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+  padding: 1rem 0;
+  background: #F8F8F8;
+}
+.works-card__data-item dd {
+  flex: 1;
+  width: 80%;
+  padding: 1rem;
+}
+.works-card__more {
+  width: 100%;
+  padding: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.works-card__more-icon {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+.is-open .works-card__more-icon {
+  transform: rotate(-135deg);
+}
+.works-card__content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s;
+}
+.works-card__section {
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+.works-card__section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.works-card__text {
+  line-height: 1.8;
+}

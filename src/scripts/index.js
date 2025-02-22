@@ -6,6 +6,7 @@ import { initCommon } from './common'
 import '../styles/style.scss'
 import { initTop } from './pages/top'
 import { initForm } from './pages/form'
+import { initWork } from './pages/work'
 gsap.registerPlugin(ScrollTrigger)
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,5 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (isTop) {
     initTop() // トップページ用スクリプト
     initForm()
+    initWork()
+  }
+  const isWork = pageId === 'works';
+  if (isWork) {
+    initWork()
   }
 })
