@@ -18,7 +18,7 @@
 // PCのみ
 .is-pc {
   @include g.max-screen(g.$bp-tab) {
-    display: none;
+    display: none!important;
   }
 }
 
@@ -36,14 +36,14 @@
 // スマホのみ
 .is-sp {
   @include g.min-screen(g.$bp-sp + 1) {
-    display: none;
+    display: none!important;
   }
 }
 
 // PC タブレットのみ
 .is-pc-tab {
   @include g.max-screen(g.$bp-sp) {
-    display: none;
+    display: none!important;
   }
 }
 

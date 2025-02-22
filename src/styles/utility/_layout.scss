@@ -24,7 +24,7 @@
   margin: 0 auto;
   width: g.$inner-width;
 
-  @include g.max-screen(1200px) {
+  @include g.max-screen(1000px) {
     width: 90%;
   }
 
@@ -37,6 +37,14 @@
     @include g.max-screen(g.$bp-sp) {
       padding: 0;
     }
+  }
+}
+
+.inner{
+  width: 80%;
+  margin: 0 auto;
+  @include g.max-screen(g.$bp-sp) {
+    width: 100%;
   }
 }
 

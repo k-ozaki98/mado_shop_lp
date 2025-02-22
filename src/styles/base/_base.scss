@@ -11,8 +11,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 10px;
-  @media screen and (max-width: 1000px) {
-    font-size: 1vw; /* 10px / 1000px * 100 */
+  @media screen and (max-width: 910px) {
+    font-size: 1.0989011vw; /* 10px / 1000px * 100 */
     
   }
   @include g.max-screen(g.$bp-sp) {
