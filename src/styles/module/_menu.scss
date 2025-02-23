@@ -1,21 +1,2 @@
 @charset "utf-8";
-@use '../lib/global' as g;
-
-
-.menu-sp {
-  background: #333;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 998;
-  opacity: 0;
-  pointer-events: none;
-  transition: g.$delay-in;
-
-  &.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
+@use '../lib/global'as g;

@@ -13,9 +13,14 @@
 -------------------------- */
 $font-size-px: 16; // 基本フォントサイズ
 $font-size-rem: math.div($font-size-px, 10); // 基本フォントサイズ(rem)
-$font-family: 'Helvetica Neue', arial, 'Hiragino Kaku Gothic ProN',
-  'Hiragino Sans', meiryo, sans-serif;
-$font-color: #333; // 基本フォントカラー
+$font-family: 'Noto Sans JP',
+'Helvetica Neue',
+Arial,
+'Hiragino Kaku Gothic ProN',
+'Hiragino Sans',
+Meiryo,
+sans-serif;
+$font-color: #03003F; // 基本フォントカラー
 $line-height: 1.8; // 行間の設定
 
 /* --------------------------
@@ -24,6 +29,8 @@ $line-height: 1.8; // 行間の設定
 $main-color: #000; // メインのカラー
 $sub-color: #333; // サブのカラー
 $base-color: #fff; // ベースのカラー (背景)
+$gradation:linear-gradient(90deg, rgba(74, 94, 169, 1) 0%, rgba(0, 170, 230, 1) 15%, rgba(77, 189, 199, 1) 33%, rgba(57, 186, 208, 1) 67%, rgba(0, 178, 235, 1) 85%, rgba(61, 77, 159, 1) 100%);
+
 
 /* --------------------------
 	レイアウトの設定

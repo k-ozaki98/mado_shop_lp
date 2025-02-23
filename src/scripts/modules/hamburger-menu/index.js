@@ -1,15 +1,15 @@
-const hmbBtn = document.querySelector('.js-hmb-btn')
-const menu = document.querySelector('.menu-sp')
+const hmbBtn = document.querySelectorAll('.js-hmb-btn')
+const menu = document.querySelectorAll('.menu-sp')
 let isOpen = false
 
 /**
  * メニューを開く処理を行います。
  */
 const open = () => {
-  hmbBtn.classList.add('active')
-  menu.classList.add('open')
+  hmbBtn.forEach(button => button.classList.add('active'))
+  menu.forEach(item => item.classList.add('open'))
   document.body.classList.add('is-menu-open')
-  document.body.style.overflow = 'hidden'
+  document.body.style.overflowY = 'hidden'
   isOpen = true
 }
 
@@ -17,24 +17,43 @@ const open = () => {
  * メニューを閉じる処理を行います。
  */
 const close = () => {
-  hmbBtn.classList.remove('active')
-  menu.classList.remove('open')
+  hmbBtn.forEach(button => button.classList.remove('active'))
+  menu.forEach(item => item.classList.remove('open'))
   document.body.classList.remove('is-menu-open')
-  document.body.style.overflow = 'visible'
+  document.body.style.overflowY = 'visible'
   isOpen = false
+}
+
+/**
+ * メニュー内のリンクをクリックした際にメニューを閉じる処理を追加します。
+ */
+const closeMenuOnLinkClick = () => {
+  menu.forEach(m => {
+    const links = m.querySelectorAll('a'); // メニュー内のすべてのリンクを取得
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        close(); // リンククリック時にメニューを閉じる
+      });
+    });
+  })
 }
 
 /**
  * ハンバーガーメニューを初期化します。
  */
 export const initHmbMenu = () => {
-  if (!hmbBtn) return
+  if (!hmbBtn || !menu) return
 
-  hmbBtn.addEventListener('click', () => {
-    if (isOpen) {
-      close()
-    } else {
-      open()
-    }
+  hmbBtn.forEach(button => {
+    button.addEventListener('click', () => {
+      if (isOpen) {
+        close()
+      } else {
+        open()
+      }
+    })
   })
+
+  // メニュー内リンクをクリックしたときにメニューを閉じる処理を追加
+  closeMenuOnLinkClick()
 }

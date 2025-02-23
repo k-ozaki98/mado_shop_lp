@@ -1,13 +1,15 @@
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import {
+  gsap
+} from 'gsap'
+import {
+  ScrollTrigger
+} from 'gsap/ScrollTrigger'
 export const initCommon = () => {
 
-  gsap.fromTo (
-    ".about__img",
-    {
+  gsap.fromTo(
+    ".about__img", {
       y: 250,
-    },
-    {
+    }, {
       y: -150,
       ease: "none",
       scrollTrigger: {
@@ -31,7 +33,7 @@ export const initCommon = () => {
     },
     loop: true,
     slidesPerView: 2,
-    centeredSlides : true,  
-    spaceBetween: 20,   
+    centeredSlides: true,
+    spaceBetween: 20,
   });
 };
