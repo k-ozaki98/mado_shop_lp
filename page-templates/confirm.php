@@ -12,8 +12,6 @@ if (!session_id()) {
     
     <div class="form-container">
       <?php
-      // デバッグ情報（本番環境では削除してください）
-      echo '<!-- DEBUG: Session data: ' . json_encode($_SESSION) . ' -->';
       
       // 窓情報を直接表示する関数
       function display_window_info_custom() {
@@ -130,9 +128,6 @@ if (!session_id()) {
           windowInfoElements[0].parentNode.insertBefore(windowInfoContainer, windowInfoElements[0]);
         }
         
-        // Console.logでデバッグ情報
-        console.log('Window info elements:', windowInfoElements.length);
-        console.log('Window info container:', windowInfoContainer);
       });
       </script>
     </div>
