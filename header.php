@@ -39,7 +39,7 @@
         <li><a href="/#measure">窓の測り方</a></li>
         <li><a href="/#contact">お問い合わせ</a></li>
       </ul>
-      <a href="" class="hp-btn"><span><img src="<?php echo get_template_directory_uri() ?>/src/img/hp-btn-icon.svg" alt=""></span>柏屋商事ホームページ</a>
+      <a href="https://www.kashiwaya-s.com/" target="_blank" class="hp-btn"><span><img src="<?php echo get_template_directory_uri() ?>/src/img/hp-btn-icon.svg" alt=""></span>柏屋商事ホームページ</a>
       <p class="copyright">© Kashiwaya Corporation All Rights Reserved.</p>
     </div>
   </div>

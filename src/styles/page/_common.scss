@@ -57,14 +57,14 @@
         text-align: center;
 
         &:hover {
-          background: $gradation;
+          background: linear-gradient(90deg, rgba(74, 94, 169, 1) 0%, rgba(0, 170, 230, 1) 15%, rgba(77, 189, 199, 1) 33%, rgba(57, 186, 208, 1) 67%, rgba(0, 178, 235, 1) 85%, rgba(61, 77, 159, 1) 100%);
           color: #fff;
         }
 
       }
 
       &.is-active {
-        background: $gradation;
+        background: linear-gradient(90deg, rgba(74, 94, 169, 1) 0%, rgba(0, 170, 230, 1) 15%, rgba(77, 189, 199, 1) 33%, rgba(57, 186, 208, 1) 67%, rgba(0, 178, 235, 1) 85%, rgba(61, 77, 159, 1) 100%);
         color: #fff;
       }
 

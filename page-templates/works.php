@@ -1,6 +1,5 @@
 <?php get_header('', ['pageId' => 'works']); ?>
 
-
 <main class="works">
   <div class="mv-sub mv-sub--work">
     <div class="mv-sub__logo">
@@ -30,7 +29,9 @@
 
   </div>
 
+
   <div class="l-inner">
+
     <?php
         $query = new WP_Query(array(
             'post_type' => 'works',
@@ -49,6 +50,7 @@
         wp_reset_postdata();
     ?>
   </div>
+
 </main>
 
 
