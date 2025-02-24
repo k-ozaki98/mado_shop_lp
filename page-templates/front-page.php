@@ -149,7 +149,7 @@
         <h2 class="contact__title">お問い合わせフォーム</h2>
 
         <?php
-          echo do_shortcode('[contact-form-7 id="88bedbd" title="無題"]');
+          echo do_shortcode('[contact-form-7 id="2c39ceb" title="お問い合わせ_copy"]');
           ?>
 
 

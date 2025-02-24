@@ -53,24 +53,21 @@ add_filter('wpcf7_form_elements', function($content) {
     return $content;
 });
 
+// メール送信前にフォームデータを処理
+add_action('wpcf7_before_send_mail', 'handle_form_data', 10, 3);
 
-// 動的フィールドを追加
-add_action('wpcf7_before_send_mail', 'handle_dynamic_fields', 10, 3);
-
-function handle_dynamic_fields($contact_form, &$abort, $submission) {
+function handle_form_data($contact_form, &$abort, $submission) {
     $form_data = $submission->get_posted_data();
     
-    // デバッグ用ログ（問題解決後に削除可能）
-    error_log('FORM DATA: ' . print_r($form_data, true));
-    
-    // 動的に追加されたフィールドのデータを処理
+    // 窓情報のデータを処理
     $window_data = [];
     for ($i = 1; $i <= 5; $i++) {
-        // count-1 フィールドが存在し、かつ値が設定されている場合
+        // count-1 フィールドが存在し、かつ値が設定されている場合のみ処理
+        // 非表示の窓情報はこの条件でスキップされる
         if (isset($form_data["count-{$i}"]) && $form_data["count-{$i}"] !== '') {
             // 窓情報データを配列に追加
             $window_data[] = [
-                'index' => $i,  // 元のインデックスを保存
+                'index' => $i,
                 'height' => isset($form_data["height-{$i}"]) ? $form_data["height-{$i}"] : '',
                 'width' => isset($form_data["width-{$i}"]) ? $form_data["width-{$i}"] : '',
                 'frame' => isset($form_data["frame-{$i}"]) ? $form_data["frame-{$i}"] : '',
@@ -102,7 +99,14 @@ function handle_dynamic_fields($contact_form, &$abort, $submission) {
             $window_info .= "\n窓の情報（{$num}）\n";
             $window_info .= "サイズ: {$data['height']} × {$data['width']} × {$data['frame']}\n";
             $window_info .= "枚数: {$data['count']}\n";
-            $window_info .= "場所: {$data['place']}\n";
+            
+            // 場所の値が配列の場合は文字列に変換
+            $place = $data['place'];
+            if (is_array($place)) {
+                $place = implode(', ', $place);
+            }
+            
+            $window_info .= "場所: {$place}\n";
             $window_info .= "写真: {$data['photo']}\n";
         }
         
@@ -114,11 +118,6 @@ function handle_dynamic_fields($contact_form, &$abort, $submission) {
             session_start();
         }
         $_SESSION['window_data'] = $window_data;
-        
-        // デバッグログ
-        error_log('WINDOW DATA SAVED TO SESSION: ' . print_r($window_data, true));
-    } else {
-        error_log('NO WINDOW DATA FOUND');
     }
     
     return $contact_form;
@@ -180,10 +179,6 @@ function start_session() {
 // テンプレート内でショートコードを実行できるようにする
 add_filter('widget_text', 'do_shortcode');
 add_filter('the_content', 'do_shortcode', 11);
-
-// ショートコードを高い優先度で登録
-remove_shortcode('show_window_info'); // 既存の登録を削除
-add_shortcode('show_window_info', 'display_window_info', 5);
 
 
 

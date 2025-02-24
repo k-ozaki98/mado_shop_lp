@@ -12,7 +12,6 @@ if (!session_id()) {
     
     <div class="form-container">
       <?php
-      
       // 窓情報を直接表示する関数
       function display_window_info_custom() {
         if (empty($_SESSION['window_data'])) {
@@ -59,18 +58,23 @@ if (!session_id()) {
       }
       
       // Contact Form 7フォームを表示
-      echo do_shortcode('[contact-form-7 id="aac2c30" title="お問い合わせ確認"]');
-      
-      // 窓情報のHTMLを直接出力
-      echo '<div id="window-info-container" style="margin: 20px 0;">';
-      echo display_window_info_custom();
-      echo '</div>';
+      echo do_shortcode('[contact-form-7 id="c22d3ea" title="お問い合わせ確認_copy"]');
       ?>
+      
+      <!-- 窓情報を表示するためのウィジェット -->
+      <div class="confirm__item window-info-section">
+        <label class="confirm__label">
+          <span class="confirm__text">窓の情報</span>
+        </label>
+        <div class="confirm__wrap">
+          <?php echo display_window_info_custom(); ?>
+        </div>
+      </div>
       
       <style>
       /* 窓情報のスタイル */
       .window-info-confirmation {
-        margin: 10px 0;
+        margin: 0;
       }
       
       .window-info-item {
@@ -79,6 +83,10 @@ if (!session_id()) {
         border-radius: 5px;
         padding: 15px;
         margin-bottom: 15px;
+      }
+      
+      .window-info-item:last-child {
+        margin-bottom: 0;
       }
       
       .window-info__title {
@@ -100,38 +108,31 @@ if (!session_id()) {
         border-left: 3px solid #ccc;
         font-style: italic;
       }
-      </style>
       
-      <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // 元の窓情報のコンテナを非表示にする
-        document.querySelectorAll('.window-info').forEach(function(elem) {
-          // 要素を完全に非表示にする代わりに高さ0で要素を保持
-          elem.style.height = '0';
-          elem.style.overflow = 'hidden';
-          elem.style.margin = '0';
-          elem.style.padding = '0';
-          elem.style.border = 'none';
-        });
-        
-        // 窓追加ボタンを非表示
-        document.querySelectorAll('.confirm__add-btn, .form__add-btn').forEach(function(elem) {
-          if (elem) elem.style.display = 'none';
-        });
-        
-        // 窓情報コンテナを適切な位置に移動
-        const windowInfoContainer = document.getElementById('window-info-container');
-        const windowInfoElements = document.querySelectorAll('.window-info');
-        
-        if (windowInfoContainer && windowInfoElements.length > 0) {
-          // 最初の窓情報要素の前に挿入
-          windowInfoElements[0].parentNode.insertBefore(windowInfoContainer, windowInfoElements[0]);
-        }
-        
-      });
-      </script>
+      /* 確認画面では元の窓情報フィールドと追加ボタンを非表示 */
+      .window-info {
+        display: none !important;
+      }
+      
+      .form__add-btn, 
+      .form__add-window,
+      .confirm__add-btn {
+        display: none !important;
+      }
+      
+      /* 窓情報セクションのレイアウト調整 */
+      .window-info-section {
+        margin: 20px 0;
+      }
+      
+      /* Contact Form 7の確認画面用スタイル微調整 */
+      .confirm__wrap {
+        margin-bottom: 8px;
+      }
+      </style>
     </div>
   </div>
 </main>
 
 <?php get_footer(); ?>
+
