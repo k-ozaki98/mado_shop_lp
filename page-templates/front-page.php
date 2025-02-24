@@ -103,9 +103,26 @@
         また、窓もドアも、<br class="is-sp">壁を壊す必要がないため工期が短く、<br>
         大体１日で終わることが多いです。
       </p>
-      <?php get_template_part('template-parts/work-content'); ?>
+      <div class="works__inner inner">
+          <?php
+          $query = new WP_Query(array(
+              'post_type' => 'works',
+              'posts_per_page' => 2  
+          ));
 
-      <a href="/works/" class="works__more">他の施工事例を見る</a>
+          if ($query->have_posts()) :
+              while ($query->have_posts()) : $query->the_post();
+                  get_template_part('template-parts/work-content');
+              endwhile;
+          endif;
+          wp_reset_postdata();
+          ?>
+      </div>
+      <?php if (wp_count_posts('works')->publish > 2): ?>
+          <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="works__more">
+              他の施工事例を見る
+          </a>
+      <?php endif; ?>
     </div>
   </section>
 

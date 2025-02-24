@@ -43,6 +43,9 @@
     &__inner {
         width: 800px;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
 
         @include g.max-screen(1000px) {
             width: 90%;
@@ -50,6 +53,7 @@
 
         @include g.max-screen(g.$bp-sp) {
             width: 100%;
+            gap: 2.5rem;
         }
     }
 

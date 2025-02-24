@@ -1,13 +1,5 @@
 <?php get_header('', ['pageId' => 'works']); ?>
-<?php
-$query = new WP_Query(array(
-    'post_type' => 'works',
-    'posts_per_page' => -1
-));
 
-if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post();
-?>
 
 <main class="works">
   <div class="mv-sub mv-sub--work">
@@ -39,13 +31,26 @@ if ($query->have_posts()) :
   </div>
 
   <div class="l-inner">
-    <?php get_template_part('template-parts/work-content'); ?>
+    <?php
+        $query = new WP_Query(array(
+            'post_type' => 'works',
+            'posts_per_page' => -1
+        ));
+
+        if ($query->have_posts()) :
+            echo '<div class="works__inner inner">'; 
+            while ($query->have_posts()) : $query->the_post();
+                get_template_part('template-parts/work-content');
+            endwhile;
+            echo '</div>';
+        else :
+            echo '<p>施工事例がありません。</p>';
+        endif;
+        wp_reset_postdata();
+    ?>
   </div>
 </main>
 
-<?php endwhile; else : ?>
-<p>投稿がありません。</p>
-<?php endif; ?>
 
 <?php wp_reset_postdata(); ?>
 
