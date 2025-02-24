@@ -12,24 +12,24 @@
         <dl class="works-card__data">
             <?php
             $fields = [
-                'location' => ['unit' => ''],
-                'window_count' => ['unit' => ''],
-                'work_content' => ['unit' => ''],
-                'cost' => ['unit' => '万'],
-                'subsidy' => ['unit' => '円'],
-                'period' => ['unit' => '日'],
-                'years' => ['unit' => ''],
-                'materials' => ['unit' => '']
+              'location' => ['unit' => '', 'label' => '住所'],
+              'window_count' => ['unit' => '', 'label' => '施工箇所'],
+              'window_overview' => ['unit' => '', 'label' => '施工概要'],
+              'work_content' => ['unit' => '', 'label' => '施工内容'],
+              'cost' => ['unit' => '万', 'label' => '費用'],
+              'subsidy' => ['unit' => '円', 'label' => '申請補助金'],
+              'period' => ['unit' => '日', 'label' => '工期'],
+              'years' => ['unit' => '', 'label' => '築年数'],
+              'materials' => ['unit' => '', 'label' => '仕様商材']
             ];
 
             foreach ($fields as $field_name => $field_info):
-                $field_obj = get_field_object($field_name);
                 $value = get_field($field_name);
                 
                 // 設定した項目のみ表示
                 if ($value): ?>
                     <div class="works-card__data-item">
-                        <dt><?php echo esc_html($field_obj['label']); ?></dt>
+                        <dt><?php echo esc_html($field_info['label']); ?></dt>
                         <dd>
                             <?php 
                             if (is_array($value)) {
