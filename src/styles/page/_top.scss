@@ -266,8 +266,7 @@
                 content: "∨";
                 font-size: 2rem;
                 position: absolute;
-                top: 50%;
-                transform: translateY(-60%);
+                top: 1.5rem;
                 right: 2rem;
                 pointer-events: none;
                 color: #03003F;
@@ -523,14 +522,14 @@
             &::after {
                 content: "枚";
                 position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
+                top: 1.5rem;
                 right: 1rem;
                 font-size: 2rem;
                 color: #03003F;
 
                 @include g.max-screen(g.$bp-sp) {
                     font-size: 1.4rem;
+                    top: 1rem;
                 }
             }
 
@@ -738,4 +737,109 @@
             }
         }
     }
+
+    // バリデーションスタイル
+/* エラーメッセージのスタイル */
+.custom-error-message {
+    display: block;
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: normal;
+    
+  }
+  
+  /* エラーがあるフィールドのスタイル */
+  .wpcf7-form .wpcf7-not-valid {
+    border-color: #ff0000 !important;
+    background-color: #fff8f8;
+  }
+  
+  /* エラーがあるセレクトボックスのスタイル */
+  .wpcf7-form .wpcf7-not-valid.form__select {
+    border-color: #ff0000 !important;
+    background-color: #fff8f8;
+  }
+  
+  /* フォーム項目間の余白を調整してエラーメッセージ表示スペースを確保 */
+  .form__wrap,
+  .window-info__wrap {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  /* Contact Form 7のデフォルトエラーメッセージを非表示 */
+  .wpcf7-not-valid-tip {
+    display: none !important;
+  }
+  
+  /* Contact Form 7のバリデーションエラーボックスのスタイル */
+  .wpcf7-validation-errors,
+  .wpcf7-acceptance-missing,
+  .wpcf7-mail-sent-ng {
+    color: #ff0000;
+    background-color: #fff8f8;
+    border: 1px solid #ff0000 !important;
+    padding: 10px !important;
+    margin: 20px 0 !important;
+    font-size: 14px;
+  }
+  
+  /* 送信成功メッセージのスタイル */
+  .wpcf7-mail-sent-ok {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    border: 1px solid #4F8A10 !important;
+    padding: 10px !important;
+    margin: 20px 0 !important;
+    font-size: 14px;
+  }
+
+
+  .form-confirmation__item {
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .form-confirmation__label {
+    font-weight: bold;
+    width: 200px;
+    padding-right: 20px;
+  }
+  
+  .form-confirmation__value {
+    flex: 1;
+  }
+  
+  .form__buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .form__button--back {
+    background-color: #888;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .form-confirmation__label,
+    .form-confirmation__value {
+      width: 100%;
+    }
+    
+    .form-confirmation__label {
+      margin-bottom: 5px;
+    }
+    
+    .form__buttons {
+      flex-direction: column;
+    }
+    
+    .form__button {
+      margin-bottom: 10px;
+    }
+  }
 }

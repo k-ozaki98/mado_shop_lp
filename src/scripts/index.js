@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTop() // トップページ用スクリプト
     initForm()
     initWork()
+    
   }
   const isWork = pageId === 'works';
   if (isWork) {

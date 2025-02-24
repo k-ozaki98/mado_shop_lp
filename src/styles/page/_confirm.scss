@@ -1,0 +1,196 @@
+@charset "utf-8";
+
+@use '../lib/global'as g;
+@use '../lib/vars'as *;
+
+/*----------------------------------------------------
+
+	各ページの独自モジュールスタイルのCSS。
+
+	【記述ルール】
+	{ ページ名(top, about等) }○○○○
+
+	階層はルートクラスより、三階層までが基本
+	【例】
+	.top-sec .top-sec__ttl span {
+	}
+	※CSSに展開した場合
+
+----------------------------------------------------*/
+
+/* 確認画面のスタイル */
+.confirm {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.confirm__item {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.confirm__label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.confirm__text {
+  font-size: 16px;
+}
+
+.confirm__wrap {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.confirm__address-text {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #666;
+}
+
+.confirm__address-detail {
+  margin-top: 10px;
+}
+
+.confirm__subtitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 30px 0 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ddd;
+  color: #333;
+}
+
+.window-info {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.window-info__title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.window-info__size-inputs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.window-info__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.window-info__label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.window-info__wrap {
+  margin-bottom: 15px;
+}
+
+.window-info__note {
+  font-size: 13px;
+  color: #777;
+  margin: 5px 0;
+  font-style: italic;
+}
+
+.window-info__image,
+.window-info__count,
+.window-info__place {
+  margin-top: 15px;
+}
+
+.confirm__date {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.window-info__wrap--unit--month:after {
+  content: "月";
+  margin-left: 5px;
+}
+
+.window-info__wrap--unit--date:after {
+  content: "日";
+  margin-left: 5px;
+}
+
+.confirm__submit {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.confirm__submit input[type="submit"],
+.confirm__submit button {
+  padding: 12px 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm__submit input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.confirm__submit input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.confirm__submit button {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.confirm__submit button:hover {
+  background-color: #e8e8e8;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 767px) {
+  .confirm__item {
+    padding-bottom: 15px;
+  }
+  
+  .window-info__size-inputs {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .confirm__submit {
+    flex-direction: column;
+  }
+  
+  .confirm__submit input[type="submit"],
+  .confirm__submit button {
+    width: 100%;
+  }
+}
