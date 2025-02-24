@@ -9,36 +9,46 @@
             </div>
         <?php endif; ?>
 
-            <dl class="works-card__data">
-                <div class="works-card__data-item">
-                    <dt>住所</dt>
-                    <dd><?php echo esc_html(get_post_meta(get_the_ID(), 'location', true)); ?></dd>
-                </div>
-                <div class="works-card__data-item">
-                    <dt>施工箇所</dt>
-                    <dd><?php echo esc_html(get_field('window_count')); ?>枚</dd>
-                </div>
-                <div class="works-card__data-item">
-                    <dt>施工内容</dt>
-                    <dd><?php echo esc_html(get_field('work_content')); ?></dd>
-                </div>
-                <div class="works-card__data-item">
-                    <dt>費用</dt>
-                    <dd><?php echo esc_html(get_field('cost')); ?>万</dd>
-                </div>
-                <div class="works-card__data-item">
-                    <dt>工期</dt>
-                    <dd><?php echo esc_html(get_field('period')); ?>日</dd>
-                </div>
-                <div class="works-card__data-item">
-                    <dt>築年数</dt>
-                    <dd><?php echo esc_html(get_field('years')); ?>年</dd>
-                </div>
-                <div class="works-card__data-item">
-                    <dt>仕様商材</dt>
-                    <dd><?php echo esc_html(get_field('materials')); ?></dd>
-                </div>
-            </dl>
+        <dl class="works-card__data">
+            <?php
+            $fields = [
+                'location' => ['unit' => ''],
+                'window_count' => ['unit' => ''],
+                'work_content' => ['unit' => ''],
+                'cost' => ['unit' => '万'],
+                'subsidy' => ['unit' => '円'],
+                'period' => ['unit' => '日'],
+                'years' => ['unit' => ''],
+                'materials' => ['unit' => '']
+            ];
+
+            foreach ($fields as $field_name => $field_info):
+                $field_obj = get_field_object($field_name);
+                $value = get_field($field_name);
+                
+                // 設定した項目のみ表示
+                if ($value): ?>
+                    <div class="works-card__data-item">
+                        <dt><?php echo esc_html($field_obj['label']); ?></dt>
+                        <dd>
+                            <?php 
+                            if (is_array($value)) {
+                              // 仕様商材の分岐
+                                echo esc_html(implode('　', $value));
+                            } else {
+                              if ($field_name === 'subsidy') {
+                                // 補助金はカンマ追加
+                                echo number_format($value) . $field_info['unit'];
+                              } else {
+                                  echo esc_html($value) . $field_info['unit'];
+                              }
+                            }
+                            ?>
+                        </dd>
+                    </div>
+                <?php endif;
+            endforeach; ?>
+        </dl>
 
     </div>
 
