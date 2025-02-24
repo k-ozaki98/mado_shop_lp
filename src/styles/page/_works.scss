@@ -40,6 +40,16 @@
 
 .works {
 
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 4.5rem;
+
+        @include g.max-screen(g.$bp-sp) {
+            gap: 2.5rem;
+        }
+    }
+
     &__inner {
         width: 800px;
         margin: 0 auto;
