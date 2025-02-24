@@ -103,7 +103,10 @@
         また、窓もドアも、<br class="is-sp">壁を壊す必要がないため工期が短く、<br>
         大体１日で終わることが多いです。
       </p>
-      <?php get_template_part('template-parts/work-content'); ?>
+
+      <div class="works__wrap">
+        <?php get_template_part('template-parts/work-content'); ?>
+      </div>
 
       <a href="/works/" class="works__more">他の施工事例を見る</a>
     </div>
