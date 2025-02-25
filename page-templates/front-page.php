@@ -23,11 +23,11 @@
   <div class="nav is-pc-tab">
     <div class="l-inner">
       <ul class="nav__list">
-        <li class="nav__item" data-nav-id="top"><a href="/">TOP</a></li>
-        <li class="nav__item" data-nav-id="subsidy"><a href="/#subsidy">補助金情報</a></li>
-        <li class="nav__item"><a href="/#reform">窓・ドアの<br>リフォーム</a></li>
-        <li class="nav__item" data-nav-id="works"><a href="/#works">施工事例</a></li>
-        <li class="nav__item"><a href="/#measure">窓の測り方</a></li>
+        <li class="nav__item" data-nav-id="top"><a href="/kashiwaya-lp/">TOP</a></li>
+        <li class="nav__item" data-nav-id="subsidy"><a href="/kashiwaya-lp/#subsidy">補助金情報</a></li>
+        <li class="nav__item"><a href="/kashiwaya-lp/#reform">窓・ドアの<br>リフォーム</a></li>
+        <li class="nav__item" data-nav-id="works"><a href="/kashiwaya-lp/#works">施工事例</a></li>
+        <li class="nav__item"><a href="/kashiwaya-lp/#measure">窓の測り方</a></li>
       </ul>
     </div>
   </div>
@@ -46,7 +46,7 @@
         </picture>
       </div>
 
-      <a href="/subsidy/" class="subsidy-btn" id="subsidy">
+      <a href="/kashiwaya-lp/subsidy/" class="subsidy-btn" id="subsidy">
         <span>あなたのお家のリフォームにも?!</span>
         かしこく補助金活用
       </a>
@@ -104,10 +104,10 @@
         大体１日で終わることが多いです。
       </p>
       <div class="works__inner inner">
-          <?php
+        <?php
           $query = new WP_Query(array(
               'post_type' => 'works',
-              'posts_per_page' => 2  
+              'posts_per_page' => 2
           ));
 
           if ($query->have_posts()) :
@@ -119,9 +119,9 @@
           ?>
       </div>
       <?php if (wp_count_posts('works')->publish > 2): ?>
-          <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="works__more">
-              他の施工事例を見る
-          </a>
+      <a href="<?php echo esc_url(get_post_type_archive_link('works')); ?>" class="works__more">
+        他の施工事例を見る
+      </a>
       <?php endif; ?>
     </div>
   </section>
