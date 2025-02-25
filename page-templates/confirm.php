@@ -58,7 +58,7 @@ if (!session_id()) {
       }
       
       // Contact Form 7フォームを表示
-      echo do_shortcode('[contact-form-7 id="c22d3ea" title="お問い合わせ確認_copy"]');
+      echo do_shortcode('[contact-form-7 id="f3f3d81" title="お問い合わせ_copy_確認画面"]');
       ?>
       
       <!-- 窓情報を表示するためのウィジェット -->
