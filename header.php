@@ -9,6 +9,7 @@
 
 <body <?php body_class(); ?> data-pageid="<?php echo isset($args['pageId']) ? esc_attr($args['pageId']) : ''; ?>">
   <?php wp_body_open(); ?>
+  <div class="wrap wrap--<?php echo isset($args['pageId']) ? esc_attr($args['pageId']) : ''; ?>">
   <header class="header is-pc-tab">
     <a href="/#contact" class="header__contact">お問い合わせ</a>
   </header>
@@ -43,3 +44,4 @@
       <p class="copyright">© Kashiwaya Corporation All Rights Reserved.</p>
     </div>
   </div>
+ 
