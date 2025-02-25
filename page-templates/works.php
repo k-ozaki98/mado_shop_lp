@@ -10,11 +10,11 @@
   <div class="nav is-pc-tab">
     <div class="l-inner">
       <ul class="nav__list">
-        <li class="nav__item" data-nav-id="top"><a href="/">TOP</a></li>
-        <li class="nav__item" data-nav-id="subsidy"><a href="/#subsidy">補助金情報</a></li>
-        <li class="nav__item"><a href="/#reform">窓・ドアの<br>リフォーム</a></li>
-        <li class="nav__item" data-nav-id="works"><a href="/#works">施工事例</a></li>
-        <li class="nav__item"><a href="/#measure">窓の測り方</a></li>
+        <li class="nav__item" data-nav-id="top"><a href="/kashiwaya-lp/">TOP</a></li>
+        <li class="nav__item" data-nav-id="subsidy"><a href="/kashiwaya-lp/#subsidy">補助金情報</a></li>
+        <li class="nav__item"><a href="/kashiwaya-lp/#reform">窓・ドアの<br>リフォーム</a></li>
+        <li class="nav__item" data-nav-id="works"><a href="/kashiwaya-lp/#works">施工事例</a></li>
+        <li class="nav__item"><a href="/kashiwaya-lp/#measure">窓の測り方</a></li>
       </ul>
     </div>
   </div>
@@ -39,7 +39,7 @@
         ));
 
         if ($query->have_posts()) :
-            echo '<div class="works__inner inner">'; 
+            echo '<div class="works__inner inner">';
             while ($query->have_posts()) : $query->the_post();
                 get_template_part('template-parts/work-content');
             endwhile;
