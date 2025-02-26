@@ -6,9 +6,9 @@ if (!session_id()) {
 }
 ?>
 
-<main class="confirm">
-  <div class="l-inner confirm__inner">
-    <h1 class="heading-A confirm_ttl">お問い合わせ内容の確認</h1>
+<main class="confirm-page">
+  <div class="l-inner confirm-page__inner">
+    <h1 class="heading-A confirm-page_ttl">お問い合わせ内容の確認</h1>
     
     <div class="form-container">
       <?php
@@ -67,40 +67,6 @@ if (!session_id()) {
       echo '</div>';
       ?>
       
-      <style>
-      /* 窓情報のスタイル */
-      .window-info-confirmation {
-        margin: 10px 0;
-      }
-      
-      .window-info-item {
-        background-color: #f8f8f8;
-        border: 1px solid #e0e0e0;
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 15px;
-      }
-      
-      .window-info__title {
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #ddd;
-      }
-      
-      .window-info-item p {
-        margin: 8px 0;
-        padding: 0;
-      }
-      
-      .no-window-info {
-        padding: 10px;
-        background-color: #f9f9f9;
-        border-left: 3px solid #ccc;
-        font-style: italic;
-      }
-      </style>
       
       <script>
       document.addEventListener('DOMContentLoaded', function() {

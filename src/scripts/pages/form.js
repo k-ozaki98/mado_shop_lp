@@ -107,9 +107,9 @@ validateForm() {
         // 「入力内容を確認」ボタンがクリックされた場合のみバリデーション
         const submitButton = e.submitter;
         if (submitButton && submitButton.value === '入力内容を確認') {
-        if (!this.validateForm()) {
-            e.preventDefault();
-        }
+        // if (!this.validateForm()) {
+        //     e.preventDefault();
+        // }
         }
     });
     }
