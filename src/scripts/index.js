@@ -21,7 +21,6 @@ import {
 import {
   initWork
 } from './pages/work'
-import { initConfirm } from './pages/confirm'
 gsap.registerPlugin(ScrollTrigger)
 
 document.addEventListener('DOMContentLoaded', () => {
