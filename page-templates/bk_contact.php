@@ -208,7 +208,7 @@
                       <span class="form__text">枚数</span>
                   </label>
                   <div class="window-info__wrap window-info__wrap--unit">
-                    [number* count-2 class:form__input-s min:1]
+                    [number count-2 class:form__input-s min:1]
                   </div>
               </div>
 
@@ -219,7 +219,7 @@
                   </label>
                   <div class="window-info__wrap">
                     <div class="form__select-wrap">
-                        [select* place-2 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
+                        [select place-2 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
                     </div>
                   </div>
               </div>
@@ -275,7 +275,7 @@
                       <span class="form__text">枚数</span>
                   </label>
                   <div class="window-info__wrap window-info__wrap--unit">
-                    [number* count-3 class:form__input-s min:1]
+                    [number count-3 class:form__input-s min:1]
                   </div>
               </div>
 
@@ -286,7 +286,7 @@
                   </label>
                   <div class="window-info__wrap">
                     <div class="form__select-wrap">
-                        [select* place-3 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
+                        [select place-3 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
                     </div>
                   </div>
               </div>
@@ -342,7 +342,7 @@
                       <span class="form__text">枚数</span>
                   </label>
                   <div class="window-info__wrap window-info__wrap--unit">
-                    [number* count-4 class:form__input-s min:1]
+                    [number count-4 class:form__input-s min:1]
                   </div>
               </div>
 
@@ -353,7 +353,7 @@
                   </label>
                   <div class="window-info__wrap">
                     <div class="form__select-wrap">
-                        [select* place-4 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
+                        [select place-4 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
                     </div>
                   </div>
               </div>
@@ -409,7 +409,7 @@
                       <span class="form__text">枚数</span>
                   </label>
                   <div class="window-info__wrap window-info__wrap--unit">
-                    [number* count-5 class:form__input-s min:1]
+                    [number count-5 class:form__input-s min:1]
                   </div>
               </div>
 
@@ -420,7 +420,7 @@
                   </label>
                   <div class="window-info__wrap">
                     <div class="form__select-wrap">
-                        [select* place-5 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
+                        [select place-5 class:form__select "-- 選択してください --" "LDK" "浴室" "和室"]
                     </div>
                   </div>
               </div>
