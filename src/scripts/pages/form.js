@@ -1,4 +1,5 @@
 export class FormHandler {
+    
     constructor() {
       this.visibleWindows = 1; // 表示中の窓情報数
       this.maxWindows = 5;     // 最大窓情報数

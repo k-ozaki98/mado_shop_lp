@@ -5,10 +5,206 @@
 
 /* 確認画面のスタイル */
 .wrap.wrap--confirm {
-  background-color: #f4f4f4;
+  background-color: #fff;
+  .confirm-page {
+    &__inner {
+      padding: 8rem 0 0;
+      margin: 0 auto;
+      width: 800px;
+
+    }
+    &__ttl {
+      margin-bottom: 4rem;
+    }
+  }
 
   .confirm {
-    margin: 8rem 0;
+    margin: 6rem 0 0;
+    padding: 3rem 4rem;
+    background: #F8F8F8;
+    
+    &__item {
+      display: flex;
+      font-size: 1.6rem;
+      border-bottom: 1px solid #ccc;
+      padding: 0 2rem 2rem;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &__label {
+      width: 25%;
+      font-weight: bold;
+    }
+
+    &__wrap {
+      width: 75%;
+    }
+
+    &__address {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      .confirm__label {
+        width: 100%;
+      }
+    }
+
+    &__address-text {
+      font-size: 1.6rem;
+    }
+  }
+
+  .window-info {
+        background-color: #ECECF1;
+        padding: 3rem 3rem 3rem;
+        position: relative;
+        font-size: 1.6rem;
+        width: 80%;
+        margin: 0 auto 3rem;
+
+        &__title {
+          font-size: 2rem;
+          text-align: center;
+          font-weight: bold;
+          margin-bottom: 3.5rem;
+
+          @include g.max-screen(g.$bp-sp) {
+              font-size: 1.6rem;
+              margin-bottom: 2rem;
+          }
+        }
+
+        &__size {
+          display: flex;
+          margin-top: 1.5rem;
+          margin-bottom: 2rem;
+          justify-content: center;
+        }
+
+        &__image {
+          margin-bottom: 2rem;
+          display: flex;
+          justify-content: center;
+        }
+        &__count {
+          margin-bottom: 2rem;
+          display: flex;
+          justify-content: center;
+
+        }
+        &__place {
+          display: flex;
+          justify-content: center;
+        }
+        .confirm__label {
+          width: 25%;
+        }
+        &__wrap {
+          width: 75%;
+        }
+        &__file-wrapper {
+          width: 75%;
+        }
+        &__size-inputs {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+        }
+        &__item {
+          position: relative;
+          width: 6rem;
+          text-align: center;
+        }
+
+        &__label {
+          font-size: 1.2rem;
+          position: absolute;
+          top: -1.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+  }
+
+  .btn-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 4rem;
+
+    .form__button {
+        width: 20rem;
+        text-align: center;
+        border: none;
+        color: #fff;
+        background: #03003F;
+        transition: opacity 0.3s;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 2rem;
+        margin: 0 auto;
+        display: block;
+        border: 2px solid #03003F;
+
+        @include g.max-screen(g.$bp-sp) {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.8rem;
+            border-radius: 10px;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+    .form__back {
+      input {
+          width: 20rem;
+          text-align: center;
+          border: none;
+          border: 2px solid #03003F;
+          background: #fff;
+          color: #03003F;
+          transition: opacity 0.3s;
+          font-size: 2rem;
+          font-weight: bold;
+          padding: 2rem;
+          margin: 0 auto;
+          display: block;
+  
+          @include g.max-screen(g.$bp-sp) {
+              width: 100%;
+              padding: 1.5rem;
+              font-size: 1.8rem;
+              border-radius: 10px;
+          }
+  
+          &:hover {
+              opacity: 0.7;
+          }
+      }
+
+    } 
+  }
+
+  .form__subtitle {
+    font-size: 2.8rem;
+    margin: 3rem auto;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+
+    &::after {
+      content: "";
+      height: 2px;
+      width: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      position: absolute;
+      background: #03003F;
+    }
   }
   
   .header {
@@ -16,154 +212,37 @@
   }
 
   .main {
-    padding: 4rem 1.5rem;
+    padding: 2rem 1.6rem 5rem;
   }
 
   .form-container {
-    margin-top: 4rem;
-  }
-
-  .form {
-    max-width: 80rem;
-    margin: 0 auto;
-    background-color: #ffffff;
-    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08);
-    border-radius: 0.8rem;
-    padding: 3rem;
-    
-    /* 基本アイテムのスタイル */
-    &__item {
-      display: grid;
-      grid-template-columns: 15rem 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
-      border-bottom: 0.1rem solid #e5e5e5;
-
-      @media (max-width: 600px) {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-    }
-    
-    &__label {
-      font-weight: bold;
-      color: #333;
-      font-size: 1.4rem;
-      display: flex;
-      align-items: center;
-    }
-
-    &__wrap {
-      color: #555;
-      font-size: 1.6rem;
-    }
-    /* サブタイトルのスタイル */
-    &__subtitle {
-      color: #2c3e50;
-      font-size: 2.6rem;
-      margin-bottom: 4rem;
-      margin-top: 3rem;
-      padding-bottom: 1rem;
-      text-align: center;
-    }
-
-    /* 窓の情報スタイル */
-    .window-info {
-      background-color: #f9f9f9;
-      border-radius: 0.6rem;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 0.1rem solid #e9e9e9;
-
-      &__title {
-        font-size: 1.6rem;
-        color: #2c3e50;
-        margin-bottom: 1.5rem;
-        font-weight: bold;
-      }
-
-      & > div {
-        display: grid;
-        grid-template-columns: 15rem 1fr;
-        gap: 2rem;
-        margin-bottom: 1.5rem;
-
-        @media (max-width: 600px) {
-          grid-template-columns: 1fr;
-          gap: 1rem;
-        }
-
-        .form__label {
-          font-size: 1.4rem;
-          font-weight: bold;
-          color: #333;
-        }
-      }
-
-      &__size-inputs {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.5rem;
-      }
-
-      &__image {
-        margin-top: 1rem;
-
-        img {
-          max-width: 100%;
-          border-radius: 0.4rem;
-          box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
-
-    /* 送信ボタンエリア */
-    &__submit {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 3rem;
-
-      @media (max-width: 600px) {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      input[type="submit"],
-      .wpcf7-form-control-wrap.previous input {
-        padding: 1.2rem 3rem;
-        font-size: 1.6rem;
-        border-radius: 0.6rem;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: 0.1rem solid transparent;
-      }
-
-      .wpcf7-form-control-wrap.previous input {
-        background-color: #f0f0f0;
-        color: #333;
-        border-color: #ddd;
-
-        &:hover {
-          background-color: #e5e5e5;
-        }
-      }
-
-      input[type="submit"] {
-        background-color: #007bff;
-        color: #ffffff;
-
-        &:hover {
-          background-color: #0056b3;
-        }
-      }
-    }
+    margin-top: 3rem;
   }
 }
+// const addButton = document.querySelector('.form__add-window');
+// if (addButton) {
+//     addButton.addEventListener('click', () => this.addWindow());
+// }
+
+// document.addEventListener('click', (e) => {
+//     if (e.target.matches('.window-info__remove')) {
+//         this.removeWindow(e.target.closest('.window-info'));
+//     }
+//     if (e.target.matches('.js-file-btn')) {
+//         const fileWrapper = e.target.closest('.window-info__file-wrapper');
+//         const fileInput = fileWrapper.querySelector('.form__file');
+//         fileInput.click();
+//     }
+// });
+
+// // 削除ボタンとファイル選択のイベント委譲
+// document.addEventListener('click', (e) => {
+//   if (e.target.matches('.window-info__remove')) {
+//       this.removeWindow(e.target.closest('.window-info'));
+//   }
+//   if (e.target.matches('.js-file-btn')) {
+//       const fileWrapper = e.target.closest('.window-info__file-wrapper');
+//       const fileInput = fileWrapper.querySelector('.form__file');
+//       fileInput.click();
+//   }
+// });

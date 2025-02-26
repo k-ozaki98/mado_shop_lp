@@ -21,13 +21,14 @@ import {
 import {
   initWork
 } from './pages/work'
+import { initConfirm } from './pages/confirm'
 gsap.registerPlugin(ScrollTrigger)
 
 document.addEventListener('DOMContentLoaded', () => {
   const pageId = document.querySelector('body').getAttribute('data-pageid')
   const isTop = pageId === 'top';
   if (isTop) {
-    initTop() // トップページ用スクリプト
+    // initTop() // トップページ用スクリプト
     initForm()
     initWork()
     
