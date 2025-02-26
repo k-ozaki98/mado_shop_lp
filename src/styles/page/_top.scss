@@ -234,6 +234,15 @@
                 justify-content: left;
                 gap: 1rem;
             }
+
+            &--optional {
+                position: relative;
+
+                .form__optional {
+                    display: inline-block;
+                    margin-right: 1rem;
+                }
+            }
         }
 
         input,
@@ -295,6 +304,7 @@
         &__address-text {
             font-size: 1.5rem;
             white-space: nowrap;
+            margin-bottom: 1rem;
         }
 
         &__required {
@@ -602,7 +612,7 @@
 
         &__note {
             font-size: 1.5rem;
-            color: #666;
+            color: #03003F;
             margin-top: 1rem;
             margin-bottom: 1.5rem;
 

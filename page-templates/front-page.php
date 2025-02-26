@@ -119,7 +119,7 @@
           ?>
       </div>
       <?php if (wp_count_posts('works')->publish > 2): ?>
-      <a href="/kashiwaya-lp/work/" class="works__more">
+      <a href="<?php echo esc_url(home_url('/work/')); ?>" class="works__more">
         他の施工事例を見る
       </a>
       <?php endif; ?>
