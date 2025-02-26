@@ -33,7 +33,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
               <span>知って、学んで、活かす</span><br>
               補助金活用例
             </h3>
-            <p class="example__txt">先進的窓リノベ事業は、断熱窓への改修を促進し<br class="is-pc-tab">既存住宅の省エネ化を促すことで、<br class="is-pc-tab">エネルギー費用負担の軽減、健康で快適なくらしの実現および<br class="is-pc-tab">家庭からのCO2排出削減に貢献するとともに、<br class="is-pc-tab">断熱窓の生産効率向上による関連産業の競争力強化と<br class="is-pc-tab">成長を実現させることを目的とする事業です。<br class="is-pc-tab">お住まいのタイプや構造、性能やサイズ等により補助額が異なり、<br class="is-pc-tab">「ドア交換（ドアに対する内窓設置を含む）」については、<br class="is-pc-tab">他の窓の工事と同一の契約であり、<br class="is-pc-tab">同時に申請する場合のみ、本事業の補助対象となります。<br class="is-pc-tab">詳しくは、<a href="/#contact">お問い合わせ</a>ください。</p>
+            <p class="example__txt">先進的窓リノベ事業は、断熱窓への改修を促進し<br class="is-pc-tab">既存住宅の省エネ化を促すことで、<br class="is-pc-tab">エネルギー費用負担の軽減、健康で快適なくらしの実現および<br class="is-pc-tab">家庭からのCO2排出削減に貢献するとともに、<br class="is-pc-tab">断熱窓の生産効率向上による関連産業の競争力強化と<br class="is-pc-tab">成長を実現させることを目的とする事業です。<br class="is-pc-tab">お住まいのタイプや構造、性能やサイズ等により補助額が異なり、<br class="is-pc-tab">「ドア交換（ドアに対する内窓設置を含む）」については、<br class="is-pc-tab">他の窓の工事と同一の契約であり、<br class="is-pc-tab">同時に申請する場合のみ、本事業の補助対象となります。<br class="is-pc-tab">詳しくは、<a href="/kashiwaya-lp/#contact">お問い合わせ</a>ください。</p>
           </div>
           <ul class="example__list">
             <li>
