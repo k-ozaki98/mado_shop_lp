@@ -61,11 +61,9 @@ function addEmptyValueStyle() {
   style.textContent = `
     .empty-value {
       color: #999;
-      font-style: italic;
       font-size: 14px;
     }
     
-    /* スタイル微調整 */
     .window-info {
       margin-bottom: 30px;
       border: 1px solid #eee;
@@ -262,26 +260,49 @@ function toggleWindowInfoVisibility() {
     // 最初のセクションは常に表示
     if (index === 0) return;
     
-    // 枚数と場所の要素を取得
-    const countElement = section.querySelector('.window-info__count .window-info__wrap');
-    const placeElement = section.querySelector('.window-info__place .form__select-wrap');
+    // セレクタを変更し、より広範囲に検索
+    const countElement = section.querySelector('.window-info__count');
+    const placeElement = section.querySelector('.window-info__place');
     
-    // 要素が空かどうかをチェック
+    // デバッグ用に詳細なログを追加
+    console.log(`窓情報${index + 1} の詳細:`, {
+      section: section,
+      countElementHTML: countElement ? countElement.innerHTML : 'なし',
+      placeElementHTML: placeElement ? placeElement.innerHTML : 'なし',
+      countElementText: countElement ? countElement.textContent.trim() : 'なし',
+      placeElementText: placeElement ? placeElement.textContent.trim() : 'なし'
+    });
+    
+    // より柔軟な空判定
     const isCountEmpty = !countElement || 
-                         countElement.textContent.trim() === '' || 
-                         countElement.textContent.trim() === '未入力' || 
-                         countElement.textContent.trim() === '未入力 枚';
-                         
-    const isPlaceEmpty = !placeElement || 
-                         placeElement.textContent.trim() === '' || 
-                         placeElement.textContent.trim() === '未選択' || 
-                         placeElement.textContent.trim() === '-- 選択してください --';
+        (countElement.textContent.trim() === '' || 
+         countElement.textContent.trim() === '未入力' || 
+         countElement.textContent.trim() === '未入力 枚' ||
+         /^[0-9]+$/.test(countElement.textContent.trim()) === false);
     
-    // 両方とも空なら非表示
-    if (isCountEmpty && isPlaceEmpty) {
-      section.style.display = 'none';
-      console.log(`窓情報${index + 1}を非表示にしました`);
-    }
+    const isPlaceEmpty = !placeElement || 
+        (placeElement.textContent.trim() === '' || 
+         placeElement.textContent.trim() === '未選択' || 
+         placeElement.textContent.trim() === '-- 選択してください --');
+    
+    console.log(`窓情報${index + 1}:`, {
+      isCountEmpty,
+      isPlaceEmpty,
+      countText: countElement ? countElement.textContent.trim() : 'なし',
+      placeText: placeElement ? placeElement.textContent.trim() : 'なし'
+    });
+    
+    // 常に表示するよう変更（デバッグ用）
+    section.style.display = 'block';
+    
+    // コメントアウトしていた非表示ロジック
+    // if (isCountEmpty && isPlaceEmpty) {
+    //   section.style.display = 'none';
+    //   console.log(`窓情報${index + 1}を非表示にしました`);
+    // } else {
+    //   section.style.display = 'block';
+    //   console.log(`窓情報${index + 1}を表示にしました`);
+    // }
   });
 }
 

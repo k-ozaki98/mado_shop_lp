@@ -27,6 +27,13 @@ export class FormHandler {
       if (addButton) {
         addButton.addEventListener('click', () => this.showNextWindow());
       }
+
+      // 窓の削除ボタンのイベントリスナーを追加
+      document.addEventListener('click', (e) => {
+        if (e.target.matches('.window-info__remove')) {
+          this.removeWindow(e.target);
+        }
+      });
   
       document.addEventListener('click', (e) => {
         if (e.target.matches('.js-file-btn')) {
@@ -44,6 +51,57 @@ export class FormHandler {
           if (e.target.files.length > 0) {
             fileNameSpan.textContent = e.target.files[0].name;
           } else {
+            fileNameSpan.textContent = '';
+          }
+        }
+      });
+    }
+
+    // 窓の削除メソッドを追加
+    removeWindow(removeButton) {
+      const windowInfo = removeButton.closest('.window-info');
+      const windowCount = parseInt(windowInfo.getAttribute('data-window-count'));
+      
+      // 最初の窓は削除できない
+      if (windowCount === 1) return;
+      
+      // 窓を非表示にし、フィールドの必須属性を削除
+      windowInfo.style.display = 'none';
+      this.markRequiredFields(windowInfo, false);
+      
+      // 枚数と場所フィールドのrequired属性を削除
+      const countField = windowInfo.querySelector(`[name^="count-${windowCount}"]`);
+      const placeField = windowInfo.querySelector(`[name^="place-${windowCount}"]`);
+      
+      if (countField) {
+        countField.removeAttribute('required');
+        countField.name = countField.name.replace('*', '');
+        countField.classList.remove('wpcf7-validates-as-required');
+      }
+      
+      if (placeField) {
+        placeField.removeAttribute('required');
+        placeField.name = placeField.name.replace('*', '');
+        placeField.classList.remove('wpcf7-validates-as-required');
+      }
+      
+      // 表示中の窓の数を減らす
+      this.visibleWindows--;
+      
+      // 追加ボタンを再表示
+      const addButton = document.querySelector('.form__add-window');
+      if (addButton) {
+        addButton.style.display = 'block';
+      }
+      
+      // 入力内容をクリア
+      const inputFields = windowInfo.querySelectorAll('input, select, textarea');
+      inputFields.forEach(field => {
+        field.value = '';
+        // ファイル入力の場合は特別に対応
+        if (field.type === 'file') {
+          const fileNameSpan = field.closest('.window-info__file-wrapper').querySelector('.window-info__file-name');
+          if (fileNameSpan) {
             fileNameSpan.textContent = '';
           }
         }
@@ -294,54 +352,56 @@ export class FormHandler {
       }
     });
   
+    const form = document.querySelector('.wpcf7-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        const submitButton = e.submitter;
+        
+        // 「入力内容を確認」ボタンがクリックされた場合のみバリデーション
+        if (submitButton && submitButton.value === '入力内容を確認') {
+          // すべての表示中の窓情報のフィールドを処理
+          document.querySelectorAll('.window-info').forEach(windowInfo => {
+            // 非表示の窓情報はスキップ
+            if (windowInfo.style.display === 'none') {
+              return;
+            }
+            
+            const windowCount = windowInfo.getAttribute('data-window-count');
+            const countField = windowInfo.querySelector(`[name^="count-${windowCount}"]`);
+            const placeField = windowInfo.querySelector(`[name^="place-${windowCount}"]`);
+            
+            // 枚数と場所フィールドに必須属性を追加
+            if (countField) {
+              countField.setAttribute('required', '');
+              if (!countField.name.includes('*')) {
+                countField.name = countField.name + '*';
+              }
+            }
+            
+            if (placeField) {
+              placeField.setAttribute('required', '');
+              if (!placeField.name.includes('*')) {
+                placeField.name = placeField.name + '*';
+              }
+            }
+          });
+          
+          // バリデーション実行
+          if (!formHandler.validateForm()) {
+            e.preventDefault();
+            return false;
+          }
+        }
+      });
+    }
+  
     // CF7のイベントを監視
     document.addEventListener('wpcf7invalid', function(event) {
-      // フォームのバリデーションを実行
       formHandler.validateForm();
       
-      // CF7のレスポンス出力を非表示
       const responseOutput = document.querySelector('.wpcf7-response-output');
       if (responseOutput) {
         responseOutput.style.display = 'none';
-      }
-    });
-    
-    // フォーム送信前の最終チェック
-    document.querySelector('.wpcf7-form').addEventListener('submit', function(e) {
-      // 「入力内容を確認」ボタンがクリックされた場合にのみバリデーション
-      if (e.submitter && e.submitter.value === '入力内容を確認') {
-        // すべての表示中の窓情報のフィールドにrequired属性を付与して確実に検証
-        document.querySelectorAll('.window-info').forEach(windowInfo => {
-          // 非表示の窓情報はスキップ
-          if (windowInfo.style.display === 'none') {
-            return;
-          }
-          
-          const windowCount = windowInfo.getAttribute('data-window-count');
-          // 枚数と場所の必須フィールドを強制的にrequired属性付きに
-          const countField = windowInfo.querySelector(`[name^="count-${windowCount}"]`);
-          const placeField = windowInfo.querySelector(`[name^="place-${windowCount}"]`);
-          
-          if (countField) {
-            countField.setAttribute('required', '');
-            if (!countField.name.includes('*')) {
-              countField.name = countField.name + '*';
-            }
-          }
-          
-          if (placeField) {
-            placeField.setAttribute('required', '');
-            if (!placeField.name.includes('*')) {
-              placeField.name = placeField.name + '*';
-            }
-          }
-        });
-        
-        // 独自のバリデーションを実行
-        if (!formHandler.validateForm()) {
-          e.preventDefault();
-          return false;
-        }
       }
     });
   }

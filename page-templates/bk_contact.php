@@ -116,7 +116,10 @@
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">窓枠</span>
-                          [multiform frame-1]
+                          <div class="window-info__detail">
+                            [multiform frame-1]
+
+                          </div>
                         </div>
                     </div>
                   </div>
@@ -126,7 +129,6 @@
                   <label class="confirm__label">
                       写真画像
                   </label>
-                  <!-- ファイル入力を非表示にする -->
                   <div class="window-info__file-wrapper">
                       [multiform photo-1]
                   </div>
@@ -162,17 +164,26 @@
                     <div class="window-info__size-inputs">
                         <div class="window-info__item">
                           <span class="window-info__label">高さ</span>
-                          [multiform height-2]
+                          <p class="window-info__detail">
+                            [multiform height-2]
+
+                          </p>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">幅</span>
-                          [multiform width-2]
+                          <div class="window-info__detail">
+                            [multiform width-2]
+
+                          </div>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">窓枠</span>
-                          [multiform frame-2]
+                          <div class="window-info__detail">
+                            [multiform frame-2]
+
+                          </div>
                         </div>
                     </div>
                   </div>
@@ -182,7 +193,6 @@
                   <label class="confirm__label">
                       写真画像
                   </label>
-                  <!-- ファイル入力を非表示にする -->
                   <div class="window-info__file-wrapper">
                       [multiform photo-2]
                   </div>
@@ -207,7 +217,7 @@
                   </div>
               </div>
           </div>
-          <div class="window-info" data-window-count="3" >
+          <div class="window-info" data-window-count="3">
               <h4 class="window-info__title">窓の情報（3）</h4>
               
               <div class="window-info__size">
@@ -218,17 +228,26 @@
                     <div class="window-info__size-inputs">
                         <div class="window-info__item">
                           <span class="window-info__label">高さ</span>
-                          [multiform height-3]
+                          <p class="window-info__detail">
+                            [multiform height-3]
+
+                          </p>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">幅</span>
-                          [multiform width-3]
+                          <div class="window-info__detail">
+                            [multiform width-3]
+
+                          </div>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">窓枠</span>
-                          [multiform frame-3]
+                          <div class="window-info__detail">
+                            [multiform frame-3]
+
+                          </div>
                         </div>
                     </div>
                   </div>
@@ -238,7 +257,6 @@
                   <label class="confirm__label">
                       写真画像
                   </label>
-                  <!-- ファイル入力を非表示にする -->
                   <div class="window-info__file-wrapper">
                       [multiform photo-3]
                   </div>
@@ -263,7 +281,7 @@
                   </div>
               </div>
           </div>
-          <div class="window-info" data-window-count="4" >
+          <div class="window-info" data-window-count="4">
               <h4 class="window-info__title">窓の情報（4）</h4>
               
               <div class="window-info__size">
@@ -274,17 +292,26 @@
                     <div class="window-info__size-inputs">
                         <div class="window-info__item">
                           <span class="window-info__label">高さ</span>
-                          [multiform height-4]
+                          <p class="window-info__detail">
+                            [multiform height-4]
+
+                          </p>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">幅</span>
-                          [multiform width-4]
+                          <div class="window-info__detail">
+                            [multiform width-4]
+
+                          </div>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">窓枠</span>
-                          [multiform frame-4]
+                          <div class="window-info__detail">
+                            [multiform frame-4]
+
+                          </div>
                         </div>
                     </div>
                   </div>
@@ -294,7 +321,6 @@
                   <label class="confirm__label">
                       写真画像
                   </label>
-                  <!-- ファイル入力を非表示にする -->
                   <div class="window-info__file-wrapper">
                       [multiform photo-4]
                   </div>
@@ -330,17 +356,26 @@
                     <div class="window-info__size-inputs">
                         <div class="window-info__item">
                           <span class="window-info__label">高さ</span>
-                          [multiform height-5]
+                          <p class="window-info__detail">
+                            [multiform height-5]
+
+                          </p>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">幅</span>
-                          [multiform width-5]
+                          <div class="window-info__detail">
+                            [multiform width-5]
+
+                          </div>
                         </div>
                         <span>×</span>
                         <div class="window-info__item">
                           <span class="window-info__label">窓枠</span>
-                          [multiform frame-5]
+                          <div class="window-info__detail">
+                            [multiform frame-5]
+
+                          </div>
                         </div>
                     </div>
                   </div>
@@ -350,7 +385,6 @@
                   <label class="confirm__label">
                       写真画像
                   </label>
-                  <!-- ファイル入力を非表示にする -->
                   <div class="window-info__file-wrapper">
                       [multiform photo-5]
                   </div>
@@ -398,9 +432,14 @@
                 [multiform other]
               </div>
           </div>
-<div class="form__submit">
-　　　[previous previous-196 "戻る"]
-    [submit class:form__button "送信"]
-[multistep multistep-11 last_step send_email "/thanks/"]
-  </div>
+          <div class="btn-wrap">
+              <div class="form__back">
+                [previous previous-196 "戻る"]
+              </div>
+              <div class="form__submit">
+                [submit class:form__button "送信"]
+                [multistep multistep-11 last_step send_email "/thanks/"]
+              </div>
+
+          </div>
         </div>
