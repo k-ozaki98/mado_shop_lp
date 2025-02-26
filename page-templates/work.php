@@ -11,9 +11,9 @@
     <div class="l-inner">
       <ul class="nav__list">
         <li class="nav__item" data-nav-id="top"><a href="/kashiwaya-lp/">TOP</a></li>
-        <li class="nav__item" data-nav-id="subsidy"><a href="/kashiwaya-lp/#subsidy">補助金情報</a></li>
+        <li class="nav__item" data-nav-id="subsidy"><a href="/kashiwaya-lp/subsidy">補助金情報</a></li>
         <li class="nav__item"><a href="/kashiwaya-lp/#reform">窓・ドアの<br>リフォーム</a></li>
-        <li class="nav__item" data-nav-id="works"><a href="/kashiwaya-lp/#works">施工事例</a></li>
+        <li class="nav__item" data-nav-id="works"><a href="/kashiwaya-lp/work">施工事例</a></li>
         <li class="nav__item"><a href="/kashiwaya-lp/#measure">窓の測り方</a></li>
       </ul>
     </div>

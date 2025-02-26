@@ -67,7 +67,7 @@
         background-color: #03003F;
         color: #fff;
         font-size: 2.5rem;
-        font-weight: bold;
+        font-weight: 700;
         text-align: center;
 
         @include g.max-screen(g.$bp-sp) {
@@ -221,7 +221,7 @@
         &__label {
             display: flex;
             flex-direction: column;
-            font-weight: bold;
+            font-weight: 700;
             width: 30%;
             color: #03003F;
             font-size: 2rem;
@@ -403,7 +403,7 @@
                 text-align: center;
                 color: #fff;
                 font-size: 2rem;
-                font-weight: bold;
+                font-weight: 700;
                 border: none;
                 padding: 1.5rem;
                 width: 100%;
@@ -429,7 +429,7 @@
             font-size: 2rem;
             transition: opacity 0.3s;
             font-size: 3rem;
-            font-weight: bold;
+            font-weight: 700;
             padding: 2.5rem;
             margin: 0 auto;
             display: block;
@@ -478,7 +478,7 @@
         &__title {
             font-size: 2rem;
             text-align: center;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 3.5rem;
 
             @include g.max-screen(g.$bp-sp) {
@@ -635,7 +635,7 @@
                 border-radius: 60px;
                 background: #03003F;
                 color: #fff;
-                font-weight: bold;
+                font-weight: 700;
                 position: relative;
                 padding: 0.2rem 2rem;
                 font-size: 2rem;
@@ -708,7 +708,7 @@
             text-align: center;
             border-radius: 60px;
             width: 28rem;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 2rem;
             transition: opacity 0.3s;
             padding: 1.5rem;
@@ -749,107 +749,108 @@
     }
 
     // バリデーションスタイル
-/* エラーメッセージのスタイル */
-.custom-error-message {
-    display: block;
-    color: #ff0000;
-    font-size: 12px;
-    margin-top: 5px;
-    font-weight: normal;
-    
-  }
-  
-  /* エラーがあるフィールドのスタイル */
-  .wpcf7-form .wpcf7-not-valid {
-    border-color: #ff0000 !important;
-    background-color: #fff8f8;
-  }
-  
-  /* エラーがあるセレクトボックスのスタイル */
-  .wpcf7-form .wpcf7-not-valid.form__select {
-    border-color: #ff0000 !important;
-    background-color: #fff8f8;
-  }
-  
-  /* フォーム項目間の余白を調整してエラーメッセージ表示スペースを確保 */
-  .form__wrap,
-  .window-info__wrap {
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  /* Contact Form 7のデフォルトエラーメッセージを非表示 */
-  .wpcf7-not-valid-tip {
-    display: none !important;
-  }
-  
-  /* Contact Form 7のバリデーションエラーボックスのスタイル */
-  .wpcf7-validation-errors,
-  .wpcf7-acceptance-missing,
-  .wpcf7-mail-sent-ng {
-    color: #ff0000;
-    background-color: #fff8f8;
-    border: 1px solid #ff0000 !important;
-    padding: 10px !important;
-    margin: 20px 0 !important;
-    font-size: 14px;
-  }
-  
-  /* 送信成功メッセージのスタイル */
-  .wpcf7-mail-sent-ok {
-    color: #4F8A10;
-    background-color: #DFF2BF;
-    border: 1px solid #4F8A10 !important;
-    padding: 10px !important;
-    margin: 20px 0 !important;
-    font-size: 14px;
-  }
+    /* エラーメッセージのスタイル */
+    .custom-error-message {
+        display: block;
+        color: #ff0000;
+        font-size: 12px;
+        margin-top: 5px;
+        font-weight: normal;
 
-
-  .form-confirmation__item {
-    padding: 15px 0;
-    border-bottom: 1px solid #e5e5e5;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .form-confirmation__label {
-    font-weight: bold;
-    width: 200px;
-    padding-right: 20px;
-  }
-  
-  .form-confirmation__value {
-    flex: 1;
-  }
-  
-  .form__buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .form__button--back {
-    background-color: #888;
-  }
-  
-  @media screen and (max-width: 767px) {
-    .form-confirmation__label,
-    .form-confirmation__value {
-      width: 100%;
     }
-    
+
+    /* エラーがあるフィールドのスタイル */
+    .wpcf7-form .wpcf7-not-valid {
+        border-color: #ff0000 !important;
+        background-color: #fff8f8;
+    }
+
+    /* エラーがあるセレクトボックスのスタイル */
+    .wpcf7-form .wpcf7-not-valid.form__select {
+        border-color: #ff0000 !important;
+        background-color: #fff8f8;
+    }
+
+    /* フォーム項目間の余白を調整してエラーメッセージ表示スペースを確保 */
+    .form__wrap,
+    .window-info__wrap {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    /* Contact Form 7のデフォルトエラーメッセージを非表示 */
+    .wpcf7-not-valid-tip {
+        display: none !important;
+    }
+
+    /* Contact Form 7のバリデーションエラーボックスのスタイル */
+    .wpcf7-validation-errors,
+    .wpcf7-acceptance-missing,
+    .wpcf7-mail-sent-ng {
+        color: #ff0000;
+        background-color: #fff8f8;
+        border: 1px solid #ff0000 !important;
+        padding: 10px !important;
+        margin: 20px 0 !important;
+        font-size: 14px;
+    }
+
+    /* 送信成功メッセージのスタイル */
+    .wpcf7-mail-sent-ok {
+        color: #4F8A10;
+        background-color: #DFF2BF;
+        border: 1px solid #4F8A10 !important;
+        padding: 10px !important;
+        margin: 20px 0 !important;
+        font-size: 14px;
+    }
+
+
+    .form-confirmation__item {
+        padding: 15px 0;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
     .form-confirmation__label {
-      margin-bottom: 5px;
+        font-weight: 700;
+        width: 200px;
+        padding-right: 20px;
     }
-    
+
+    .form-confirmation__value {
+        flex: 1;
+    }
+
     .form__buttons {
-      flex-direction: column;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
     }
-    
-    .form__button {
-      margin-bottom: 10px;
+
+    .form__button--back {
+        background-color: #888;
     }
-  }
+
+    @media screen and (max-width: 767px) {
+
+        .form-confirmation__label,
+        .form-confirmation__value {
+            width: 100%;
+        }
+
+        .form-confirmation__label {
+            margin-bottom: 5px;
+        }
+
+        .form__buttons {
+            flex-direction: column;
+        }
+
+        .form__button {
+            margin-bottom: 10px;
+        }
+    }
 }
