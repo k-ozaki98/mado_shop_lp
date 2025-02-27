@@ -1,4 +1,3 @@
-
 <article class="works-card">
     <h2 class="works-card__title"><?php the_title(); ?></h2>
 
@@ -49,14 +48,18 @@
                 <?php endif;
             endforeach; ?>
         </dl>
-
     </div>
 
+    <?php
+    $has_customer_needs = get_field('customer_needs');
+    $has_proposal = get_field('proposal');
+    $has_cost_detail = get_field('cost_detail');
+    
+    if ($has_customer_needs || $has_proposal || $has_cost_detail):
+    ?>
     <div class="works-card__detail js-works-accordion">
-        
-        
         <div class="works-card__content js-works-accordion-content">
-            <?php if (get_field('customer_needs')): ?>
+            <?php if ($has_customer_needs): ?>
                 <section class="works-card__section">
                     <h3>お客様のご要望</h3>
                     <div class="works-card__text">
@@ -65,7 +68,7 @@
                 </section>
             <?php endif; ?>
 
-            <?php if (get_field('proposal')): ?>
+            <?php if ($has_proposal): ?>
                 <section class="works-card__section">
                     <h3>ご提案内容</h3>
                     <div class="works-card__text">
@@ -74,7 +77,7 @@
                 </section>
             <?php endif; ?>
 
-            <?php if (get_field('cost_detail')): ?>
+            <?php if ($has_cost_detail): ?>
                 <section class="works-card__section">
                     <h3>費用詳細</h3>
                     <div class="works-card__text">
@@ -89,5 +92,5 @@
             <span class="works-card__more-icon"></span>
         </button>
     </div>
+    <?php endif; ?>
 </article>
-
