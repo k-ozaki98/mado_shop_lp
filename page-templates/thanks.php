@@ -1,4 +1,18 @@
-<?php get_header('', ['pageId' => 'thanks']); ?>
+<?php
+// POSTデータがないか、final_submitがなければリダイレクト
+if (empty($_POST) || !isset($_POST['final_submit'])) {
+  wp_redirect(home_url());
+  exit;
+}
+
+// フォームデータを取得
+$data = $_POST;
+
+// メール送信処理を実行
+send_form_mail($data);
+
+get_header('', ['pageId' => 'thanks']); 
+?>
 
 <main class="thanks">
   <div class="l-inner thanks__inner">

@@ -1,246 +1,42 @@
-export class FormHandler {
+export function initForm() {
+  document.addEventListener('DOMContentLoaded', function() {
+    // フォームの要素を取得
+    const form = document.getElementById('contact-form');
+    if (!form) return;
     
-    constructor() {
-      this.visibleWindows = 1; // 表示中の窓情報数
-      this.maxWindows = 5;     // 最大窓情報数
-      this.init();
-    }
-  
-    init() {
-      // 窓情報の表示/非表示を初期設定
-      // this.initWindowInfoDisplay();
-      
-      const form = document.querySelector('.wpcf7-form');
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          // 「入力内容を確認」ボタンがクリックされた場合のみバリデーション
-          const submitButton = e.submitter;
-          if (submitButton && submitButton.value === '入力内容を確認') {
-            if (!this.validateForm()) {
-              e.preventDefault();
-            }
-          }
-        });
-      }
-      
-      const addButton = document.querySelector('.form__add-window');
-      if (addButton) {
-        addButton.addEventListener('click', () => this.showNextWindow());
-      }
-
-      // 窓の削除ボタンのイベントリスナーを追加
-      document.addEventListener('click', (e) => {
-        if (e.target.matches('.window-info__remove')) {
-          this.removeWindow(e.target);
-        }
-      });
-  
-      document.addEventListener('click', (e) => {
-        if (e.target.matches('.js-file-btn')) {
-          const fileWrapper = e.target.closest('.window-info__file-wrapper');
-          const fileInput = fileWrapper.querySelector('.form__file');
-          fileInput.click();
-        }
-      });
-  
-      // ファイル選択時の処理
-      document.addEventListener('change', (e) => {
-        if (e.target.matches('.form__file')) {
-          const fileWrapper = e.target.closest('.window-info__file-wrapper');
-          const fileNameSpan = fileWrapper.querySelector('.window-info__file-name');
-          if (e.target.files.length > 0) {
-            fileNameSpan.textContent = e.target.files[0].name;
-          } else {
-            fileNameSpan.textContent = '';
-          }
-        }
-      });
-    }
-
-    // 窓の削除メソッドを追加
-    removeWindow(removeButton) {
-      const windowInfo = removeButton.closest('.window-info');
-      const windowCount = parseInt(windowInfo.getAttribute('data-window-count'));
-      
-      // 最初の窓は削除できない
-      if (windowCount === 1) return;
-      
-      // 窓を非表示にし、フィールドの必須属性を削除
-      windowInfo.style.display = 'none';
-      this.markRequiredFields(windowInfo, false);
-      
-      // 枚数と場所フィールドのrequired属性を削除
-      const countField = windowInfo.querySelector(`[name^="count-${windowCount}"]`);
-      const placeField = windowInfo.querySelector(`[name^="place-${windowCount}"]`);
-      
-      if (countField) {
-        countField.removeAttribute('required');
-        countField.name = countField.name.replace('*', '');
-        countField.classList.remove('wpcf7-validates-as-required');
-      }
-      
-      if (placeField) {
-        placeField.removeAttribute('required');
-        placeField.name = placeField.name.replace('*', '');
-        placeField.classList.remove('wpcf7-validates-as-required');
-      }
-      
-      // 表示中の窓の数を減らす
-      this.visibleWindows--;
-      
-      // 追加ボタンを再表示
-      const addButton = document.querySelector('.form__add-window');
-      if (addButton) {
-        addButton.style.display = 'block';
-      }
-      
-      // 入力内容をクリア
-      const inputFields = windowInfo.querySelectorAll('input, select, textarea');
-      inputFields.forEach(field => {
-        field.value = '';
-        // ファイル入力の場合は特別に対応
-        if (field.type === 'file') {
-          const fileNameSpan = field.closest('.window-info__file-wrapper').querySelector('.window-info__file-name');
-          if (fileNameSpan) {
-            fileNameSpan.textContent = '';
-          }
-        }
-      });
-    }
-  
-    // 窓情報の表示/非表示の初期設定
-    initWindowInfoDisplay() {
-      // 2つ目以降の窓情報を非表示に
-      const windowInfos = document.querySelectorAll('.window-info');
-      windowInfos.forEach((info, index) => {
-        if (index >= 1) { // 1番目以外を非表示
-          info.style.display = 'none';
-          
-          // この時点では非表示の窓情報内の必須フィールドは required 属性を一時的に削除
-          // ただし後で復元できるようにマークしておく
-          this.markRequiredFields(info, false);
-        }
-      });
-    }
-  
-    // required 属性をマークまたは復元する
-    markRequiredFields(container, setRequired) {
-      // 必須マークがついている要素を取得
-      const requiredLabels = container.querySelectorAll('.form__label .form__required');
-      
-      requiredLabels.forEach(label => {
-        // ラベルに対応する入力フィールドを見つける
-        const wrap = label.closest('.form__label').nextElementSibling;
-        if (!wrap) return;
-        
-        // 入力フィールドまたはセレクトボックスを取得
-        const fields = wrap.querySelectorAll('input, select, textarea');
-        
-        fields.forEach(field => {
-          if (setRequired) {
-            // required属性を設定
-            field.setAttribute('required', '');
-            field.classList.add('wpcf7-validates-as-required');
-          } else {
-            // required属性を一時的に削除
-            field.removeAttribute('required');
-            // 後で戻せるようにマークしておく
-            field.dataset.wasRequired = 'true';
-          }
-        });
-      });
-    }
-  
-    // 次の窓情報を表示する
-    showNextWindow() {
-      if (this.visibleWindows >= this.maxWindows) {
-        alert('窓の追加は最大5つまでです');
-        return;
-      }
-  
-      this.visibleWindows++;
-      const nextWindow = document.querySelector(`.window-info[data-window-count="${this.visibleWindows}"]`);
-      
-      if (nextWindow) {
-        // 表示する前に必須フィールドを復元
-        this.markRequiredFields(nextWindow, true);
-        
-        // 以下の特定のフィールドには手動でrequired属性を追加する
-        // Contact Form 7はフィールド名に * が付いているものを必須と認識するため
-        const countField = nextWindow.querySelector(`[name="count-${this.visibleWindows}"]`);
-        const placeField = nextWindow.querySelector(`[name="place-${this.visibleWindows}"]`);
-        
-        if (countField) {
-          countField.setAttribute('required', '');
-          // nameの値を*付きに変更して必須フィールドとして認識させる
-          countField.name = `count-${this.visibleWindows}*`;
-          countField.classList.add('wpcf7-validates-as-required');
-        }
-        
-        if (placeField) {
-          placeField.setAttribute('required', '');
-          // nameの値を*付きに変更して必須フィールドとして認識させる
-          placeField.name = `place-${this.visibleWindows}*`;
-          placeField.classList.add('wpcf7-validates-as-required');
-        }
-        
-        // 表示
-        nextWindow.style.display = 'block';
-      }
-  
-      // 最大数に達したらボタンを非表示
-      if (this.visibleWindows >= this.maxWindows) {
-        document.querySelector('.form__add-btn').style.display = 'none';
-      }
-    }
-  
-  }
-  
-  export function initForm() {
-    const formHandler = new FormHandler();
-  
-    document.addEventListener('wpcf7invalid', function(event) {
-      // フォームの要素を取得
-      const form = document.querySelector('.wpcf7-form');
-      if (!form) return;
-      
+    // カスタムエラーメッセージを定義
+    const customMessages = {
+      'your-name': 'お名前を入力してください',
+      'your-email': 'メールアドレスを入力してください',
+      'zip': '郵便番号を入力してください',
+      'prefecture': '都道府県を選択してください',
+      'city': '市区町村・番地を入力してください',
+      'building': '建物名・部屋番号を入力してください',
+      'tel': '電話番号を入力してください',
+      'house-type': 'お住まいのタイプを選択してください',
+      'reform-place': 'リフォームしたい箇所を選択してください',
+      'preferred-date': '希望日を入力してください'
+    };
+    
+    // フォーム送信時のバリデーション
+    form.addEventListener('submit', function(event) {
+      alert("")
       // 必須フィールドをチェック
       let firstErrorField = null;
-      
-      // カスタムエラーメッセージを定義
-      const customMessages = {
-        'your-name': 'お名前を入力してください',
-        'your-email': 'メールアドレスを入力してください',
-        'zip': '郵便番号を入力してください',
-        'prefecture': '都道府県を選択してください',
-        'city': '市区町村・番地を入力してください',
-        'building': '建物名・部屋番号を入力してください',
-        'tel': '電話番号を入力してください',
-        'house-type': 'お住まいのタイプを選択してください',
-        'reform-place': 'リフォームしたい箇所を選択してください',
-        'preferred-month': '月を入力してください',
-        'preferred-day': '日を入力してください'
-      };
+      let hasError = false;
       
       // 全ての必須フィールドをチェック
-      form.querySelectorAll('.wpcf7-validates-as-required').forEach(function(field) {
+      form.querySelectorAll('[required]').forEach(function(field) {
         // フィールドが空か、セレクトボックスの場合はデフォルト値のまま
-        if (!field.value || (field.tagName === 'SELECT' && field.value === '-- 選択してください --')) {
+        if (!field.value || (field.tagName === 'SELECT' && field.value === '' || field.value === '-- 選択してください --')) {
           // エラースタイルを適用
           field.style.borderColor = '#ff0000';
+          field.style.backgroundColor = '#fff8f8';
           
           // エラーメッセージが既にあるか確認
-          const existingError = field.parentNode.querySelector('.custom-error-message');
+          let existingError = findErrorMessage(field);
           if (!existingError) {
             // エラーメッセージを作成
-            const errorMsg = document.createElement('span');
-            errorMsg.className = 'custom-error-message';
-            errorMsg.style.color = '#ff0000';
-            errorMsg.style.fontSize = '12px';
-            errorMsg.style.display = 'block';
-            errorMsg.style.marginTop = '5px';
-            
-            // フィールド名からカスタムメッセージを取得
             let message = 'このフィールドは必須です';
             
             // 通常のフィールド名チェック
@@ -259,42 +55,198 @@ export class FormHandler {
               }
             }
             
-            errorMsg.textContent = message;
-            
-            // メッセージを表示
-            field.parentNode.appendChild(errorMsg);
+            // エラーメッセージを表示
+            addErrorMessage(field, message);
           }
           
           // 最初のエラーフィールドを記録
           if (!firstErrorField) {
             firstErrorField = field;
           }
+          
+          hasError = true;
         }
       });
       
-      // 最初のエラーフィールドにスクロールとフォーカス
-      if (firstErrorField) {
-        setTimeout(function() {
-          firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          firstErrorField.focus();
-        }, 100);
+      // エラーチェック: メールアドレス
+      const emailField = form.querySelector('input[name="your-email"]');
+      if (emailField && emailField.value && !isValidEmail(emailField.value)) {
+        if (!findErrorMessage(emailField)) {
+          addErrorMessage(emailField, '有効なメールアドレスを入力してください');
+        }
+        emailField.style.borderColor = '#ff0000';
+        emailField.style.backgroundColor = '#fff8f8';
+        if (!firstErrorField) firstErrorField = emailField;
+        hasError = true;
       }
       
-      // 全体のエラーメッセージを非表示
-      const responseOutput = document.querySelector('.wpcf7-response-output');
-      if (responseOutput) {
-        responseOutput.style.display = 'none';
+      // エラーチェック: 電話番号
+      const telField = form.querySelector('input[name="tel"]');
+      if (telField && telField.value && !isValidTel(telField.value)) {
+        if (!findErrorMessage(telField)) {
+          addErrorMessage(telField, '有効な電話番号を入力してください');
+        }
+        telField.style.borderColor = '#ff0000';
+        telField.style.backgroundColor = '#fff8f8';
+        if (!firstErrorField) firstErrorField = telField;
+        hasError = true;
+      }
+      
+      // エラーチェック: 郵便番号（入力されている場合）
+      const zipField = form.querySelector('input[name="zip"]');
+      if (zipField && zipField.value && !isValidZip(zipField.value)) {
+        if (!findErrorMessage(zipField)) {
+          addErrorMessage(zipField, '有効な郵便番号を入力してください（例: 123-4567）');
+        }
+        zipField.style.borderColor = '#ff0000';
+        zipField.style.backgroundColor = '#fff8f8';
+        if (!firstErrorField) firstErrorField = zipField;
+        hasError = true;
+      }
+      
+      // エラーがある場合は送信をキャンセル
+      if (hasError) {
+        event.preventDefault();
+        
+        // 最初のエラーフィールドにスクロールとフォーカス
+        if (firstErrorField) {
+          setTimeout(function() {
+            firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstErrorField.focus();
+          }, 100);
+        }
       }
     });
     
     // 入力中にエラー表示をクリア
-    document.addEventListener('input', function(e) {
-      if (e.target.closest('.wpcf7-form')) {
+    form.addEventListener('input', function(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') {
         e.target.style.borderColor = '';
-        const errorMsg = e.target.parentNode.querySelector('.custom-error-message');
+        e.target.style.backgroundColor = '';
+        
+        const errorMsg = findErrorMessage(e.target);
         if (errorMsg) {
           errorMsg.remove();
         }
       }
     });
+    
+    // blur時のバリデーション（フォーカスが外れた時）
+    form.addEventListener('blur', function(e) {
+      if ((e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') && 
+          e.target.hasAttribute('required')) {
+        
+        // 必須フィールドで値がない場合
+        if (!e.target.value || (e.target.tagName === 'SELECT' && (e.target.value === '' || e.target.value === '-- 選択してください --'))) {
+          e.target.style.borderColor = '#ff0000';
+          e.target.style.backgroundColor = '#fff8f8';
+          
+          // メッセージが既にあるか確認
+          if (!findErrorMessage(e.target)) {
+            let message = 'このフィールドは必須です';
+            
+            // メッセージの取得
+            if (customMessages[e.target.name]) {
+              message = customMessages[e.target.name];
+            } else if (/^count-\d+$/.test(e.target.name)) {
+              message = '枚数を入力してください';
+            } else if (/^place-\d+$/.test(e.target.name)) {
+              message = '場所を選択してください';
+            }
+            
+            addErrorMessage(e.target, message);
+          }
+        }
+      }
+      
+      // メールアドレスのバリデーション
+      if (e.target.name === 'your-email' && e.target.value && !isValidEmail(e.target.value)) {
+        e.target.style.borderColor = '#ff0000';
+        e.target.style.backgroundColor = '#fff8f8';
+        if (!findErrorMessage(e.target)) {
+          addErrorMessage(e.target, '有効なメールアドレスを入力してください');
+        }
+      }
+      
+      // 電話番号のバリデーション
+      if (e.target.name === 'tel' && e.target.value && !isValidTel(e.target.value)) {
+        e.target.style.borderColor = '#ff0000';
+        e.target.style.backgroundColor = '#fff8f8';
+        if (!findErrorMessage(e.target)) {
+          addErrorMessage(e.target, '有効な電話番号を入力してください');
+        }
+      }
+      
+      // 郵便番号のバリデーション
+      if (e.target.name === 'zip' && e.target.value && !isValidZip(e.target.value)) {
+        e.target.style.borderColor = '#ff0000';
+        e.target.style.backgroundColor = '#fff8f8';
+        if (!findErrorMessage(e.target)) {
+          addErrorMessage(e.target, '有効な郵便番号を入力してください（例: 123-4567）');
+        }
+      }
+    }, true);
+    
+    // 窓追加ボタンがクリックされた後の処理
+    const addWindowBtn = document.querySelector('.form__add-window');
+    if (addWindowBtn) {
+      addWindowBtn.addEventListener('click', function() {
+        // 遅延を設けて新しい窓情報が追加された後に処理
+        setTimeout(function() {
+          const newWindow = document.querySelector('.window-info:last-child');
+          if (newWindow) {
+            // 新しい窓情報の必須項目を取得
+            const requiredFields = newWindow.querySelectorAll('[required]');
+            requiredFields.forEach(function(field) {
+              // blur時のイベントを設定（既に設定されているのでここでは追加設定不要）
+            });
+          }
+        }, 100);
+      });
+    }
+  });
+  
+  // エラーメッセージを表示する関数
+  function addErrorMessage(field, message) {
+    const errorMsg = document.createElement('div');
+    errorMsg.className = 'form__error';
+    errorMsg.textContent = message;
+    errorMsg.style.color = '#ff0000';
+    errorMsg.style.fontSize = '14px';
+    errorMsg.style.marginTop = '5px';
+    errorMsg.style.display = 'block';
+    
+    // エラーメッセージを入力フィールドの直後に配置
+    field.insertAdjacentElement('afterend', errorMsg);
   }
+  
+  // エラーメッセージを探す関数
+  function findErrorMessage(field) {
+    // 次の要素がエラーメッセージかチェック
+    let nextEl = field.nextElementSibling;
+    if (nextEl && nextEl.classList.contains('form__error')) {
+      return nextEl;
+    }
+    return null;
+  }
+  
+  // メールアドレスのバリデーション関数
+  function isValidEmail(email) {
+    const pattern = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return pattern.test(email);
+  }
+  
+  // 電話番号のバリデーション関数
+  function isValidTel(tel) {
+    // ハイフンありなしどちらも許可
+    const pattern = /^(0\d{1,4}-\d{1,4}-\d{4}|\d{10,11})$/;
+    return pattern.test(tel);
+  }
+  
+  // 郵便番号のバリデーション関数
+  function isValidZip(zip) {
+    // ハイフンありなしどちらも許可
+    const pattern = /^(\d{3}-\d{4}|\d{7})$/;
+    return pattern.test(zip);
+  }
+}

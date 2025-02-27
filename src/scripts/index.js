@@ -28,11 +28,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageId = document.querySelector('body').getAttribute('data-pageid')
   const isTop = pageId === 'top';
   if (isTop) {
-    // initTop() // トップページ用スクリプト
-    // initForm()
+    initTop() // トップページ用スクリプト
+    initForm()
     initWork()
 
-    
+    jquery(function($){
+      $.datepicker.regional['ja'] = {
+        closeText: '閉じる',
+        prevText: '&#x3C;前',
+        nextText: '次&#x3E;',
+        currentText: '今日',
+        monthNames: ['1月','2月','3月','4月','5月','6月',
+        '7月','8月','9月','10月','11月','12月'],
+        monthNamesShort: ['1月','2月','3月','4月','5月','6月',
+        '7月','8月','9月','10月','11月','12月'],
+        dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
+        dayNamesShort: ['日','月','火','水','木','金','土'],
+        dayNamesMin: ['日','月','火','水','木','金','土'],
+        weekHeader: '週',
+        dateFormat: 'yy/mm/dd',
+        firstDay: 0,
+        isRTL: false,
+        showMonthAfterYear: true,
+        yearSuffix: '年'
+      };
+      $.datepicker.setDefaults($.datepicker.regional['ja']);
+    });
     
     
   }
@@ -55,56 +76,3 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
 })
-
-jQuery(document).ready(function($) {
-  var maxWindows = 5;
-
-  // 窓を追加する
-  $('.form__add-window').on('click', function() {
-    var count = $('.window-info').length;
-    if (count < maxWindows) {
-      var newIndex = count + 1;
-      var newWindow = $('.window-info').first().clone();
-      
-      // インデックスの更新
-      newWindow.attr('data-index', newIndex);
-      newWindow.find('h4').text('窓の情報（' + newIndex + '）');
-      newWindow.find('input[name^="height-"]').attr('name', 'height-' + newIndex);
-      newWindow.find('input[name^="width-"]').attr('name', 'width-' + newIndex);
-      newWindow.find('input[name^="frame-"]').attr('name', 'frame-' + newIndex);
-      newWindow.find('input[name^="photo-"]').attr('name', 'photo-' + newIndex);
-      newWindow.find('input[name^="count-"]').attr('name', 'count-' + newIndex);
-      newWindow.find('select[name^="place-"]').attr('name', 'place-' + newIndex);
-
-      // 削除ボタン表示
-      newWindow.find('.remove-window').show();
-
-      // 新しい窓の情報を追加
-      newWindow.insertBefore('.form__add-btn');
-
-      // window_count の更新
-      $('input[name="window_count"]').val(newIndex);
-      
-      // Contact Form 7 の再初期化
-      if (typeof wpcf7 !== 'undefined') {
-        wpcf7.initForm($('form.wpcf7-form'));
-      }
-    }
-  });
-
-  // 窓を削除する
-  $(document).on('click', '.remove-window', function() {
-    $(this).parent('.window-info').remove();
-
-    // インデックスの再設定
-    $('.window-info').each(function(index) {
-      var newIndex = index + 1;
-      $(this).attr('data-index', newIndex);
-      $(this).find('h4').text('窓の情報（' + newIndex + '）');
-    });
-
-    // window_count の更新
-    var updatedCount = $('.window-info').length;
-    $('input[name="window_count"]').val(updatedCount);
-  });
-});

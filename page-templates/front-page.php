@@ -1,4 +1,18 @@
-<?php get_header('', ['pageId' => 'top']); ?>
+<?php 
+session_start(); 
+
+get_header('', ['pageId' => 'top']); 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // POSTデータを保存
+  $_SESSION['inquiry_data'] = $_POST;
+  
+  // 確認ページにリダイレクト
+  wp_redirect(home_url('/confirm'));
+  exit;
+}
+
+?>
 
 <main>
 
@@ -148,14 +162,265 @@
       <div class="contact__inner">
         <h2 class="contact__title">お問い合わせフォーム</h2>
 
-        <?php
-          // echo do_shortcode('[contact-form-7 id="82a71f3" title="お問い合わせ複製"]');
-          ?>
 
 
-<?php
-          echo do_shortcode('[window_inquiry_form]');
-        ?>
+        <form id="contact-form" method="post" action="/confirm/" enctype="multipart/form-data">
+          <div class="form">
+            <div class="form__item">
+              <label class="form__label">
+                <span class="form__required">必須</span>
+                <span class="form__text">お名前</span>
+              </label>
+              <div class="form__wrap">
+                <input type="text" name="your-name" class="form__input" required>
+              </div>
+            </div>
+
+            <div class="form__item">
+              <label class="form__label">
+                <span class="form__required">必須</span>
+                <span class="form__text">メールアドレス</span>
+              </label>
+              <div class="form__wrap">
+                <input type="email" name="your-email" class="form__input" required>
+              </div>
+            </div>
+
+            <div class="form__item">
+              <label class="form__label">郵便番号</label>
+              <div class="form__wrap">
+                <input type="text" name="zip" class="form__input">
+              </div>
+            </div>
+
+            <div class="form__item">
+              <label class="form__label">
+                <span class="form__required is-pc-tab">必須</span>
+                <span class="form__text">住所</span>
+              </label>
+              <div class="form__wrap">
+                <label class="form__label">
+                  <span class="form__required is-sp">必須</span>
+                  <span class="form__address-text">都道府県</span>
+                </label>
+                <div class="form__select-wrap">
+                  <select name="prefecture" class="form__select" required>
+                    <option value="">-- 選択してください --</option>
+                    <option value="北海道">北海道</option>
+                    <option value="青森県">青森県</option>
+                    <option value="岩手県">岩手県</option>
+                    <option value="宮城県">宮城県</option>
+                    <option value="秋田県">秋田県</option>
+                    <option value="山形県">山形県</option>
+                    <option value="福島県">福島県</option>
+                    <option value="茨城県">茨城県</option>
+                    <option value="栃木県">栃木県</option>
+                    <option value="群馬県">群馬県</option>
+                    <option value="埼玉県">埼玉県</option>
+                    <option value="千葉県">千葉県</option>
+                    <option value="東京都">東京都</option>
+                    <option value="神奈川県">神奈川県</option>
+                    <option value="新潟県">新潟県</option>
+                    <option value="富山県">富山県</option>
+                    <option value="石川県">石川県</option>
+                    <option value="福井県">福井県</option>
+                    <option value="山梨県">山梨県</option>
+                    <option value="長野県">長野県</option>
+                    <option value="岐阜県">岐阜県</option>
+                    <option value="静岡県">静岡県</option>
+                    <option value="愛知県">愛知県</option>
+                    <option value="三重県">三重県</option>
+                    <option value="滋賀県">滋賀県</option>
+                    <option value="京都府">京都府</option>
+                    <option value="大阪府">大阪府</option>
+                    <option value="兵庫県">兵庫県</option>
+                    <option value="奈良県">奈良県</option>
+                    <option value="和歌山県">和歌山県</option>
+                    <option value="鳥取県">鳥取県</option>
+                    <option value="島根県">島根県</option>
+                    <option value="岡山県">岡山県</option>
+                    <option value="広島県">広島県</option>
+                    <option value="山口県">山口県</option>
+                    <option value="徳島県">徳島県</option>
+                    <option value="香川県">香川県</option>
+                    <option value="愛媛県">愛媛県</option>
+                    <option value="高知県">高知県</option>
+                    <option value="福岡県">福岡県</option>
+                    <option value="佐賀県">佐賀県</option>
+                    <option value="長崎県">長崎県</option>
+                    <option value="熊本県">熊本県</option>
+                    <option value="大分県">大分県</option>
+                    <option value="宮崎県">宮崎県</option>
+                    <option value="鹿児島県">鹿児島県</option>
+                    <option value="沖縄県">沖縄県</option>
+                  </select>
+                </div>
+                <div class="form__address-detail">
+                  <label class="form__label">
+                    <span class="form__required is-sp">必須</span>
+                    <span class="form__address-text">市区町村・番地</span>
+                  </label>
+                  <input type="text" name="city" class="form__input" required>
+                </div>
+                <div class="form__address-detail">
+                  <label class="form__label">
+                    <span class="form__required is-sp">必須</span>
+                    <span class="form__address-text">建物名・部屋番号</span>
+                  </label>
+                  <input type="text" name="building" class="form__input" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form__item">
+              <label class="form__label">
+                <span class="form__required">必須</span>
+                <span class="form__text">電話番号</span>
+              </label>
+              <div class="form__wrap">
+                <input type="tel" name="tel" class="form__input" required>
+              </div>
+            </div>
+
+            <h3 class="form__subtitle">詳しいお問い合わせ内容</h3>
+
+            <div class="form__item">
+              <label class="form__label">
+                <span class="form__required">必須</span>
+                <span class="form__text">お住まいのタイプ</span>
+              </label>
+              <div class="form__select-wrap">
+                <select name="house-type" class="form__select" required>
+                  <option value="">-- 選択してください --</option>
+                  <option value="戸建て">戸建て</option>
+                  <option value="マンション">マンション</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form__item">
+              <label class="form__label">
+                <span class="form__required">必須</span>
+                <span class="form__text">リフォームしたい箇所</span>
+              </label>
+              <div class="form__select-wrap">
+                <select name="reform-place" class="form__select" required>
+                  <option value="">-- 選択してください --</option>
+                  <option value="窓">窓</option>
+                  <option value="玄関ドア">玄関ドア</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 窓の情報 -->
+            <div class="window-info" data-window-count="1">
+              <h4 class="window-info__title">窓の情報（1）</h4>
+              
+              <div class="window-info__size">
+                <label class="form__label">
+                  <span class="form__optional">任意</span>
+                  <span class="form__text">サイズ</span>
+                </label>
+                <div class="window-info__wrap">
+                  <div class="window-info__size-inputs">
+                    <div class="window-info__item">
+                      <span class="window-info__label">高さ</span>
+                      <input type="text" name="height-1" class="form__input-s">
+                    </div>
+                    <span>×</span>
+                    <div class="window-info__item">
+                      <span class="window-info__label">幅</span>
+                      <input type="text" name="width-1" class="form__input-s">
+                    </div>
+                    <span>×</span>
+                    <div class="window-info__item">
+                      <span class="window-info__label">窓枠</span>
+                      <input type="text" name="frame-1" class="form__input-s">
+                    </div>
+                  </div>
+                  <p class="window-info__note">窓枠は、窓のリフォームをご希望の方のみご記入ください。</p>
+                  <div class="window-info__btn">
+                    <a href="">窓の測り方</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="window-info__image">
+                <label class="form__label">
+                  <span class="form__optional">任意</span>
+                  写真画像
+                </label>
+                <!-- ファイル入力を非表示にする -->
+                <div class="window-info__file-wrapper">
+                  <input type="file" name="photo-1" class="form__file">
+                  <span class="window-info__file-name"></span>
+                  <button type="button" class="window-info__upload-btn js-file-btn">画像添付</button>
+                  <p class="window-info__note">当該箇所の写真画像を添付していただくとよりスムーズです。</p>
+                </div>
+              </div>
+              <div class="window-info__count">
+                <label class="form__label">
+                  <span class="form__required">必須</span>
+                  <span class="form__text">枚数</span>
+                </label>
+                <div class="window-info__wrap window-info__wrap--unit">
+                  <input type="number" name="count-1" class="form__input-s" min="1" required>
+                </div>
+              </div>
+
+              <div class="window-info__place">
+                <label class="form__label">
+                  <span class="form__required">必須</span>
+                  <span class="form__text">場所</span>
+                </label>
+                <div class="window-info__wrap">
+                  <div class="form__select-wrap">
+                    <select name="place-1" class="form__select" required>
+                      <option value="">-- 選択してください --</option>
+                      <option value="LDK">LDK</option>
+                      <option value="浴室">浴室</option>
+                      <option value="和室">和室</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form__add-btn">
+              <button type="button" class="form__add-window">窓を追加する</button>
+            </div>
+
+            <div class="form__item">
+              <label class="form__label">
+                <span class="form__optional">任意</span>
+                <span class="form__text">現地調査希望日</span>
+              </label>
+              <div class="form__wrap">
+                <div class="form__date">
+                  <div class="window-info__wrap window-info__wrap--unit window-info__wrap--unit--month">
+                    <input type="number" name="preferred-month" class="form__input-s" min="1" max="12">
+                  </div>
+                  <div class="window-info__wrap window-info__wrap--unit window-info__wrap--unit--date">
+                    <input type="number" name="preferred-day" class="form__input-s" min="1" max="31">
+                  </div>
+                </div>
+                <p class="form__note">ご希望の調査日時間帯を記載していただくとよりスムーズです。</p>
+              </div>
+            </div>
+
+            <div class="form__item">
+              <label class="form__label">その他</label>
+              <div class="form__wrap">
+                <textarea name="other" class="form__textarea"></textarea>
+              </div>
+            </div>
+
+            <div class="form__submit">
+              <input type="submit" class="form__button" value="入力内容を確認">
+            </div>
+          </div>
+        </form>
+
 
       </div>
     </div>
