@@ -7,10 +7,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Google Analytics GA4 トラッキングコード -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDXP38N9JN"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'G-FDXP38N9JN');
+  </script>
+
+  <!-- Google Tag Manager (headに設置) -->
+  <script>
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+      'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-5HZW62HD');
+  </script>
   <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?> data-pageid="<?php echo isset($args['pageId']) ? esc_attr($args['pageId']) : ''; ?>">
+  <!-- Google Tag Manager (bodyの最初に設置) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HZW62HD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <?php wp_body_open(); ?>
   <header class="header is-pc-tab">
     <div class="header__inner">
