@@ -62,3 +62,13 @@ add_filter('the_content', 'do_shortcode', 11);
 
 
 
+function dynamic_hidden_fields($form_tag) {
+    // height が未定義の場合、空の配列をセット
+    $height = isset($_POST['height']) ? $_POST['height'] : array();
+    
+    if ($form_tag['name'] == 'window_count') {
+        $form_tag['values'] = array(count($height));
+    }
+    return $form_tag;
+}
+add_filter('wpcf7_form_tag', 'dynamic_hidden_fields');
