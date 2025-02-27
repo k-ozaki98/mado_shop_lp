@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // initTop() // トップページ用スクリプト
     initForm()
     initWork()
-    
+
   }
   const isWork = pageId === 'works';
   if (isWork) {
@@ -49,5 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
       item.classList.add('is-active');
     }
   })
+
+  const mv = document.getElementById("mv");
+  const header = document.getElementById("header");
+
+
+  window.addEventListener("scroll", function () {
+    const mvHeight = mv.offsetHeight; // MVの高さを取得
+    if (window.scrollY > mvHeight) {
+      header.style.opacity = "1"; // フェードイン
+    } else {
+      header.style.opacity = "0"; // フェードアウト
+    }
+  });
+
 
 })

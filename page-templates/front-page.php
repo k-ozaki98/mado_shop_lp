@@ -2,7 +2,7 @@
 
 <main>
 
-  <div class="mv">
+  <div id="mv" class="mv">
     <div class="mv__inner l-inner">
       <div class="mv__ttl">
         <picture>
@@ -118,7 +118,7 @@
           wp_reset_postdata();
           ?>
       </div>
-      <?php if (wp_count_posts('works')->publish > 2): ?>
+      <?php if (wp_count_posts('works')->publish > 1): ?>
       <a href="<?php echo esc_url(home_url('/work/')); ?>" class="works__more">
         他の施工事例を見る
       </a>

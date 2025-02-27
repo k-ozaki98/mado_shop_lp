@@ -44,7 +44,7 @@
   <!-- Google Tag Manager (bodyの最初に設置) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HZW62HD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <?php wp_body_open(); ?>
-  <header class="header is-pc-tab">
+  <header id="header" class="header is-pc-tab">
     <div class="header__inner">
       <div class="header__wrap">
         <div class="header__logo">
