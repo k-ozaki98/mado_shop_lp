@@ -4,7 +4,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
 
 <main class="subsidy">
 
-  <div class="mv-sub">
+  <div id="mv" class="mv-sub">
     <div class="mv-sub__logo">
       <img src="<?php echo get_template_directory_uri() ?>/src/img/logo.png" alt="" width="138" height="91">
     </div>
