@@ -12,6 +12,11 @@
       margin: 0 auto;
       width: 800px;
 
+      @include g.max-screen(g.$bp-sp) {
+        padding: 5rem 0 0;
+        width: 100%;
+      }
+
     }
     &__ttl {
       margin-bottom: 4rem;
@@ -22,6 +27,11 @@
     margin: 6rem 0 0;
     padding: 3rem 4rem;
     background: #F8F8F8;
+
+    @include g.max-screen(g.$bp-sp) {
+      padding: 2rem;
+      margin-top: 4rem;
+    }
     
     &__item {
       display: flex;
@@ -30,21 +40,36 @@
       padding: 0 2rem 2rem;
       padding-bottom: 2rem;
       margin-bottom: 2rem;
+      @include g.max-screen(g.$bp-sp) {
+        font-size: 1.4rem;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+        flex-direction: column;
+      }
     }
 
     &__label {
       width: 25%;
       font-weight: bold;
+      @include g.max-screen(g.$bp-sp) {
+        width: 100%;
+      }
     }
 
     &__wrap {
       width: 75%;
+      @include g.max-screen(g.$bp-sp) {
+        width: 100%;
+      }
     }
 
     &__address {
       display: flex;
       flex-direction: column;
       margin-bottom: 2rem;
+      @include g.max-screen(g.$bp-sp) {
+        margin-bottom: 1.5rem;
+      }
       .confirm__label {
         width: 100%;
       }
@@ -52,6 +77,9 @@
 
     &__address-text {
       font-size: 1.6rem;
+      @include g.max-screen(g.$bp-sp) {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -62,6 +90,12 @@
         font-size: 1.6rem;
         width: 80%;
         margin: 0 auto 3rem;
+
+        @include g.max-screen(g.$bp-sp) {
+          width: 90%;
+          padding: 2rem;
+          font-size: 1.3rem;
+        }
 
         &__title {
           font-size: 2rem;
@@ -124,6 +158,9 @@
           top: -1.5rem;
           left: 50%;
           transform: translateX(-50%);
+          @include g.max-screen(g.$bp-sp) {
+            font-size: 1rem;
+          }
         }
   }
 
@@ -132,6 +169,9 @@
     justify-content: center;
     gap: 2rem;
     margin-top: 4rem;
+    @include g.max-screen(g.$bp-sp) {
+      margin-top: 2.5rem;
+    }
 
     .form__button {
         width: 20rem;
@@ -149,9 +189,11 @@
 
         @include g.max-screen(g.$bp-sp) {
             width: 100%;
-            padding: 1.5rem;
+            padding: 1rem 1.5rem;
             font-size: 1.8rem;
             border-radius: 10px;
+
+
         }
 
         &:hover {
@@ -194,6 +236,11 @@
     text-align: center;
     position: relative;
     padding-bottom: 1.5rem;
+
+    @include g.max-screen(g.$bp-sp) {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
 
     &::after {
       content: "";
