@@ -1,16 +1,29 @@
 <?php
+// POSTデータがないか、final_submitがなければリダイレクト
+if (empty($_POST) || !isset($_POST['final_submit'])) {
+  wp_redirect(home_url());
+  exit;
+}
 
-get_header('', ['pageId' => 'thanks']); ?>
+// フォームデータを取得
+$data = $_POST;
 
-<main class="confirm">
-  <div class="l-inner confirm__inner">
-      <h1 class="heading-A confirm_ttl">お問い合わせが完了しました</h1>
+// メール送信処理を実行
+send_form_mail($data);
 
-    <p class="thanks__text">お問合せいただきありがとうございました。</p>
+get_header('', ['pageId' => 'thanks']); 
+?>
 
-    <div class="back-btn">
-      <a href="../">TOPへ戻る</a>
-    </div>
+<main class="thanks">
+  <div class="l-inner thanks__inner">
+    <h1 class="thanks__ttl">お問い合わせが完了しました</h1>
+    <p class="thanks__text">
+      お問合せいただきありがとうございました。<br>
+      内容を確認のうえ、折り返しご連絡いたします。<br>
+      今しばらくお待ちください。
+    </p>
+    <div class="thanks__btn">
+      <a href="<?php echo home_url(); ?>">TOPへ戻る</a>
     </div>
   </div>
 </main>

@@ -1,135 +1,222 @@
 <?php
-get_header('', ['pageId' => 'confirm']); 
-// セッションを確実に開始
-if (!session_id()) {
-    session_start();
+// POSTデータがなければリダイレクト
+if (empty($_POST)) {
+  wp_redirect(home_url());
+  exit;
 }
+
+$data = $_POST;
+
+get_header('', ['pageId' => 'confirm']); 
 ?>
 
-<main class="confirm">
-  <div class="l-inner confirm__inner">
-    <h1 class="heading-A confirm_ttl">お問い合わせ内容の確認</h1>
+<main class="confirm-page">
+  <div class="l-inner confirm-page__inner">
+    <h1 class="heading-A confirm-page_ttl">お問い合わせ内容の確認</h1>
     
-    <div class="form-container">
+    <div class="confirm">
+      <div class="confirm__item">
+        <label class="confirm__label">
+          <span class="confirm__text">お名前</span>
+        </label>
+        <div class="confirm__wrap">
+          <?php echo esc_html($data['your-name']); ?>
+        </div>
+      </div>
+
+      <div class="confirm__item">
+        <label class="confirm__label">
+          <span class="confirm__text">メールアドレス</span>
+        </label>
+        <div class="confirm__wrap">
+          <?php echo esc_html($data['your-email']); ?>
+        </div>
+      </div>
+
+      <div class="confirm__item">
+        <label class="confirm__label">郵便番号</label>
+        <div class="confirm__wrap">
+          <?php echo esc_html($data['zip'] ?? '未入力'); ?>
+        </div>
+      </div>
+
+      <div class="confirm__item">
+        <label class="confirm__label">
+          <span class="confirm__text">住所</span>
+        </label>
+        <div class="confirm__wrap">
+          <div class="confirm__address">
+            <label class="confirm__label">
+              <span class="confirm__address-text">都道府県</span>
+            </label>
+            <div class="form__select-wrap">
+              <?php echo esc_html($data['prefecture']); ?>
+            </div>
+          </div>
+          
+          <div class="confirm__address">
+            <label class="confirm__label">
+              <span class="confirm__address-text">市区町村・番地</span>
+            </label>
+            <p><?php echo esc_html($data['city']); ?></p>
+          </div>
+          <div class="confirm__address">
+            <label class="confirm__label">
+              <span class="confirm__address-text">建物名・部屋番号</span>
+            </label>
+            <p><?php echo esc_html($data['building'] ?? '未入力'); ?></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirm__item">
+        <label class="confirm__label">
+          <span class="confirm__text">電話番号</span>
+        </label>
+        <div class="confirm__wrap">
+          <?php echo esc_html($data['tel']); ?>
+        </div>
+      </div>
+
+      <h3 class="form__subtitle">詳しいお問い合わせ内容</h3>
+
+      <div class="confirm__item">
+        <label class="confirm__label">
+          <span class="confirm__text">お住まいのタイプ</span>
+        </label>
+        <div class="form__select-wrap">
+          <?php echo esc_html($data['house-type']); ?>
+        </div>
+      </div>
+
+      <div class="confirm__item">
+        <label class="confirm__label">
+          <span class="confirm__text">リフォームしたい箇所</span>
+        </label>
+        <div class="form__select-wrap">
+          <?php echo esc_html($data['reform-place']); ?>
+        </div>
+      </div>
+
+      <!-- 窓の情報 -->
       <?php
-      
-      // 窓情報を直接表示する関数
-      function display_window_info_custom() {
-        if (empty($_SESSION['window_data'])) {
-          return '<p class="no-window-info">窓情報はありません</p>';
-        }
-        
-        $window_data = $_SESSION['window_data'];
-        $output = '<div class="window-info-confirmation">';
-        
-        foreach ($window_data as $index => $data) {
-          $num = $index + 1;
-          $output .= '<div class="window-info-item">';
-          $output .= "<h4 class=\"window-info__title\">窓の情報（{$num}）</h4>";
-          
-          // サイズ情報
-          $height = isset($data['height']) ? $data['height'] : '';
-          $width = isset($data['width']) ? $data['width'] : '';
-          $frame = isset($data['frame']) ? $data['frame'] : '';
-          
-          if (!empty($height) || !empty($width) || !empty($frame)) {
-            $output .= "<p><strong>サイズ:</strong> {$height} × {$width} × {$frame}</p>";
-          } else {
-            $output .= "<p><strong>サイズ:</strong> 未入力</p>";
-          }
-          
-          $count = isset($data['count']) ? $data['count'] : '';
-          $output .= "<p><strong>枚数:</strong> {$count}</p>";
-          
-          // 場所の値が配列の場合は文字列に変換
-          $place = isset($data['place']) ? $data['place'] : '';
-          if (is_array($place)) {
-            $place = implode(', ', $place);
-          }
-          
-          $output .= "<p><strong>場所:</strong> {$place}</p>";
-          
-          $photo = isset($data['photo']) ? $data['photo'] : 'なし';
-          $output .= "<p><strong>写真:</strong> {$photo}</p>";
-          $output .= '</div>';
-        }
-        
-        $output .= '</div>';
-        return $output;
-      }
-      
-      // Contact Form 7フォームを表示
-      echo do_shortcode('[contact-form-7 id="aac2c30" title="お問い合わせ確認"]');
-      
-      // 窓情報のHTMLを直接出力
-      echo '<div id="window-info-container" style="margin: 20px 0;">';
-      echo display_window_info_custom();
-      echo '</div>';
+      // 窓情報を動的に表示
+      for ($i = 1; $i <= 5; $i++) {
+        // 枚数が入力されている窓情報のみ表示
+        if (!empty($data["count-{$i}"])) {
       ?>
-      
-      <style>
-      /* 窓情報のスタイル */
-      .window-info-confirmation {
-        margin: 10px 0;
+        <div class="window-info" data-window-count="<?php echo $i; ?>">
+          <h4 class="window-info__title">窓の情報（<?php echo $i; ?>）</h4>
+          
+          <div class="window-info__size">
+            <label class="confirm__label">
+              <span class="confirm__text">サイズ</span>
+            </label>
+            <div class="window-info__wrap">
+              <div class="window-info__size-inputs">
+                <div class="window-info__item">
+                  <span class="window-info__label">高さ</span>
+                  <p class="window-info__detail">
+                    <?php echo esc_html($data["height-{$i}"] ?? '未入力'); ?>
+                  </p>
+                </div>
+                <span>×</span>
+                <div class="window-info__item">
+                  <span class="window-info__label">幅</span>
+                  <div class="window-info__detail">
+                    <?php echo esc_html($data["width-{$i}"] ?? '未入力'); ?>
+                  </div>
+                </div>
+                <span>×</span>
+                <div class="window-info__item">
+                  <span class="window-info__label">窓枠</span>
+                  <div class="window-info__detail">
+                    <?php echo esc_html($data["frame-{$i}"] ?? '未入力'); ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="window-info__image">
+            <label class="confirm__label">写真画像</label>
+            <div class="window-info__file-wrapper">
+              <?php 
+              // 画像ファイルの表示処理
+              if (!empty($data["photo-{$i}"])) {
+                echo esc_html($data["photo-{$i}"]);
+              } else {
+                echo '添付なし';
+              }
+              ?>
+            </div>
+          </div>
+          
+          <div class="window-info__count">
+            <label class="confirm__label">
+              <span class="confirm__text">枚数</span>
+            </label>
+            <div class="window-info__wrap window-info__wrap--unit">
+              <?php echo esc_html($data["count-{$i}"]); ?>
+            </div>
+          </div>
+
+          <div class="window-info__place">
+            <label class="confirm__label">
+              <span class="confirm__text">場所</span>
+            </label>
+            <div class="window-info__wrap">
+              <div class="form__select-wrap">
+                <?php echo esc_html($data["place-{$i}"]); ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php 
+        } 
       }
-      
-      .window-info-item {
-        background-color: #f8f8f8;
-        border: 1px solid #e0e0e0;
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 15px;
-      }
-      
-      .window-info__title {
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #ddd;
-      }
-      
-      .window-info-item p {
-        margin: 8px 0;
-        padding: 0;
-      }
-      
-      .no-window-info {
-        padding: 10px;
-        background-color: #f9f9f9;
-        border-left: 3px solid #ccc;
-        font-style: italic;
-      }
-      </style>
-      
-      <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // 元の窓情報のコンテナを非表示にする
-        document.querySelectorAll('.window-info').forEach(function(elem) {
-          // 要素を完全に非表示にする代わりに高さ0で要素を保持
-          elem.style.height = '0';
-          elem.style.overflow = 'hidden';
-          elem.style.margin = '0';
-          elem.style.padding = '0';
-          elem.style.border = 'none';
-        });
-        
-        // 窓追加ボタンを非表示
-        document.querySelectorAll('.confirm__add-btn, .form__add-btn').forEach(function(elem) {
-          if (elem) elem.style.display = 'none';
-        });
-        
-        // 窓情報コンテナを適切な位置に移動
-        const windowInfoContainer = document.getElementById('window-info-container');
-        const windowInfoElements = document.querySelectorAll('.window-info');
-        
-        if (windowInfoContainer && windowInfoElements.length > 0) {
-          // 最初の窓情報要素の前に挿入
-          windowInfoElements[0].parentNode.insertBefore(windowInfoContainer, windowInfoElements[0]);
-        }
-        
-      });
-      </script>
+      ?>
+
+      <div class="confirm__item">
+        <label class="confirm__label">
+          <span class="confirm__text">現地調査希望日</span>
+        </label>
+        <div class="confirm__wrap">
+          <?php echo !empty($data['preferred-date']) ? esc_html($data['preferred-date']) : '未入力'; ?>
+          <?php if (!empty($data['preferred-time'])): ?>
+            （<?php echo esc_html($data['preferred-time']); ?>）
+          <?php endif; ?>
+        </div>
+      </div>
+
+      <div class="confirm__item">
+        <label class="confirm__label">その他</label>
+        <div class="confirm__wrap">
+          <?php echo esc_html($data['other'] ?? '特になし'); ?>
+        </div>
+      </div>
+
+      <div class="btn-wrap">
+        <div class="form__back">
+          <button type="button" onclick="history.back()" class="form__button form__button--back">戻る</button>
+        </div>
+        <div class="form__submit">
+          <form method="post" action="<?php echo esc_url(home_url('/thanks/')); ?>">
+            <!-- hiddenフィールドでデータを渡す -->
+            <?php foreach ($data as $key => $value): ?>
+              <?php if (is_array($value)): ?>
+                <?php foreach ($value as $subkey => $subvalue): ?>
+                  <input type="hidden" name="<?php echo esc_attr($key); ?>[<?php echo esc_attr($subkey); ?>]" value="<?php echo esc_attr($subvalue); ?>">
+                <?php endforeach; ?>
+              <?php else: ?>
+                <input type="hidden" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($value); ?>">
+              <?php endif; ?>
+            <?php endforeach; ?>
+            <input type="hidden" name="final_submit" value="1">
+            <button type="submit" class="form__button">送信</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </main>

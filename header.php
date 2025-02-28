@@ -44,6 +44,7 @@
   <!-- Google Tag Manager (bodyの最初に設置) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HZW62HD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <?php wp_body_open(); ?>
+  <div class="wrap wrap--<?php echo isset($args['pageId']) ? esc_attr($args['pageId']) : ''; ?>">
   <header class="header is-pc-tab">
     <div class="header__inner">
       <div class="header__wrap">
@@ -92,3 +93,4 @@
       <p class="copyright">© Kashiwaya Corporation All Rights Reserved.</p>
     </div>
   </div>
+ 

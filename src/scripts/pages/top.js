@@ -36,4 +36,6 @@ export class TopPage {
 
 export function initTop() {
   const topPage = new TopPage();
+
+  
 }
