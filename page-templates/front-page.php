@@ -154,7 +154,7 @@ get_header('', ['pageId' => 'top']);
         <div class="contact__inner">
           <h2 class="contact__title">お問い合わせフォーム</h2>
 
-          <form id="contact-form" method="post" action="/confirm/" enctype="multipart/form-data">
+          <form id="contact-form" method="post" action="<?php echo esc_url(home_url('/confirm/')); ?>" enctype="multipart/form-data">
             <div class="form">
               <div class="form__item">
                 <label class="form__label">
