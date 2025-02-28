@@ -1,252 +1,173 @@
-export function initForm() {
-  document.addEventListener('DOMContentLoaded', function() {
-    // フォームの要素を取得
-    const form = document.getElementById('contact-form');
-    if (!form) return;
+// form.js
+export const initForm = () => {
+  console.log('確認')
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  console.log('リターン')
+
+  // エラーメッセージを表示する関数
+  const showError = (element, message) => {
+    console.log('エラー表示')
+    // 既存のエラーメッセージがあれば削除
+    removeError(element);
     
-    // カスタムエラーメッセージを定義
-    const customMessages = {
-      'your-name': 'お名前を入力してください',
-      'your-email': 'メールアドレスを入力してください',
-      'zip': '郵便番号を入力してください',
-      'prefecture': '都道府県を選択してください',
-      'city': '市区町村・番地を入力してください',
-      'building': '建物名・部屋番号を入力してください',
-      'tel': '電話番号を入力してください',
-      'house-type': 'お住まいのタイプを選択してください',
-      'reform-place': 'リフォームしたい箇所を選択してください',
-      'preferred-date': '希望日を入力してください'
-    };
+    // エラーメッセージ要素を作成
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.color = '#d9534f';
+    errorDiv.style.fontSize = '12px';
+    errorDiv.style.marginTop = '5px';
+    errorDiv.textContent = message;
     
-    // フォーム送信時のバリデーション
-    form.addEventListener('submit', function(event) {
-      alert("")
-      // 必須フィールドをチェック
-      let firstErrorField = null;
-      let hasError = false;
-      
-      // 全ての必須フィールドをチェック
-      form.querySelectorAll('[required]').forEach(function(field) {
-        // フィールドが空か、セレクトボックスの場合はデフォルト値のまま
-        if (!field.value || (field.tagName === 'SELECT' && field.value === '' || field.value === '-- 選択してください --')) {
-          // エラースタイルを適用
-          field.style.borderColor = '#ff0000';
-          field.style.backgroundColor = '#fff8f8';
-          
-          // エラーメッセージが既にあるか確認
-          let existingError = findErrorMessage(field);
-          if (!existingError) {
-            // エラーメッセージを作成
-            let message = 'このフィールドは必須です';
-            
-            // 通常のフィールド名チェック
-            if (customMessages[field.name]) {
-              message = customMessages[field.name];
-            } 
-            // 動的フィールド名（count-1, place-2など）のチェック
-            else {
-              // count-* パターンのフィールド
-              if (/^count-\d+$/.test(field.name)) {
-                message = '枚数を入力してください';
-              } 
-              // place-* パターンのフィールド
-              else if (/^place-\d+$/.test(field.name)) {
-                message = '場所を選択してください';
-              }
-            }
-            
-            // エラーメッセージを表示
-            addErrorMessage(field, message);
-          }
-          
-          // 最初のエラーフィールドを記録
-          if (!firstErrorField) {
-            firstErrorField = field;
-          }
-          
-          hasError = true;
-        }
-      });
-      
-      // エラーチェック: メールアドレス
-      const emailField = form.querySelector('input[name="your-email"]');
-      if (emailField && emailField.value && !isValidEmail(emailField.value)) {
-        if (!findErrorMessage(emailField)) {
-          addErrorMessage(emailField, '有効なメールアドレスを入力してください');
-        }
-        emailField.style.borderColor = '#ff0000';
-        emailField.style.backgroundColor = '#fff8f8';
-        if (!firstErrorField) firstErrorField = emailField;
-        hasError = true;
-      }
-      
-      // エラーチェック: 電話番号
-      const telField = form.querySelector('input[name="tel"]');
-      if (telField && telField.value && !isValidTel(telField.value)) {
-        if (!findErrorMessage(telField)) {
-          addErrorMessage(telField, '有効な電話番号を入力してください');
-        }
-        telField.style.borderColor = '#ff0000';
-        telField.style.backgroundColor = '#fff8f8';
-        if (!firstErrorField) firstErrorField = telField;
-        hasError = true;
-      }
-      
-      // エラーチェック: 郵便番号（入力されている場合）
-      const zipField = form.querySelector('input[name="zip"]');
-      if (zipField && zipField.value && !isValidZip(zipField.value)) {
-        if (!findErrorMessage(zipField)) {
-          addErrorMessage(zipField, '有効な郵便番号を入力してください（例: 123-4567）');
-        }
-        zipField.style.borderColor = '#ff0000';
-        zipField.style.backgroundColor = '#fff8f8';
-        if (!firstErrorField) firstErrorField = zipField;
-        hasError = true;
-      }
-      
-      // エラーがある場合は送信をキャンセル
-      if (hasError) {
-        event.preventDefault();
-        
-        // 最初のエラーフィールドにスクロールとフォーカス
-        if (firstErrorField) {
-          setTimeout(function() {
-            firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            firstErrorField.focus();
-          }, 100);
-        }
+    // 入力要素の親要素にエラーメッセージを挿入
+    element.parentNode.appendChild(errorDiv);
+    
+    // 入力フィールドにエラースタイルを適用
+    element.classList.add('error-input');
+    element.style.borderColor = '#d9534f';
+  };
+  
+  // エラーメッセージを削除する関数
+  const removeError = (element) => {
+    console.log('削除')
+    const parent = element.parentNode;
+    const errorDiv = parent.querySelector('.error-message');
+    if (errorDiv) {
+      errorDiv.remove();
+    }
+    element.classList.remove('error-input');
+    element.style.borderColor = '';
+  };
+  
+  // フォームのバリデーション
+  const validateForm = () => {
+    console.log('ばりで')
+    let isValid = true;
+    
+    // 必須フィールドのチェック
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        const fieldName = field.previousElementSibling ? 
+                         field.previousElementSibling.textContent.trim() : 
+                         field.name;
+        showError(field, `${fieldName}を入力してください`);
+        isValid = false;
+      } else {
+        removeError(field);
       }
     });
     
-    // 入力中にエラー表示をクリア
-    form.addEventListener('input', function(e) {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') {
-        e.target.style.borderColor = '';
-        e.target.style.backgroundColor = '';
-        
-        const errorMsg = findErrorMessage(e.target);
-        if (errorMsg) {
-          errorMsg.remove();
-        }
+    // 窓の情報の特別なチェック
+    const windowInfos = document.querySelectorAll('.window-info');
+    windowInfos.forEach((windowInfo, index) => {
+      const windowNumber = index + 1;
+      
+      // 枚数のチェック
+      const countInput = windowInfo.querySelector(`input[name="count-${windowNumber}"]`);
+      if (countInput && (!countInput.value.trim() || parseInt(countInput.value) < 1)) {
+        showError(countInput, '窓の枚数を入力してください（1以上）');
+        isValid = false;
+      }
+      
+      // 場所のチェック
+      const placeSelect = windowInfo.querySelector(`select[name="place-${windowNumber}"]`);
+      if (placeSelect && !placeSelect.value) {
+        showError(placeSelect, '窓の場所を選択してください');
+        isValid = false;
       }
     });
     
-    // blur時のバリデーション（フォーカスが外れた時）
-    form.addEventListener('blur', function(e) {
-      if ((e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') && 
-          e.target.hasAttribute('required')) {
-        
-        // 必須フィールドで値がない場合
-        if (!e.target.value || (e.target.tagName === 'SELECT' && (e.target.value === '' || e.target.value === '-- 選択してください --'))) {
-          e.target.style.borderColor = '#ff0000';
-          e.target.style.backgroundColor = '#fff8f8';
-          
-          // メッセージが既にあるか確認
-          if (!findErrorMessage(e.target)) {
-            let message = 'このフィールドは必須です';
-            
-            // メッセージの取得
-            if (customMessages[e.target.name]) {
-              message = customMessages[e.target.name];
-            } else if (/^count-\d+$/.test(e.target.name)) {
-              message = '枚数を入力してください';
-            } else if (/^place-\d+$/.test(e.target.name)) {
-              message = '場所を選択してください';
-            }
-            
-            addErrorMessage(e.target, message);
-          }
-        }
-      }
-      
-      // メールアドレスのバリデーション
-      if (e.target.name === 'your-email' && e.target.value && !isValidEmail(e.target.value)) {
-        e.target.style.borderColor = '#ff0000';
-        e.target.style.backgroundColor = '#fff8f8';
-        if (!findErrorMessage(e.target)) {
-          addErrorMessage(e.target, '有効なメールアドレスを入力してください');
-        }
-      }
-      
-      // 電話番号のバリデーション
-      if (e.target.name === 'tel' && e.target.value && !isValidTel(e.target.value)) {
-        e.target.style.borderColor = '#ff0000';
-        e.target.style.backgroundColor = '#fff8f8';
-        if (!findErrorMessage(e.target)) {
-          addErrorMessage(e.target, '有効な電話番号を入力してください');
-        }
-      }
-      
-      // 郵便番号のバリデーション
-      if (e.target.name === 'zip' && e.target.value && !isValidZip(e.target.value)) {
-        e.target.style.borderColor = '#ff0000';
-        e.target.style.backgroundColor = '#fff8f8';
-        if (!findErrorMessage(e.target)) {
-          addErrorMessage(e.target, '有効な郵便番号を入力してください（例: 123-4567）');
-        }
-      }
-    }, true);
+    return isValid;
+  };
+  
+  // フォーム送信時のバリデーション
+  console.log("ugo")
+  form.addEventListener('submit', (e) => {
+    console.log('未入力')
+    // バリデーション実行
+    const isValid = validateForm();
     
-    // 窓追加ボタンがクリックされた後の処理
-    const addWindowBtn = document.querySelector('.form__add-window');
-    if (addWindowBtn) {
-      addWindowBtn.addEventListener('click', function() {
-        // 遅延を設けて新しい窓情報が追加された後に処理
-        setTimeout(function() {
-          const newWindow = document.querySelector('.window-info:last-child');
-          if (newWindow) {
-            // 新しい窓情報の必須項目を取得
-            const requiredFields = newWindow.querySelectorAll('[required]');
-            requiredFields.forEach(function(field) {
-              // blur時のイベントを設定（既に設定されているのでここでは追加設定不要）
-            });
-          }
-        }, 100);
-      });
+    // バリデーションに失敗した場合は送信を中止
+    if (!isValid) {
+      e.preventDefault();
+      
+      // エラーメッセージをスクロールして表示
+      const firstError = document.querySelector('.error-message');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+      // ユーザーに通知
+      const formErrors = document.querySelector('.form-errors');
+      if (!formErrors) {
+        const errorNotice = document.createElement('div');
+        errorNotice.className = 'form-errors';
+        errorNotice.style.backgroundColor = '#f8d7da';
+        errorNotice.style.color = '#721c24';
+        errorNotice.style.padding = '15px';
+        errorNotice.style.marginBottom = '20px';
+        errorNotice.style.border = '1px solid #f5c6cb';
+        errorNotice.style.borderRadius = '4px';
+        
+        const errorMessage = document.createElement('p');
+        errorMessage.className = 'form-errors__message';
+        errorMessage.style.margin = '0';
+        errorMessage.style.fontWeight = 'bold';
+        errorMessage.textContent = '入力内容に誤りがあります。修正してください。';
+        
+        errorNotice.appendChild(errorMessage);
+        form.parentNode.insertBefore(errorNotice, form);
+      }
     }
   });
   
-  // エラーメッセージを表示する関数
-  function addErrorMessage(field, message) {
-    const errorMsg = document.createElement('div');
-    errorMsg.className = 'form__error';
-    errorMsg.textContent = message;
-    errorMsg.style.color = '#ff0000';
-    errorMsg.style.fontSize = '14px';
-    errorMsg.style.marginTop = '5px';
-    errorMsg.style.display = 'block';
-    
-    // エラーメッセージを入力フィールドの直後に配置
-    field.insertAdjacentElement('afterend', errorMsg);
-  }
-  
-  // エラーメッセージを探す関数
-  function findErrorMessage(field) {
-    // 次の要素がエラーメッセージかチェック
-    let nextEl = field.nextElementSibling;
-    if (nextEl && nextEl.classList.contains('form__error')) {
-      return nextEl;
+  // 窓を追加するボタンのイベント設定
+  const setupWindowButtons = () => {
+    const addWindowButton = document.querySelector('.form__add-window');
+    if (addWindowButton) {
+      addWindowButton.addEventListener('click', () => {
+        // 追加後のバリデーションフィールドの再設定などを行う場合はここに実装
+      });
     }
-    return null;
-  }
+    
+    // ファイル選択ボタンの処理
+    const setupFileButtons = () => {
+      const fileButtons = document.querySelectorAll('.js-file-btn');
+      fileButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const fileInput = this.parentNode.querySelector('.form__file');
+          fileInput.click();
+        });
+      });
+      
+      const fileInputs = document.querySelectorAll('.form__file');
+      fileInputs.forEach(input => {
+        input.addEventListener('change', function() {
+          const fileName = this.value.split('\\').pop();
+          const fileNameDisplay = this.parentNode.querySelector('.window-info__file-name');
+          if (fileNameDisplay) {
+            fileNameDisplay.textContent = fileName || '';
+          }
+        });
+      });
+    };
+    
+    // ファイル選択ボタンのイベント設定
+    setupFileButtons();
+  };
   
-  // メールアドレスのバリデーション関数
-  function isValidEmail(email) {
-    const pattern = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    return pattern.test(email);
-  }
-  
-  // 電話番号のバリデーション関数
-  function isValidTel(tel) {
-    // ハイフンありなしどちらも許可
-    const pattern = /^(0\d{1,4}-\d{1,4}-\d{4}|\d{10,11})$/;
-    return pattern.test(tel);
-  }
-  
-  // 郵便番号のバリデーション関数
-  function isValidZip(zip) {
-    // ハイフンありなしどちらも許可
-    const pattern = /^(\d{3}-\d{4}|\d{7})$/;
-    return pattern.test(zip);
-  }
-}
+  // 初期設定
+  setupWindowButtons();
+
+  // 入力フィールドの変更時にエラーを消去
+  form.querySelectorAll('input, select, textarea').forEach(field => {
+    field.addEventListener('input', () => {
+      removeError(field);
+    });
+    
+    field.addEventListener('change', () => {
+      removeError(field);
+    });
+  });
+};
