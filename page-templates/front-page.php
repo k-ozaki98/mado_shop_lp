@@ -222,8 +222,7 @@ get_header('', ['pageId' => 'top']);
                     <input type="text" name="city" class="form__input" required value="<?php echo isset($form_data['city']) ? esc_attr($form_data['city']) : ''; ?>">
                   </div>
                   <div class="form__address-detail">
-                    <label class="form__label">
-                      <span class="form__required is-sp">必須</span>
+                    <label class="form__label form__label--optional">
                       <span class="form__address-text"><span class="form__optional">任意</span>建物名・部屋番号</span>
                     </label>
                     <input type="text" name="building" class="form__input"  value="<?php echo isset($form_data['building']) ? esc_attr($form_data['building']) : ''; ?>">

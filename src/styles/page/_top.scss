@@ -240,6 +240,21 @@
                 justify-content: left;
                 gap: 1rem;
             }
+
+            &--optional {
+                position: relative;
+
+                .form__optional {
+                    display: inline-block;
+                    margin-right: 1rem;
+
+                    @include g.max-screen(g.$bp-sp) {
+                        width: 3rem;
+                        font-size: 1rem;
+                    }
+                    
+                }
+            }
         }
 
         input,
@@ -296,6 +311,9 @@
 
         &__address-detail {
             margin-top: 3.5rem;
+            @include g.max-screen(g.$bp-sp) {
+                margin-top: 2rem;
+            }
         }
 
         &__address-text {
@@ -681,6 +699,9 @@
         &__image,
         &__count {
             margin-bottom: 4.5rem;
+            @include g.max-screen(g.$bp-sp) {
+                margin-bottom: 2.5rem;
+            }
         }
 
         &__file-wrapper {
