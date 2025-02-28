@@ -1,4 +1,5 @@
 <?php 
+
 get_header('', ['pageId' => 'top']); 
 
 ?>
@@ -223,7 +224,7 @@ get_header('', ['pageId' => 'top']);
                   <div class="form__address-detail">
                     <label class="form__label">
                       <span class="form__required is-sp">必須</span>
-                      <span class="form__address-text">建物名・部屋番号</span>
+                      <span class="form__address-text"><span class="form__optional">任意</span>建物名・部屋番号</span>
                     </label>
                     <input type="text" name="building" class="form__input"  value="<?php echo isset($form_data['building']) ? esc_attr($form_data['building']) : ''; ?>">
                   </div>
@@ -311,7 +312,7 @@ get_header('', ['pageId' => 'top']);
                     </div>
                     <p class="window-info__note">窓枠は、窓のリフォームをご希望の方のみご記入ください。</p>
                     <div class="window-info__btn">
-                      <a href="">窓の測り方</a>
+                      <a href="https://www.dev-weroll.com/kashiwaya-lp/#measure" target="_blank">窓の測り方</a>
                     </div>
                   </div>
                 </div>
