@@ -64,7 +64,7 @@ get_header('', ['pageId' => 'top']);
       <p class="reform__txt">窓のリフォームには、既存窓の内側に<br class="is-sp">新たに内窓を新設する、<br>または既存の内窓を取り除き<br class="is-sp">新たな内窓に交換する「内窓設置」と、<br>既存窓のガラスを取り外し、<br class="is-sp">既存窓枠の上から新たな窓枠を<br>覆い被せて取り付け、<br class="is-sp">複層ガラス等に交換する<br>「外窓交換（カバー工法）」があります。</p>
       <div class="reform__cont inner">
         <p class="reform__ttl">内窓設置</p>
-        <p class="reform__cont-txt">環境省の「先進的窓リノベ事業」における「内窓設置」とは、既存窓の内側に<br class="is-pc-tab">新たに内窓を新設する、または既存の内窓を取り除き新たな内窓に交換する工事をいいます。<br>ただし、<span>外皮部分に位置する既存外窓（ドア）の開口面※から屋内側へ<br class="is-pc-tab">50cm以内に平行に設置するもの</span>に限ります。​</p>
+        <p class="reform__cont-txt">環境省の「先進的窓リノベ事業」における「内窓設置」とは、既存窓の内側に新たに内窓を新設する、または既存の内窓を取り除き新たな内窓に交換する工事をいいます。ただし、<span>外皮部分に位置する既存外窓（ドア）の開口面※から屋内側へ50cm以内に平行に設置するもの</span>に限ります。​</p>
         <ul class="u-ul-style u-ul-style--asterisk reform__list">
           <li>開口面とは、外窓（複数のサッシで構成された出窓を含む）やドアを設置するために<br class="is-pc-tab">外壁に空けられた開口に対して、周囲の壁面を延長してできる面をいいます。</li>
         </ul>
@@ -74,7 +74,7 @@ get_header('', ['pageId' => 'top']);
       </div>
       <div class="reform__cont inner">
         <p class="reform__ttl">外窓交換（カバー工法）</p>
-        <p class="reform__cont-txt">環境省の「先進的窓リノベ事業」における「外窓」とは、<br class="is-pc-tab">住宅の外皮部分※にある開口部に設置する建具のうち、屋外から施錠できない建具をいいます。<br class="is-pc-tab">なお、「カバー工法」とは、既存窓のガラスを取り外し、<br class="is-pc-tab">既存窓枠の上から新たな窓枠を覆い被せて取り付け、複層ガラス等に交換する工事をいいます。​</p>
+        <p class="reform__cont-txt">環境省の「先進的窓リノベ事業」における「外窓」とは住宅の外皮部分※にある開口部に設置する建具のうち、屋外から施錠できない建具をいいます。なお、「カバー工法」とは、既存窓のガラスを取り外し、既存窓枠の上から新たな窓枠を覆い被せて取り付け、複層ガラス等に交換する工事をいいます。​</p>
         <ul class="u-ul-style u-ul-style--asterisk reform__list">
           <li>外壁ライン上にある熱的境界をいいます。</li>
         </ul>
@@ -85,11 +85,11 @@ get_header('', ['pageId' => 'top']);
       <h2 class="heading-A reform__sub-ttl">ドアのリフォーム</h2>
       <div class="reform__cont inner">
         <p class="reform__ttl">ドア交換（カバー工法）</p>
-        <p class="reform__cont-txt">環境省の「先進的窓リノベ事業」における「ドア」とは、<br class="is-pc-tab">住宅の外皮部分※にある開口部に設置する建具のうち、<br class="is-pc-tab">屋外から施錠できる建具をいいます。なお、「カバー工法」とは、<br class="is-pc-tab">​既存ドアについて枠を残して取り除き、既存枠の上から新たな枠を取り付け、<br class="is-pc-tab">ドアを交換する工事をいいます。</p>
+        <p class="reform__cont-txt">環境省の「先進的窓リノベ事業」における「ドア」とは、住宅の外皮部分※にある開口部に設置する建具のうち、屋外から施錠できる建具をいいます。なお、「カバー工法」とは、既存ドアについて枠を残して取り除き、既存枠の上から新たな枠を取り付け、ドアを交換する工事をいいます。</p>
         <ul class="u-ul-style u-ul-style--asterisk reform__list">
           <li>外壁ライン上にある熱的境界をいいます。</li>
         </ul>
-        <p class="reform__notice">「ドア交換（ドアに対する内窓設置を含む）」については、他の窓の工事と同一の契約であり、<br>同時に申請する場合のみ、環境省の「先進的窓リノベ事業」の補助対象となります。</p>
+        <p class="reform__notice">「ドア交換（ドアに対する内窓設置を含む）」については、他の窓の工事と同一の契約であり、同時に申請する場合のみ、環境省の「先進的窓リノベ事業」の補助対象となります。</p>
         <div class="reform__img">
           <img src="<?php echo get_template_directory_uri() ?>/src/img/reform-img03.png" alt="">
         </div>
@@ -256,7 +256,7 @@ get_header('', ['pageId' => 'top']);
               </div>
             </div>
 
-            <div class="form__item">
+            <!-- <div class="form__item">
               <label class="form__label">
                 <span class="form__required">必須</span>
                 <span class="form__text">リフォームしたい箇所</span>
@@ -268,7 +268,7 @@ get_header('', ['pageId' => 'top']);
                   <option value="玄関ドア" <?php echo (isset($form_data['reform-place']) && $form_data['reform-place'] === '玄関ドア') ? 'selected' : ''; ?>>玄関ドア</option>
                 </select>
               </div>
-            </div>
+            </div> -->
 
             <!-- 窓の情報 -->
             <?php
@@ -285,8 +285,19 @@ get_header('', ['pageId' => 'top']);
               // 最初の窓情報フォーム
               ?>
             <div class="window-info" data-window-count="1">
-              <h4 class="window-info__title">窓の情報（1）</h4>
-
+              <div class="form__item">
+                <label class="form__label">
+                  <span class="form__required">必須</span>
+                  <span class="form__text">リフォーム<br>したい箇所</span>
+                </label>
+                <div class="form__select-wrap">
+                  <select name="reform-place-1" class="form__select" required>
+                    <option value="">-- 選択してください --</option>
+                    <option value="窓" <?php echo (isset($form_data['reform-place']) && $form_data['reform-place'] === '窓') ? 'selected' : ''; ?>>窓</option>
+                    <option value="玄関ドア" <?php echo (isset($form_data['reform-place']) && $form_data['reform-place'] === '玄関ドア') ? 'selected' : ''; ?>>玄関ドア</option>
+                  </select>
+                </div>
+              </div>
               <div class="window-info__size">
                 <label class="form__label">
                   <span class="form__optional">任意</span>
@@ -295,27 +306,26 @@ get_header('', ['pageId' => 'top']);
                 <div class="window-info__wrap">
                   <div class="window-info__size-inputs">
                     <div class="window-info__item">
-                      <span class="window-info__label">高さ</span>
+                      <span class="window-info__label">高さ(cm)</span>
                       <input type="text" name="height-1" class="form__input-s" value="<?php echo isset($form_data['height-1']) ? esc_attr($form_data['height-1']) : ''; ?>">
                     </div>
                     <span>×</span>
                     <div class="window-info__item">
-                      <span class="window-info__label">幅</span>
+                      <span class="window-info__label">幅(cm)</span>
                       <input type="text" name="width-1" class="form__input-s" value="<?php echo isset($form_data['width-1']) ? esc_attr($form_data['width-1']) : ''; ?>">
                     </div>
                     <span>×</span>
                     <div class="window-info__item">
-                      <span class="window-info__label">窓枠</span>
+                      <span class="window-info__label">窓枠(cm)</span>
                       <input type="text" name="frame-1" class="form__input-s" value="<?php echo isset($form_data['frame-1']) ? esc_attr($form_data['frame-1']) : ''; ?>">
                     </div>
                   </div>
                   <p class="window-info__note">窓枠は、窓のリフォームをご希望の方のみご記入ください。</p>
                   <div class="window-info__btn">
-                    <a href="https://www.dev-weroll.com/kashiwaya-lp/#measure" target="_blank">窓の測り方</a>
+                    <a href="#measure">窓の測り方</a>
                   </div>
                 </div>
               </div>
-
               <div class="window-info__image">
                 <label class="form__label">
                   <span class="form__optional">任意</span>
@@ -328,7 +338,7 @@ get_header('', ['pageId' => 'top']);
                   <p class="window-info__note">当該箇所の写真画像を添付していただくとよりスムーズです。</p>
                 </div>
               </div>
-              <div class="window-info__count">
+              <!-- <div class="window-info__count">
                 <label class="form__label">
                   <span class="form__required">必須</span>
                   <span class="form__text">枚数</span>
@@ -336,8 +346,7 @@ get_header('', ['pageId' => 'top']);
                 <div class="window-info__wrap window-info__wrap--unit">
                   <input type="number" name="count-1" class="form__input-s" min="1" required value="<?php echo isset($form_data['count-1']) ? esc_attr($form_data['count-1']) : ''; ?>">
                 </div>
-              </div>
-
+              </div> -->
               <div class="window-info__place">
                 <label class="form__label">
                   <span class="form__required">必須</span>
@@ -357,7 +366,7 @@ get_header('', ['pageId' => 'top']);
             </div>
 
             <div class="form__add-btn">
-              <button type="button" class="form__add-window">窓を追加する</button>
+              <button type="button" class="form__add-window">追加する</button>
             </div>
 
             <div class="form__item">
@@ -461,7 +470,7 @@ jQuery(document).ready(function($) {
     });
 
     // タイトルを更新
-    $template.find('.window-info__title').text(`窓の情報（${windowCount}）`);
+    // $template.find('.window-info__title').text(`窓の情報（${windowCount}）`);
 
     // 削除ボタンを追加
     if (!$template.find('.window-info__remove').length) {
@@ -745,4 +754,5 @@ function isValidZip(zip) {
   const pattern = /^(\d{3}-\d{4}|\d{7})$/;
   return pattern.test(zip);
 }
+
 </script>

@@ -37,65 +37,47 @@ get_header('', ['pageId' => 'subsidy']); ?>
           </div>
           <ul class="example__list">
             <li>
-              <p class="example__list-ttl">例①【外窓交換】</p>
+              <p class="example__list-ttl">例①【内窓設置】大</p>
               <p class="example__detail">
-                <span>高さ0.6m x 幅0.7m</span><br>
-                <span>見積金額　¥45,000</span><br>
-                <span>補助金　　¥20,000</span>
+                <span>高さ1.6m x 幅2.073m</span><br>
+                <span>見積金額　¥93,600</span><br>
+                <span>補助金　　¥65,000</span>
               </p>
-              <p class="example__list-price">実質支払金額　¥25,000</p>
+              <p class="example__list-price">実質支払金額　¥28,600</p>
             </li>
             <li>
-              <p class="example__list-ttl">例②【内窓設置】</p>
+              <p class="example__list-ttl">例②【内窓設置】中</p>
               <p class="example__detail">
-                <span>高さ0.6m x 幅0.7m</span><br>
-                <span>見積金額　¥45,000</span><br>
-                <span>補助金　　¥20,000</span>
+                <span>高さ1.507m x 幅1.084m</span><br>
+                <span>見積金額　¥60,000</span><br>
+                <span>補助金　　¥44,000</span>
               </p>
-              <p class="example__list-price">実質支払金額　¥25,000</p>
+              <p class="example__list-price">実質支払金額　¥16,000</p>
             </li>
             <li>
-              <p class="example__list-ttl">例③【外窓交換】</p>
+              <p class="example__list-ttl">例③【外窓交換】大</p>
               <p class="example__detail">
-                <span>高さ0.6m x 幅0.7m</span><br>
-                <span>見積金額　¥45,000</span><br>
-                <span>補助金　　¥20,000</span>
+                <span>高さ1.690m x 幅2.070m</span><br>
+                <span>見積金額　¥240,000</span><br>
+                <span>補助金　　¥149,000</span>
               </p>
-              <p class="example__list-price">実質支払金額　¥25,000</p>
+              <p class="example__list-price">実質支払金額　¥91,000</p>
             </li>
             <li>
-              <p class="example__list-ttl">例④【内窓設置】</p>
+              <p class="example__list-ttl">例④【外窓交換】中</p>
               <p class="example__detail">
-                <span>高さ0.6m x 幅0.7m</span><br>
-                <span>見積金額　¥45,000</span><br>
-                <span>補助金　　¥20,000</span>
+                <span>高さ1.690m x 幅1.370m</span><br>
+                <span>見積金額　¥195,000</span><br>
+                <span>補助金　　¥110,000</span>
               </p>
-              <p class="example__list-price">実質支払金額　¥25,000</p>
-            </li>
-            <li>
-              <p class="example__list-ttl">例⑤【外窓交換】</p>
-              <p class="example__detail">
-                <span>高さ0.6m x 幅0.7m</span><br>
-                <span>見積金額　¥45,000</span><br>
-                <span>補助金　　¥20,000</span>
-              </p>
-              <p class="example__list-price">実質支払金額　¥25,000</p>
-            </li>
-            <li>
-              <p class="example__list-ttl">例⑥【内窓設置】</p>
-              <p class="example__detail">
-                <span>高さ0.6m x 幅0.7m</span><br>
-                <span>見積金額　¥45,000</span><br>
-                <span>補助金　　¥20,000</span>
-              </p>
-              <p class="example__list-price">実質支払金額　¥25,000</p>
+              <p class="example__list-price">実質支払金額　¥85,000</p>
             </li>
           </ul>
         </div>
 
         <div class="example-cont">
           <h3 class="example-cont__ttl">内窓設置</h3>
-          <p class="example-cont__txt">本事業における「内窓設置」とは、既存窓の内側に新たに内窓を新設する、<br class="is-pc-tab">または既存の内窓を取り除き新たな内窓に交換する工事をいいます。<br>ただし、<span>外皮部分に位置する既存外窓（ドア）の開口面※から屋内側へ<br class="is-pc-tab">50cm以内に平行に設置するもの</span>に限ります。</p>
+          <p class="example-cont__txt">本事業における「内窓設置」とは、既存窓の内側に新たに内窓を新設する、または既存の内窓を取り除き新たな内窓に交換する工事をいいます。ただし、<span>外皮部分に位置する既存外窓（ドア）の開口面※から屋内側へ50cm以内に平行に設置するもの</span>に限ります。</p>
           <ul class="u-ul-style u-ul-style--asterisk example-cont__list">
             <li>開口面とは、外窓（複数のサッシで構成された出窓を含む）やドアを設置するために<br class="is-pc-tab">外壁に空けられた開口に対して、周囲の壁面を延長してできる面をいいます。</li>
           </ul>
@@ -125,7 +107,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
                     <tr>
                       <th class="table-three-box">大（L）<br><span>＜2.8㎡以上＞</span></th>
                       <th class="table-three-box">中（M）<br><span>＜1.6㎡以上、2.8㎡未満＞</span></th>
-                      <th class="table-three-box">小（S）<br><span>＜2.8㎡以上＞</span></th>
+                      <th class="table-three-box">小（S）<br><span>＜0.2㎡以上、1.6㎡未満＞</span></th>
                     </tr>
                   </thead>
                   <tr>
@@ -151,6 +133,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
             </div>
 
             <ul class="u-ul-style u-ul-style--asterisk example-cont__list">
+			  <li>施工費は含まれません</li>
               <li>国立研究開発法人建築研究所が公表する「平成28年省エネルギー基準に準拠したエネルギー消費性能の評価に関する技術情報（住宅）」の「2.エネルギー消費性能の算定方法 2.1 算定方法 第三章 暖冷房負荷と外皮性能第三節 熱貫流率及び線熱貫流率 5.部位の熱貫流率 5.2開口部 5.2.4大部分が透明材料で構成されている開口部（窓等）又は大部分が不透明材料で構成されている開口部𝑖（ドア等）の熱貫流率」（令和４年９月更新）に基づき、開口部の熱貫流率は、JISA 2102-1などによる方法の他、当該窓の仕様に応じて付録Ｂで定める熱貫流率の値によることもできます。</li>
             </ul>
           </div>
@@ -177,7 +160,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
 
         <div class="example-cont">
           <h3 class="example-cont__ttl">外窓交換（カバー工法）</h3>
-          <p class="example-cont__txt">本事業における「外窓」とは、住宅の外皮部分※にある開口部に設置する建具のうち、<br class="is-pc-tab">屋外から施錠できない建具をいいます。<br class="is-pc-tab">なお、「カバー工法」とは、既存窓のガラスを取り外し、<br class="is-pc-tab">既存窓枠の上から新たな窓枠を覆い被せて取り付け、複層ガラス等に交換する工事をいいます。</p>
+          <p class="example-cont__txt">本事業における「外窓」とは、住宅の外皮部分※にある開口部に設置する建具のうち、屋外から施錠できない建具をいいます。 なお、「カバー工法」とは、既存窓のガラスを取り外し、既存窓枠の上から新たな窓枠を覆い被せて取り付け、複層ガラス等に交換する工事をいいます。</p>
           <ul class="u-ul-style u-ul-style--asterisk example-cont__list">
             <li>外壁ライン上にある熱的境界をいいます。</li>
           </ul>
@@ -206,7 +189,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
                     <tr>
                       <th class="table-three-box">大（L）<br><span>＜2.8㎡以上＞</span></th>
                       <th class="table-three-box">中（M）<br><span>＜1.6㎡以上、2.8㎡未満＞</span></th>
-                      <th class="table-three-box">小（S）<br><span>＜2.8㎡以上＞</span></th>
+                      <th class="table-three-box">小（S）<br><span>＜0.2㎡以上、1.6㎡未満＞</span></th>
                     </tr>
                   </thead>
                   <tr>
@@ -251,7 +234,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
                     <tr>
                       <th class="table-three-box">大（L）<br><span>＜2.8㎡以上＞</span></th>
                       <th class="table-three-box">中（M）<br><span>＜1.6㎡以上、2.8㎡未満＞</span></th>
-                      <th class="table-three-box">小（S）<br><span>＜2.8㎡以上＞</span></th>
+                      <th class="table-three-box">小（S）<br><span>＜0.2㎡以上、1.6㎡未満＞</span></th>
                     </tr>
                   </thead>
                   <tr>
@@ -277,6 +260,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
             </div>
 
             <ul class="u-ul-style u-ul-style--asterisk example-cont__list">
+			  <li>施工費は含まれません</li>
               <li>国立研究開発法人建築研究所が公表する「平成28年省エネルギー基準に準拠したエネルギー消費性能の評価に関する技術情報（住宅）」の「2.エネルギー消費性能の算定方法 2.1 算定方法 第三章 暖冷房負荷と外皮性能第三節 熱貫流率及び線熱貫流率 5.部位の熱貫流率 5.2開口部 5.2.4大部分が透明材料で構成されている開口部（窓等）又は大部分が不透明材料で構成されている開口部𝑖（ドア等）の熱貫流率」（令和４年９月更新）に基づき、開口部の熱貫流率は、JISA 2102-1などによる方法の他、当該窓の仕様に応じて付録Ｂで定める熱貫流率の値によることもできます。</li>
             </ul>
           </div>
@@ -293,11 +277,11 @@ get_header('', ['pageId' => 'subsidy']); ?>
 
         <div class="example-cont">
           <h3 class="example-cont__ttl">ドア交換（カバー工法）</h3>
-          <p class="example-cont__txt">本事業における「ドア」とは、​住宅の外皮部分※にある開口部に設置する建具のうち、<br class="is-pc-tab">屋外から施錠できる建具をいいます。なお、「カバー工法」とは、<br class="is-pc-tab">既存ドアについて枠を残して取り除き、既存枠の上から新たな枠を取り付け、<br class="is-pc-tab">ドアを交換する工事をいいます。</p>
+          <p class="example-cont__txt">本事業における「ドア」とは、​住宅の外皮部分※にある開口部に設置する建具のうち、屋外から施錠できる建具をいいます。なお、「カバー工法」とは、既存ドアについて枠を残して取り除き、既存枠の上から新たな枠を取り付け、ドアを交換する工事をいいます。</p>
           <ul class="u-ul-style u-ul-style--asterisk example-cont__list">
             <li>外壁ライン上にある熱的境界をいいます。</li>
           </ul>
-          <p class="example-cont__box-txt">「ドア交換（ドアに対する内窓設置を含む）」については、他の窓の工事と同一の契約であり、<br>同時に申請する場合のみ、環境省の「先進的窓リノベ事業」の補助対象となります。</p>
+          <p class="example-cont__box-txt">「ドア交換（ドアに対する内窓設置を含む）」については、他の窓の工事と同一の契約であり、同時に申請する場合のみ、環境省の「先進的窓リノベ事業」の補助対象となります。</p>
           <div class="example-cont__img">
             <img src="<?php echo get_template_directory_uri() ?>/src/img/reform-img03.png" alt="">
           </div>
@@ -323,7 +307,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
                     <tr>
                       <th class="table-three-box">大（L）<br><span>＜2.8㎡以上＞</span></th>
                       <th class="table-three-box">中（M）<br><span>＜1.6㎡以上、2.8㎡未満＞</span></th>
-                      <th class="table-three-box">小（S）<br><span>＜2.8㎡以上＞</span></th>
+                      <th class="table-three-box">小（S）<br><span>＜1.0㎡以上、1.6㎡未満＞</span></th>
                     </tr>
                   </thead>
                   <tr>
@@ -368,7 +352,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
                     <tr>
                       <th class="table-three-box">大（L）<br><span>＜2.8㎡以上＞</span></th>
                       <th class="table-three-box">中（M）<br><span>＜1.6㎡以上、2.8㎡未満＞</span></th>
-                      <th class="table-three-box">小（S）<br><span>＜2.8㎡以上＞</span></th>
+                      <th class="table-three-box">小（S）<br><span>＜1.0㎡以上、1.6㎡未満＞</span></th>
                     </tr>
                   </thead>
                   <tr>
@@ -394,6 +378,7 @@ get_header('', ['pageId' => 'subsidy']); ?>
             </div>
 
             <ul class="u-ul-style u-ul-style--asterisk example-cont__list">
+			  <li>施工費は含まれません</li>
               <li>国立研究開発法人建築研究所が公表する「平成28年省エネルギー基準に準拠したエネルギー消費性能の評価に関する技術情報（住宅）」の「2.エネルギー消費性能の算定方法 2.1 算定方法 第三章 暖冷房負荷と外皮性能第三節 熱貫流率及び線熱貫流率 5.部位の熱貫流率 5.2開口部 5.2.4大部分が透明材料で構成されている開口部（窓等）又は大部分が不透明材料で構成されている開口部𝑖（ドア等）の熱貫流率」（令和４年９月更新）に基づき、開口部の熱貫流率は、JISA 2102-1などによる方法の他、当該窓の仕様に応じて付録Ｂで定める熱貫流率の値によることもできます。</li>
             </ul>
           </div>

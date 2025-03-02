@@ -112,22 +112,40 @@ add_action('wp_enqueue_scripts', 'enqueue_datepicker');
 // add_filter('wpcf7_form_tag', 'dynamic_hidden_fields');
 
 
-
-
-// フォーム送信処理
+/**
+ * フォーム送信処理（確認画面の送信を防ぐ）
+ */
 function handle_form_submission() {
-    // サンクスページでの処理（最終送信）
-    if (isset($_POST['final_submit']) && $_POST['final_submit'] == 1) {
+    if (!session_id()) {
+        session_start();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['final_submit']) && $_POST['final_submit'] == 1) {
+        // すでに送信済みかをチェック
+        if (!empty($_SESSION['form_submitted'])) {
+            return; // 2回目の送信を防ぐ
+        }
+        
         // メール送信処理を実行
-        send_form_mail($_POST);
+        $result = send_form_mail($_POST);
+        
+        // 送信成功した場合のみフラグを設定しリダイレクト
+        if ($result) {
+            $_SESSION['form_submitted'] = true;
+            wp_safe_redirect(home_url('/thanks/'));
+            exit;
+        }
     }
 }
 add_action('template_redirect', 'handle_form_submission');
 
+
+
 /**
  * フォームメール送信処理
  */
-function send_form_mail($data) {
+
+ function send_form_mail($data) {
     // 送信先（管理者メールアドレス）
     $to = get_option('admin_email');
     $subject = 'ウェブサイトからのお問い合わせ';
@@ -149,39 +167,42 @@ function send_form_mail($data) {
     
     $body .= "【電話番号】: " . $data['tel'] . "\n";
     $body .= "【お住まいのタイプ】: " . $data['house-type'] . "\n";
-    $body .= "【リフォームしたい箇所】: " . $data['reform-place'] . "\n";
-    
-    // 窓の情報
-    if ($data['reform-place'] === '窓') {
-        // データから窓の数を判断
-        $window_count = 0;
-        foreach ($data as $key => $value) {
-            if (preg_match('/^count-(\d+)$/', $key, $matches)) {
-                $window_count = max($window_count, intval($matches[1]));
-            }
+
+    // 窓の情報を動的に取得
+    $window_count = 0;
+    foreach ($data as $key => $value) {
+        if (preg_match('/^place-(\d+)$/', $key, $matches)) {
+            $window_count = max($window_count, intval($matches[1]));
         }
-        
+    }
+
+    if ($window_count > 0) {
+        $body .= "\n【リフォーム情報】\n";
+
         for ($i = 1; $i <= $window_count; $i++) {
-            if (isset($data["count-$i"]) && isset($data["place-$i"])) {
-                $body .= "\n【窓の情報(" . $i . ")】\n";
+            if (!empty($data["place-$i"])) {
+                $body .= "\n--- リフォーム箇所 {$i} ---\n";
+                
+                // reform-placeの値を取得
+                $reform_place = isset($data["reform-place-$i"]) ? $data["reform-place-$i"] : "未入力";
+                $body .= "  【リフォームしたい箇所】: " . $reform_place . "\n";
+                
+                $body .= "  【場所】: " . $data["place-$i"] . "\n";
                 
                 if (!empty($data["height-$i"]) && !empty($data["width-$i"])) {
-                    $body .= "  サイズ: 高さ" . $data["height-$i"] . " × 幅" . $data["width-$i"];
+                    $body .= "  【サイズ】: 高さ" . $data["height-$i"] . "cm × 幅" . $data["width-$i"] . "cm";
                     if (!empty($data["frame-$i"])) {
-                        $body .= " × 窓枠" . $data["frame-$i"];
+                        $body .= " × 窓枠" . $data["frame-$i"] . "cm";
                     }
                     $body .= "\n";
                 }
-                
-                $body .= "  枚数: " . $data["count-$i"] . "\n";
-                $body .= "  場所: " . $data["place-$i"] . "\n";
             }
         }
     }
-    
+
     // 現地調査希望日
     if (!empty($data['preferred-date'])) {
-        $body .= "【現地調査希望日】: " . $data['preferred-date'];
+        $body .= "\n【現地調査希望日】: " . $data['preferred-date'];
         
         if (!empty($data['preferred-time'])) {
             $body .= " (" . $data['preferred-time'] . ")";
@@ -194,7 +215,7 @@ function send_form_mail($data) {
     
     // その他
     if (!empty($data['other'])) {
-        $body .= "【その他】: \n" . $data['other'] . "\n";
+        $body .= "\n【その他】: \n" . $data['other'] . "\n";
     }
     
     // メールヘッダー
@@ -204,7 +225,7 @@ function send_form_mail($data) {
         'Content-Type: text/plain; charset=UTF-8'
     ];
     
-    // メール送信
+    // メール送信（1回のみ）
     $mail_sent = wp_mail($to, $subject, $body, $headers);
     
     // 自動返信メール
@@ -226,6 +247,9 @@ function send_form_mail($data) {
     
     return $mail_sent;
 }
+
+
+
 
 // ファイルアップロード処理
 function handle_file_uploads($post_data) {
