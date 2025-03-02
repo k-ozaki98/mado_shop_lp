@@ -115,6 +115,9 @@ add_action('wp_enqueue_scripts', 'enqueue_datepicker');
 /**
  * フォーム送信処理（確認画面の送信を防ぐ）
  */
+/**
+ * フォーム送信処理（確認画面の送信を防ぐ）
+ */
 function handle_form_submission() {
     if (!session_id()) {
         session_start();
