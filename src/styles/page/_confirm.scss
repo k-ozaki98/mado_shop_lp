@@ -1,259 +1,37 @@
 @charset "utf-8";
 
-@use '../lib/global' as g;
-@use '../lib/vars' as *;
+@use '../lib/global'as g;
+@use '../lib/vars'as *;
 
 /* 確認画面のスタイル */
-.wrap.wrap--confirm {
-  background-color: #fff;
-  .confirm-page {
-    &__inner {
-      padding: 8rem 0 0;
-      margin: 0 auto;
-      width: 800px;
-
-      @include g.max-screen(g.$bp-sp) {
-        padding: 5rem 0 0;
-        width: 100%;
-      }
-
-    }
-    &__ttl {
-      margin-bottom: 4rem;
-    }
-  }
-
-  .confirm {
-    margin: 6rem 0 0;
-    padding: 3rem 4rem;
-    background: #F8F8F8;
+.confirm-page {
+  &__inner {
+    padding: 8rem 0 0;
+    margin: 0 auto;
+    width: 800px;
 
     @include g.max-screen(g.$bp-sp) {
-      padding: 2rem;
-      margin-top: 4rem;
-    }
-    
-    &__item {
-      display: flex;
-      font-size: 1.6rem;
-      border-bottom: 1px solid #ccc;
-      padding: 0 2rem 2rem;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-      @include g.max-screen(g.$bp-sp) {
-        font-size: 1.4rem;
-        padding-bottom: 1rem;
-        margin-bottom: 2rem;
-        flex-direction: column;
-      }
+      padding: 5rem 0 0;
+      width: 100%;
     }
 
-    &__label {
-      width: 25%;
-      font-weight: bold;
-      @include g.max-screen(g.$bp-sp) {
-        width: 100%;
-      }
-    }
-
-    &__wrap {
-      width: 75%;
-      @include g.max-screen(g.$bp-sp) {
-        width: 100%;
-      }
-    }
-
-    &__address {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 2rem;
-      @include g.max-screen(g.$bp-sp) {
-        margin-bottom: 1.5rem;
-      }
-      .confirm__label {
-        width: 100%;
-      }
-    }
-
-    &__address-text {
-      font-size: 1.6rem;
-      @include g.max-screen(g.$bp-sp) {
-        font-size: 1.2rem;
-      }
-    }
   }
 
-  .window-info {
-        background-color: #ECECF1;
-        padding: 3rem 3rem 3rem;
-        position: relative;
-        font-size: 1.6rem;
-        width: 80%;
-        margin: 0 auto 3rem;
-
-        @include g.max-screen(g.$bp-sp) {
-          width: 90%;
-          padding: 2rem;
-          font-size: 1.3rem;
-        }
-
-        &__title {
-          font-size: 2rem;
-          text-align: center;
-          font-weight: bold;
-          margin-bottom: 3.5rem;
-
-          @include g.max-screen(g.$bp-sp) {
-              font-size: 1.6rem;
-              margin-bottom: 2rem;
-          }
-        }
-
-        &__size {
-          display: flex;
-          margin-top: 1.5rem;
-          margin-bottom: 2rem;
-          justify-content: center;
-        }
-
-        &__image {
-          margin-bottom: 2rem;
-          display: flex;
-          justify-content: center;
-        }
-        &__count {
-          margin-bottom: 2rem;
-          display: flex;
-          justify-content: center;
-
-        }
-        &__place {
-          display: flex;
-          justify-content: center;
-        }
-        .confirm__label {
-          width: 25%;
-        }
-        &__wrap {
-          width: 75%;
-        }
-        &__file-wrapper {
-          width: 75%;
-        }
-        &__size-inputs {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-
-        }
-        &__item {
-          position: relative;
-          width: 6rem;
-          text-align: center;
-        }
-
-        &__label {
-          font-size: 1.2rem;
-          position: absolute;
-          top: -1.5rem;
-          left: 50%;
-          transform: translateX(-50%);
-          @include g.max-screen(g.$bp-sp) {
-            font-size: 1rem;
-          }
-        }
+  &__ttl {
+    margin-bottom: 4rem;
   }
+}
 
-  .btn-wrap {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+.confirm {
+  margin: 6rem 0 0;
+  padding: 3rem 4rem;
+  background: #F8F8F8;
+
+  @include g.max-screen(g.$bp-sp) {
+    padding: 2rem;
     margin-top: 4rem;
-    @include g.max-screen(g.$bp-sp) {
-      margin-top: 2.5rem;
-    }
-
-    .form__button {
-        width: 20rem;
-        text-align: center;
-        border: none;
-        color: #fff;
-        background: #03003F;
-        transition: opacity 0.3s;
-        font-size: 2rem;
-        font-weight: bold;
-        padding: 2rem;
-        margin: 0 auto;
-        display: block;
-        border: 2px solid #03003F;
-
-        @include g.max-screen(g.$bp-sp) {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            font-size: 1.8rem;
-            border-radius: 10px;
-
-
-        }
-
-        &:hover {
-            opacity: 0.7;
-        }
-    }
-    .form__back {
-      input {
-          width: 20rem;
-          text-align: center;
-          border: none;
-          border: 2px solid #03003F;
-          background: #fff;
-          color: #03003F;
-          transition: opacity 0.3s;
-          font-size: 2rem;
-          font-weight: bold;
-          padding: 2rem;
-          margin: 0 auto;
-          display: block;
-  
-          @include g.max-screen(g.$bp-sp) {
-              width: 100%;
-              padding: 1.5rem;
-              font-size: 1.8rem;
-              border-radius: 10px;
-          }
-  
-          &:hover {
-              opacity: 0.7;
-          }
-      }
-
-    } 
   }
 
-  .form__subtitle {
-    font-size: 2.8rem;
-    margin: 3rem auto;
-    text-align: center;
-    position: relative;
-    padding-bottom: 1.5rem;
-
-    @include g.max-screen(g.$bp-sp) {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    &::after {
-      content: "";
-      height: 2px;
-      width: 5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 0;
-      position: absolute;
-      background: #03003F;
-    }
-  }
-  
   .header {
     display: none;
   }
@@ -262,66 +40,305 @@
     padding: 2rem 1.6rem 5rem;
   }
 
-  .form-container {
-    margin-top: 3rem;
+
+  &__item {
+    display: flex;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #ccc;
+    padding: 0 2rem 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+
+    @include g.max-screen(g.$bp-sp) {
+      font-size: 1.4rem;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      flex-direction: column;
+    }
+  }
+
+  &__label {
+    width: 25%;
+    font-weight: bold;
+
+    @include g.max-screen(g.$bp-sp) {
+      width: 100%;
+    }
+  }
+
+  &__wrap {
+    width: 75%;
+
+    @include g.max-screen(g.$bp-sp) {
+      width: 100%;
+    }
+  }
+
+  &__address {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+    @include g.max-screen(g.$bp-sp) {
+      margin-bottom: 1.5rem;
+    }
+
+    .confirm__label {
+      width: 100%;
+    }
+  }
+
+  &__address-text {
+    font-size: 1.6rem;
+
+    @include g.max-screen(g.$bp-sp) {
+      font-size: 1.2rem;
+    }
   }
 }
 
-.wrap.wrap--thanks {
+.window-info {
+  background-color: #ECECF1;
+  padding: 3rem 3rem 3rem;
+  position: relative;
+  font-size: 1.6rem;
+  width: 80%;
+  margin: 0 auto 3rem;
+
+  @include g.max-screen(g.$bp-sp) {
+    width: 90%;
+    padding: 2rem;
+    font-size: 1.3rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 3.5rem;
+
+    @include g.max-screen(g.$bp-sp) {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__size {
+    display: flex;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+  }
+
+  &__image {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__count {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  &__place {
+    display: flex;
+    justify-content: center;
+  }
+
+  .confirm__label {
+    width: 25%;
+  }
+
+  &__wrap {
+    width: 75%;
+  }
+
+  &__file-wrapper {
+    width: 75%;
+  }
+
+  &__size-inputs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+  }
+
+  &__item {
+    position: relative;
+    width: 6rem;
+    text-align: center;
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include g.max-screen(g.$bp-sp) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+
+  @include g.max-screen(g.$bp-sp) {
+    margin-top: 2.5rem;
+  }
+
+  .form__button {
+    width: 20rem;
+    text-align: center;
+    border: none;
+    color: #fff;
+    background: #03003F;
+    transition: opacity 0.3s;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 2rem;
+    margin: 0 auto;
+    display: block;
+    border: 2px solid #03003F;
+
+    @include g.max-screen(g.$bp-sp) {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1.8rem;
+      border-radius: 10px;
+
+
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .form__back {
+    input {
+      width: 20rem;
+      text-align: center;
+      border: none;
+      border: 2px solid #03003F;
+      background: #fff;
+      color: #03003F;
+      transition: opacity 0.3s;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 2rem;
+      margin: 0 auto;
+      display: block;
+
+      @include g.max-screen(g.$bp-sp) {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.8rem;
+        border-radius: 10px;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+  }
+}
+
+.form__subtitle {
+  font-size: 2.8rem;
+  margin: 3rem auto;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+
+  @include g.max-screen(g.$bp-sp) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &::after {
+    content: "";
+    height: 2px;
+    width: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    position: absolute;
+    background: #03003F;
+  }
+}
+
+
+.form-container {
+  margin-top: 3rem;
+}
+
+
+
+.thanks {
+  text-align: center;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   .header {
     display: none;
   }
 
-  .thanks {
-    text-align: center;
-    background: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &__inner {
-      min-height: 80vh;
-      padding-top: 10rem;
-    }
+  &__inner {
+    min-height: 80vh;
+    padding-top: 10rem;
+  }
 
 
-    &__ttl {
-      font-size: 2.8rem;
-      margin-bottom: 5rem;
-    }
+  &__ttl {
+    font-size: 2.8rem;
+    margin-bottom: 5rem;
+  }
 
-    &__text {
-      font-size: 1.8rem;
-      color: #666;
-      line-height: 1.8;
-      margin-bottom: 5rem;
-    }
+  &__text {
+    font-size: 1.8rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 5rem;
+  }
 
-    &__btn {
-      a {
-        width: 20rem;
-        text-align: center;
-        border: none;
-        border: 2px solid #03003F;
-        background: #fff;
-        color: #03003F;
-        transition: opacity 0.3s;
-        font-size: 2rem;
-        font-weight: bold;
-        padding: 1rem 2rem;
-        margin: 0 auto;
-        display: block;
+  &__btn {
+    a {
+      width: 20rem;
+      text-align: center;
+      border: none;
+      border: 2px solid #03003F;
+      background: #fff;
+      color: #03003F;
+      transition: opacity 0.3s;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      margin: 0 auto;
+      display: block;
 
-        @include g.max-screen(g.$bp-sp) {
-            width: 100%;
-            padding: 1.5rem;
-            font-size: 1.8rem;
-            border-radius: 10px;
-        }
+      @include g.max-screen(g.$bp-sp) {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.8rem;
+        border-radius: 10px;
       }
     }
   }
 }
+
 // const addButton = document.querySelector('.form__add-window');
 // if (addButton) {
 //     addButton.addEventListener('click', () => this.addWindow());
